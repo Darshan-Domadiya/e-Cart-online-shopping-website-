@@ -1,0 +1,22 @@
+.imgBackground{
+    background: #F5F5FC 0% 0% no-repeat ;
+    border-radius: 50%;
+  
+    
+}
+
+.textBackground{
+    background: #FF7900 0% 0% no-repeat padding-box;
+border-radius: 16px;
+}
+
+
+
+//MediaQueries
+
+@media screen and (max-width:500px) {
+    .mobileView{
+        width: 50%;
+    }
+    
+}
