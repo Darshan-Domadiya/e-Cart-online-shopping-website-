@@ -11,19 +11,23 @@ import carousel5 from "/Images/c5.png";
 import carousel6 from "/Images/c6.png";
 import rArrow from "/Images/cArrow.png";
 import { Container, Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function Arrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", background: "#FF7900", color:"whitesmoke" }}
+      style={{
+        ...style,
+        display: "block",
+        background: "#FF7900",
+        color: "whitesmoke",
+      }}
       onClick={onClick}
     />
   );
 }
-
-
 
 const Carousel = () => {
   var settings = {
@@ -64,7 +68,7 @@ const Carousel = () => {
   };
   return (
     <div className="slider-container mt-3 mx-4 me-5 ">
-      <Container >
+      <Container>
         <Row className="d-flex">
           <Col>
             <div>

@@ -31,13 +31,14 @@
   position: relative;
 }
 
+
+
 //Initially hide dropdown list
 .dropDownMenu {
   display: none;
-  z-index: 1;
 }
 
-//displaying dropdown list 
+//displaying dropdown list
 .loginMenu:hover .dropDownMenu {
   display: block;
   position: absolute;
@@ -57,7 +58,7 @@
   border-bottom: 1px solid beige;
 }
 
-.dropDownMenu li:last-child{
+.dropDownMenu li:last-child {
   border-bottom: none;
 }
 
@@ -65,7 +66,6 @@
   color: black;
   text-decoration: none;
 }
-
 
 //displaying button and li>a in style.
 .dropDownMenu li:hover {
@@ -87,66 +87,36 @@
   pointer-events: all;
 }
 
+//sortBy filter border and background
 
-
-//Login/Register Menu on hovering for small size devices .
-
-.secondLoginMenu {
-  position: relative;
+.filter-border {
+  border: 2px solid var(--unnamed-color-f5f5fc);
+  border: 3px solid #f5f5fc;
 }
 
-//Initially hide dropdown list
-.secondDropdownMenu {
-  display: none;
-  z-index: 4;
+.custom-select {
+  input {
+    outline: none;
+  }
 }
 
-// //displaying dropdown list 
-.secondLoginMenu:hover .secondDropdownMenu {
-  display: block;
-  position: absolute;
-  top: 48px;
-  right: 15px;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 16px #00000029;
-  padding: 10px;
-  border-radius: 15px;
+.dealCard-border {
+  border: 1px solid #f5f5fc;
+  border-radius: 20px 20px 0px 0px;
 }
 
-// .secondDropdownMenu li {
-//   width: 220px;
-//   margin-top: 6px;
-//   margin-bottom: 6px;
-//   text-align: center;
-//   border-bottom: 1px solid beige;
-// }
-
-// .secondDropdownMenu li:last-child{
-//   border-bottom: none;
-// }
-
-// .secondDropdownMenu li a {
-//   color: black;
-//   text-decoration: none;
-// }
+.polygonText {
+  top: 18px;
+  left: 6px;
+}
 
 
-// //displaying button and li>a in style.
-// .dropDownMenu li:hover {
-//   background-color: black;
-//   transition: 0.3s all;
-// }
 
-// .dropDownMenu li:hover a {
-//   color: white;
-// }
+//Custom CSS for select tag for filtering...
+.custom-select{
+      appearance: none;
+      background-image: url("/Images/downArrow.png");
+      background-repeat: no-repeat;
+      background-position: right center;
+}
 
-// .dropDownMenu Button:hover {
-//   background-color: black;
-//   transition: 0.3s all;
-//   color: white;
-// }
-
-// .dropDownMenu > li:hover ul {
-//   pointer-events: all;
-// }

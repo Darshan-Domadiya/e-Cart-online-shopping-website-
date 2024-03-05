@@ -9,6 +9,7 @@ import trending4 from "/Images/trending4.png";
 import trending5 from "/Images/trending5.png";
 import trending6 from "/Images/trending6.png";
 import trending7 from "/Images/trending7.png";
+import SingleTrendingProduct from "./SingleTrendingProduct";
 
 const Trending = () => {
   return (
@@ -32,81 +33,60 @@ const Trending = () => {
 
       <Container className="mt-4">
         <Row className="d-flex align-items-baseline justify-content-center">
-          <Col md={3} lg={4} sm={2} xl={4} xxl={2}>
-            <div className="d-flex justify-content-center   ">
-              <img src={trending1} className="imgBackground" />
-            </div>
-            <div className="text-center textBackground ">
-              <p className=" text-white">Up to 10% off</p>
-            </div>
-            <div className="text-center fw-bold ">Electronics</div>
+          <Col className="col-6 col-sm-6  col-md-4 col-lg-3 col-xl-2 ">
+            <SingleTrendingProduct
+              imgUrl={trending1}
+              discount="Upto 10% off"
+              productName="Electronics"
+            />
           </Col>
 
-          <Col
-            md={3}
-            lg={4}
-            sm={2}
-            xl={3}
-            xxl={2}
-            className="d-flex flex-column justify-content-center"
-          >
-            <div className="d-flex justify-content-center align-items-center">
-              <img src={trending2} className="imgBackground" />
-            </div>
-            <div className="text-center ">
-              <p className="textBackground text-white">Up to 50% off</p>
-            </div>
-            <div className="text-center fw-bold">Kitchen</div>
+          <Col className="col-6 col-sm-6  col-md-4 col-lg-3 col-xl-2 d-flex flex-column justify-content-center">
+            <SingleTrendingProduct
+              imgUrl={trending2}
+              discount="Upto 10% off"
+              productName="Home"
+            />
           </Col>
 
-          <Col md={3} lg={4} sm={2} xl={3} xxl={2}>
-            <div className="d-flex justify-content-center align-items-center">
-              <img src={trending3} className="imgBackground" />
-            </div>
-            <div className="text-center">
-              <p className="textBackground text-white">From £50</p>
-            </div>
-            <div className="text-center fw-bold">Home</div>
+          <Col className="col-6 col-sm-6  col-md-4 col-lg-3 col-xl-2">
+            <SingleTrendingProduct
+              imgUrl={trending3}
+              discount="Upto 10% off"
+              productName="Electronics"
+            />
           </Col>
 
-          <Col md={3} lg={4} sm={2} xl={3} xxl={2}>
-            <div className="d-flex justify-content-center align-items-center">
-              <img src={trending4} className="imgBackground" />
-            </div>
-            <div className="text-center ">
-              <p className="textBackground text-white">From £100</p>
-            </div>
-            <div className="text-center fw-bold">Toys & Crafts</div>
+          <Col className="col-6 col-sm-6  col-md-4 col-lg-3 col-xl-2">
+            <SingleTrendingProduct
+              imgUrl={trending4}
+              discount="Upto 10% off"
+              productName="Electronics"
+            />
           </Col>
 
-          <Col md={3} lg={4} sm={2} xl={3} xxl={2}>
-            <div className="d-flex justify-content-center align-items-center">
-              <img src={trending5} className="imgBackground" />
-            </div>
-            <div className="text-center ">
-              <p className="textBackground text-white">Up to 5% off</p>
-            </div>
-            <div className="text-center fw-bold">Sports & Leisure</div>
+          <Col className="col-6 col-sm-6  col-md-4 col-lg-3 col-xl-2">
+            <SingleTrendingProduct
+              imgUrl={trending5}
+              discount="Upto 10% off"
+              productName="Electronics"
+            />
           </Col>
 
-          <Col md={3} lg={4} sm={2} xl={3} xxl={2}>
-            <div className="d-flex justify-content-center align-items-center">
-              <img src={trending6} className="imgBackground" />
-            </div>
-            <div className="text-center ">
-              <p className="textBackground text-white">Up to 15% off</p>
-            </div>
-            <div className="text-center fw-bold">Job Lots</div>
+          <Col className="col-6 col-sm-6  col-md-4 col-lg-3 col-xl-2">
+            <SingleTrendingProduct
+              imgUrl={trending6}
+              discount="Upto 10% off"
+              productName="Electronics"
+            />
           </Col>
 
-          <Col md={3} lg={4} sm={2} xl={3} xxl={2}>
-            <div className="d-flex justify-content-center align-items-center">
-              <img src={trending7} className="imgBackground" />
-            </div>
-            <div className="text-center ">
-              <p className="textBackground text-white">Up to 10% off</p>
-            </div>
-            <div className="text-center fw-bold">Pets</div>
+          <Col className="col-6 col-sm-6  col-md-4 col-lg-3 col-xl-2 mt-4">
+            <SingleTrendingProduct
+              imgUrl={trending7}
+              discount="Upto 10% off"
+              productName="Electronics"
+            />
           </Col>
         </Row>
       </Container>

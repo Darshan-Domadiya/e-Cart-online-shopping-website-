@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./header.scss";
 import navbarLogo from "/Images/navbarlogo.png";
 import searchImage from "/Images/search-normal.png";
@@ -6,6 +6,7 @@ import wishList from "/Images/wishlist.png";
 import user from "/Images/user.png";
 import shoppingCart from "/Images/shopping-cart.png";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { Link } from "react-router-dom";
 
 import {
   Container,
@@ -17,23 +18,31 @@ import {
   Form,
   Button,
 } from "react-bootstrap";
+import LoginPopUp from "../loginPopUp/LoginPopUp";
 
 const Header = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+  };
+
   return (
     <>
+      {/* First header for large screen-xl */}
       <header className="shadow-sm d-none d-md-flex main-header">
         <Container fluid>
           <Row className="d-flex align-items-center  justify-content-between mx-2">
             <Col>
-              <Navbar className="">
-                <Navbar.Brand href="#">
+              <Navbar>
+                <Link to="/">
                   <img
                     src={navbarLogo}
                     width="187"
                     height="85"
                     className="d-inline-block align-top"
                   />
-                </Navbar.Brand>
+                </Link>
               </Navbar>
             </Col>
 
@@ -70,28 +79,31 @@ const Header = () => {
                     <span className="fw-bold ">SIGNUP/REGISTER</span>
                     <div className=" border-2  bg-white">
                       <ul className="dropDownMenu text-center  list-unstyled text-black">
-                        <Button className="rounded-4 mt-2 border-0 text-white fw-bold">
+                        <Button
+                          className="rounded-4 mt-2 border-0 text-white fw-bold"
+                          onClick={() => setShow(true)}
+                        >
                           Login/Register
                         </Button>
 
                         <li>
-                          <a href="#">Your Profile</a>
+                          <Link to="#">Your Profile</Link>
                         </li>
 
                         <li>
-                          <a href="#">Fastfox Subscription</a>
+                          <Link to="#">Fastfox Subscription</Link>
                         </li>
                         <li>
-                          <a href="#">Your Orders</a>
+                          <Link to="#">Your Orders</Link>
                         </li>
                         <li>
-                          <a href="#">Addresses</a>
+                          <Link to="#">Addresses</Link>
                         </li>
                         <li>
-                          <a href="#">Notifications</a>
+                          <Link to="#">Notifications</Link>
                         </li>
                         <li>
-                          <a href="#">Wishlists</a>
+                          <Link to="#">Wishlists</Link>
                         </li>
                       </ul>
                     </div>
@@ -103,20 +115,21 @@ const Header = () => {
         </Container>
       </header>
 
+      {/* Second header for medium and small screen. */}
       <header className=" d-flex d-md-none shadow-sm main-header">
         <Container>
           <Row className="d-flex align-items-center  justify-content-between">
             <Col className="col-6">
               <Navbar>
                 <GiHamburgerMenu className="mx-1 " height="24" width="24" />
-                <Navbar.Brand href="#">
+                <Link to="#">
                   <img
                     src={navbarLogo}
                     width="100"
                     height="60"
                     className="d-inline-block align-top "
                   />
-                </Navbar.Brand>
+                </Link>
               </Navbar>
             </Col>
 
@@ -135,9 +148,38 @@ const Header = () => {
                 </span>
               </Nav.Link>
 
-              <Nav.Link>
-                <div className="d-flex gap-2 justify-content-center">
+              <Nav.Link className="secongLoginMenu">
+                <div className=" d-flex gap-2 justify-content-center">
                   <img src={user} width="25" height="25" />
+
+                  <ul className="secondDropdownMenu   text-center  list-unstyled text-black">
+                    <Button
+                      className="rounded-4 mt-2 border-0 text-white fw-bold"
+                      onClick={() => setShow(true)}
+                    >
+                      Login/Register
+                    </Button>
+
+                    <li>
+                      <Link to="#">Your Profile</Link>
+                    </li>
+
+                    <li>
+                      <Link to="#">Fastfox Subscription</Link>
+                    </li>
+                    <li>
+                      <Link to="#">Your Orders</Link>
+                    </li>
+                    <li>
+                      <Link to="#">Addresses</Link>
+                    </li>
+                    <li>
+                      <Link to="#">Notifications</Link>
+                    </li>
+                    <li>
+                      <Link to="#">Wishlists</Link>
+                    </li>
+                  </ul>
 
                   <div className="  justify-content-center flex-column d-none">
                     <span>Hello there,</span>
@@ -160,6 +202,8 @@ const Header = () => {
           </Row>
         </Container>
       </header>
+
+      {show && <LoginPopUp show={show} handleClose={handleClose} />}
     </>
   );
 };

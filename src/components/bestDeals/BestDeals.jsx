@@ -9,14 +9,19 @@ import bestdeal1 from "/Images/bestdeal1.png";
 import bestdeal2 from "/Images/bestdeal2.png";
 import bestdeal3 from "/Images/bestdeal3.png";
 import bestdeal4 from "/Images/bestdeal4.png";
-
+import { useNavigate } from "react-router-dom";
 
 function Arrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", background: "#FF7900", color:"whitesmoke" }}
+      style={{
+        ...style,
+        display: "block",
+        background: "#FF7900",
+        color: "whitesmoke",
+      }}
       onClick={onClick}
     />
   );
@@ -87,16 +92,44 @@ const BestDeals = () => {
 
         <Slider {...settings} className="mt-2">
           <div>
-            <SingleBestDeal img={bestdeal1} />
+            <SingleBestDeal
+              img={bestdeal1}
+              bestDealDes="Oismys Glow in Dark Tree Elves Fairy 20Pcs Luminous Ghost Micro Landscape Accessories Garden..."
+              review="34,564"
+              price="$34"
+              lessPrice="$56"
+              discount="-20"
+            />
           </div>
           <div>
-            <SingleBestDeal img={bestdeal2} />
+            <SingleBestDeal
+              img={bestdeal2}
+              bestDealDes="Oismys Glow in Dark Tree Elves Fairy 20Pcs Luminous Ghost Micro Landscape Accessories Garden..."
+              review="34,564"
+              price="$34"
+              lessPrice="$56"
+              discount="-12"
+            />
           </div>
           <div>
-            <SingleBestDeal img={bestdeal3} />
+            <SingleBestDeal
+              img={bestdeal3}
+              bestDealDes="Oismys Glow in Dark Tree Elves Fairy 20Pcs Luminous Ghost Micro Landscape Accessories Garden..."
+              review="34,564"
+              price="$34"
+              lessPrice="$56"
+              discount="-12"
+            />
           </div>
           <div>
-            <SingleBestDeal img={bestdeal4} />
+            <SingleBestDeal
+              img={bestdeal4}
+              bestDealDes="Oismys Glow in Dark Tree Elves Fairy 20Pcs Luminous Ghost Micro Landscape Accessories Garden..."
+              review="34,564"
+              price="$34"
+              lessPrice="$56"
+              discount="-15"
+            />
           </div>
         </Slider>
       </Container>
