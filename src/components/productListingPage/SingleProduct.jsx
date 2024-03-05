@@ -2,8 +2,6 @@ import React from "react";
 import ProductImage from "./ProductImage";
 import { Row, Col, Container } from "react-bootstrap";
 import ProductTitle from "./ProductTitle";
-import productList1 from "/Images/productList1.png";
-
 import ProductReview from "./ProductReview";
 import ProductPrice from "./ProductPrice";
 

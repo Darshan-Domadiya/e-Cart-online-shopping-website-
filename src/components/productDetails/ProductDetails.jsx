@@ -12,6 +12,12 @@ import normalPolygon from "/Images/normalPolygon.png";
 import { Col, Container, Row } from "react-bootstrap";
 import ProductPrice from "./ProductPrice";
 import ProductColorSize from "./ProductColorSize";
+import ProductDelivery from "./ProductDelivery";
+import CartSection from "./CartSection";
+import CustomerReview from "./CustomerReview";
+import ProductDeliverySection from "./ProductDeliverySection";
+import ProductDescription from "./ProductDescription";
+import CustomerComments from "./CustomerComments";
 
 const productDetailImage = [
   miniImage1,
@@ -34,21 +40,21 @@ const ProductDetails = () => {
     <>
       <Container className="mt-5">
         <Row>
-          <Col>
+          <Col className="col-12  col-md-6 col-lg-6 col-xl-6 ">
             <div className="d-flex gap-3">
               <div className="d-flex flex-column">
                 {productDetailImage.map((imgUrl) => {
                   return <img src={imgUrl} />;
                 })}
               </div>
-              <div>
-                <img src={mainImage} />
+              <div className="w-100 h-100">
+                <img src={mainImage} className="w-100 h-100 flex-sm-shrink-0" />
               </div>
             </div>
           </Col>
 
-          <Col>
-            <div>
+          <Col className=" col-12 col-sm-7 col-md-6 col-lg-6 col-xl-6 ">
+            <div className="">
               <div className="d-flex gap-4">
                 <p className="fw-bold h5">
                   Women's Blouse Solid Simple Long Sleeve V Neck Button Blouse
@@ -78,6 +84,21 @@ const ProductDetails = () => {
 
             <ProductPrice price="12" discount="65" />
             <ProductColorSize />
+            <ProductDelivery />
+            <CartSection />
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <Container>
+              <CustomerReview />
+              <CustomerComments />
+            </Container>
+        
+          </Col>
+          <Col>
+            <ProductDescription />
           </Col>
         </Row>
       </Container>

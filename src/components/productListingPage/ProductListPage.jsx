@@ -1,22 +1,8 @@
 import React, { useState } from "react";
 import "./productlistpage.scss";
-import navbarLogo from "/Images/navbarlogo.png";
-import searchImage from "/Images/search-normal.png";
-import wishList from "/Images/wishlist.png";
-import user from "/Images/user.png";
-import shoppingCart from "/Images/shopping-cart.png";
-import { GiHamburgerMenu } from "react-icons/gi";
-import downArrow from "/Images/downArrow.png";
-import instagram from "/Images/instagram.png";
-import facebook from "/Images/facebook.png";
-import twitter from "/Images/twitter.png";
-import pinterest from "/Images/pinterest.png";
-import bestdeal1 from "/Images/bestdeal1.png";
-import normalStar from "/Images/normalStar.png";
-import orangeStar from "/Images/orangeStar.png";
-import polygon from "/Images/polygon.png";
+
 import productList1 from "/Images/productList1.png";
-import { DropdownButton, Pagination, Dropdown } from "react-bootstrap";
+import { Pagination } from "react-bootstrap";
 
 import { Container, Row, Col } from "react-bootstrap";
 import SingleProduct from "./SingleProduct";
