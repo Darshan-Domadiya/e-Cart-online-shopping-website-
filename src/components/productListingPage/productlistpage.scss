@@ -31,8 +31,6 @@
   position: relative;
 }
 
-
-
 //Initially hide dropdown list
 .dropDownMenu {
   display: none;
@@ -110,13 +108,11 @@
   left: 6px;
 }
 
-
-
 //Custom CSS for select tag for filtering...
-.custom-select{
-      appearance: none;
-      background-image: url("/Images/downArrow.png");
-      background-repeat: no-repeat;
-      background-position: right center;
+.custom-select {
+  outline: none;
+  appearance: none;
+  background-image: url("/Images/downArrow.png");
+  background-repeat: no-repeat;
+  background-position: right center;
 }
-

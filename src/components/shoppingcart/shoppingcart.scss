@@ -1,0 +1,31 @@
+//global css class for grey color text
+
+.greyText{
+    color: grey;
+}
+
+.cardBackground {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 2px solid #f2f2f8;
+  border-radius: 20px;
+}
+
+.btn-primary {
+  background: #ff7900 0% 0% no-repeat padding-box;
+  border-radius: 25px;
+  border: none;
+
+  &:active,
+  &:hover {
+    background: black 0% 0% no-repeat padding-box;
+    border-radius: 25px;
+    outline: none;
+  }
+}
+
+.custom-input{
+    outline: none;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid grey;
+}

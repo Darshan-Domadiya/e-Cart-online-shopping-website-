@@ -1,29 +1,42 @@
 import React from "react";
 import ProductImage from "./ProductImage";
-import { Row, Col, Container } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import ProductTitle from "./ProductTitle";
 import ProductReview from "./ProductReview";
 import ProductPrice from "./ProductPrice";
+import { useNavigate } from "react-router-dom";
 
-const SingleProduct = ({ price, less, review, discount, imgUrl }) => {
+const SingleProduct = ({ details }) => {
+  const navigate = useNavigate();
+
+  
+
   return (
     <>
-      <Col className="col-xl-3 col-lg-4 col-md-6 ">
-        <div className="dealCard-border">
-          <ProductImage productImage={imgUrl} />
+      {details.map((eachDetail) => {
+        return (
+          <Col className="col-xl-3 col-lg-4 col-md-6  ">
+            <div className="dealCard-border" onClick={() => navigate("/productdetails")}>
+              <ProductImage productImage={eachDetail.imgUrl} />
 
-          <div className="mx-1">
-            <ProductTitle productDescription="Lucky Cat Print Open Front Kimono, Casual Cover Up Kimono For Spring & Summer, Women's Clothing" />
-            <div className="d-flex align-items-center gap-3 ">
-              <ProductReview review={review} />
-            </div>
+              <div className="mx-1">
+                <ProductTitle productDescription={eachDetail.desc} />
+                <div className="d-flex align-items-center gap-3 ">
+                  <ProductReview review={eachDetail.review} />
+                </div>
 
-            <div className="mt-2 d-flex align-items-start justify-content-between mx-4">
-              <ProductPrice price={price} less={less} discount={discount} />
+                <div className="mt-2 d-flex align-items-start justify-content-between mx-4">
+                  <ProductPrice
+                    price={eachDetail.price}
+                    less={eachDetail.less}
+                    discount={eachDetail.discount}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </Col>
+          </Col>
+        );
+      })}
     </>
   );
 };

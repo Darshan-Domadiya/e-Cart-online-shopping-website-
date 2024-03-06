@@ -1,12 +1,37 @@
 import React, { useState } from "react";
 import "./productlistpage.scss";
-
 import productList1 from "/Images/productList1.png";
-import { Pagination } from "react-bootstrap";
-
 import { Container, Row, Col } from "react-bootstrap";
 import SingleProduct from "./SingleProduct";
 import ProductFilter from "./ProductFilter";
+import Paging from "./Paging";
+
+const singleProductDetails = [
+  {
+    price: "$44",
+    less: "$50",
+    review: "34,565",
+    discount: "-10",
+    imgUrl: productList1,
+    desc: "Lucky Cat Print Open Front Kimono, Casual Cover Up Kimono For Spring & Summer, Women's Clothing",
+  },
+  {
+    price: "$34",
+    less: "$20",
+    review: "32,45",
+    discount: "-8",
+    imgUrl: productList1,
+    desc: "Lucky Cat Print Open Front Kimono, Casual Cover Up Kimono For Spring & Summer, Women's Clothing",
+  },
+  {
+    price: "$56",
+    less: "$12",
+    review: "22,565",
+    discount: "-15",
+    imgUrl: productList1,
+    desc: "Lucky Cat Print Open Front Kimono, Casual Cover Up Kimono For Spring & Summer, Women's Clothing",
+  },
+];
 
 const ProductListPage = () => {
   return (
@@ -22,7 +47,6 @@ const ProductListPage = () => {
           </Col>
 
           {/* Results section column */}
-
           <Col className="col-xl-9 col-lg-9 ">
             <Row>
               <Col className="text-md-center">
@@ -57,45 +81,11 @@ const ProductListPage = () => {
 
             <Row className="mt-5">
               {/* Productlisting section */}
-
-              <SingleProduct
-                imgUrl={productList1}
-                price="$44"
-                less="$50"
-                review="34,565"
-                discount="-10"
-              />
-              <SingleProduct
-                imgUrl={productList1}
-                price="$23"
-                less="$30"
-                discount="-12"
-              />
-
-              <SingleProduct
-                imgUrl={productList1}
-                price="$33"
-                less="$45.50"
-                discount="-5"
-              />
+              <SingleProduct details={singleProductDetails} />
             </Row>
 
             <Row>
-              <div className="d-flex align-items-center justify-content-center mt-5">
-                <Pagination>
-                  <Pagination.First />
-                  <Pagination.Prev />
-                  <Pagination.Item active>{1}</Pagination.Item>
-                  <Pagination.Item>{2}</Pagination.Item>
-
-                  <Pagination.Item>{3}</Pagination.Item>
-                  <Pagination.Item>{4}</Pagination.Item>
-                  <Pagination.Ellipsis />
-
-                  <Pagination.Next />
-                  <Pagination.Last />
-                </Pagination>
-              </div>
+              <Paging />
             </Row>
           </Col>
         </Row>

@@ -1,10 +1,10 @@
 import React from "react";
 import orangePolygon from "/Images/orangePolygon.png";
 import normalPolygon from "/Images/normalPolygon.png";
-import customerReviewStar from "/Images/customerReviewStar.png";
 import bigStar from "/Images/bigStar.png";
 
-import { Col, Container, Image, ProgressBar, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
+import ProgressbarReviewSection from "./ProgressbarReviewSection";
 
 const reviewStars = [
   { imgUrl: orangePolygon },
@@ -22,6 +22,34 @@ const bigStars = [
   { imgUrl: bigStar },
 ];
 
+const progressBarValues = [
+  {
+    number: "5",
+    now: "60",
+    reviews: "5,321",
+  },
+  {
+    number: "4",
+    now: "40",
+    reviews: "2,230",
+  },
+  {
+    number: "3",
+    now: "80",
+    reviews: "3,345",
+  },
+  {
+    number: "2",
+    now: "30",
+    reviews: "1023",
+  },
+  {
+    number: "1",
+    now: "20",
+    reviews: "456",
+  },
+];
+
 const CustomerReview = () => {
   return (
     <>
@@ -31,7 +59,7 @@ const CustomerReview = () => {
       </div>
       <Container>
         <Row>
-          <Col>
+          <Col className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
             <div className="mb-2">
               <div className="text-center">
                 <div className="h1 fw-bolder">4</div>
@@ -44,39 +72,10 @@ const CustomerReview = () => {
               </div>
             </div>
           </Col>
-          <Col>
-            <div>
-              <div className="d-flex align-items-center gap-2">
-                <span>5</span>
-                <img src={customerReviewStar} />
-                <ProgressBar className="w-50" now={20} />
-                <span className="mx-2">5,231</span>
-              </div>
-              <div className="d-flex align-items-center gap-2">
-                <span>5</span>
-                <img src={customerReviewStar} />
-                <ProgressBar className="w-50" now={20} />
-                <span className="mx-2">5,231</span>
-              </div>
-              <div className="d-flex align-items-center gap-2">
-                <span>5</span>
-                <img src={customerReviewStar} />
-                <ProgressBar className="w-50" now={20} />
-                <span className="mx-2">5,231</span>
-              </div>
-              <div className="d-flex align-items-center gap-2">
-                <span>5</span>
-                <img src={customerReviewStar} />
-                <ProgressBar className="w-50" now={20} />
-                <span className="mx-2">5,231</span>
-              </div>
-              <div className="d-flex align-items-center gap-2">
-                <span>5</span>
-                <img src={customerReviewStar} />
-                <ProgressBar className="w-50" now={20} />
-                <span className="mx-2">5,231</span>
-              </div>
-            </div>
+          <Col className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            
+              <ProgressbarReviewSection list={progressBarValues} />
+           
           </Col>
         </Row>
         <hr />

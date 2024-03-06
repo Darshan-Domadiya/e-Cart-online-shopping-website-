@@ -12,6 +12,24 @@ const sizeChart = [
   { size: "XXL" },
 ];
 
+const colorChart = [
+  {
+    color: "orange",
+  },
+  {
+    color: "black",
+  },
+  {
+    color: "green",
+  },
+  {
+    color: "Purple",
+  },
+  {
+    color: "blue",
+  },
+];
+
 const ProductColorSize = () => {
   return (
     <>
@@ -20,13 +38,22 @@ const ProductColorSize = () => {
           Color : <span className="fw-bold">Orange</span>
         </p>
       </div>
-      <div className="boxColor"></div>
+      <div className="d-flex gap-2">
+        {colorChart.map((value) => {
+          return (
+            <div
+              className="boxColor"
+              style={{ backgroundColor: value.color }}
+            ></div>
+          );
+        })}
+      </div>
       <div className="d-flex gap-2 align-items-center mt-4">
         <span>Size :</span>
         <div className="d-flex gap-3 ">
           {sizeChart.map((item) => {
             return (
-              <div className="sizeBackground text-center ">{item.size}</div>
+              <div className="sizeBackground text-center">{item.size}</div>
             );
           })}
         </div>

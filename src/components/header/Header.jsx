@@ -6,7 +6,7 @@ import wishList from "/Images/wishlist.png";
 import user from "/Images/user.png";
 import shoppingCart from "/Images/shopping-cart.png";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
   Container,
@@ -21,6 +21,8 @@ import {
 import LoginPopUp from "../loginPopUp/LoginPopUp";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -63,7 +65,10 @@ const Header = () => {
                 </span>
               </Nav.Link>
 
-              <Nav.Link className="mx-4 position-relative">
+              <Nav.Link
+                className="mx-4 position-relative"
+                onClick={() => navigate("/shoppingcart")}
+              >
                 <img src={shoppingCart} width="31" height="31" />
                 <span className="circle position-absolute d-flex align-items-center justify-content-center">
                   3

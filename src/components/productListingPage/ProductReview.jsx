@@ -2,15 +2,21 @@ import React from "react";
 import normalStar from "/Images/normalStar.png";
 import orangeStar from "/Images/orangeStar.png";
 
+const reviewStarList = [
+  { star: orangeStar },
+  { star: orangeStar },
+  { star: orangeStar },
+  { star: orangeStar },
+  { star: normalStar },
+];
+
 const ProductReview = ({ review }) => {
   return (
     <>
       <div className="d-flex gap-2">
-        <img src={orangeStar} />
-        <img src={orangeStar} />
-        <img src={orangeStar} />
-        <img src={orangeStar} />
-        <img src={normalStar} />
+        {reviewStarList.map((value) => {
+          return <img src={value.star} />;
+        })}
         <span>{review}</span>
       </div>
     </>
