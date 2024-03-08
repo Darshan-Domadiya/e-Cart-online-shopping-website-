@@ -21,26 +21,26 @@ const menuList = [
   },
   {
     id: "help-center",
-    title: "Help Center s",
+    title: "Help Center",
     url: "/help-center",
   },
 ];
 
 const aboutList = [
   {
-    id: "delivery",
-    title: "Delivery",
-    url: "/delivery",
+    id: "aboutus",
+    title: "Abous Us",
+    url: "/about-us",
   },
   {
-    id: "returns",
-    title: "Returns",
-    url: "/returns",
+    id: "ourblogs",
+    title: "Our Blogs",
+    url: "/our-blogs",
   },
   {
-    id: "help-center",
-    title: "Help Center",
-    url: "/help-center",
+    id: "contactus",
+    title: "Contact Us",
+    url: "/contact-us",
   },
 ];
 
@@ -72,34 +72,46 @@ const accountList = [
   },
 ];
 
+const socialImage = [
+  {
+    logoUrl: instagram,
+  },
+  {
+    logoUrl: facebook,
+  },
+  {
+    logoUrl: twitter,
+  },
+  {
+    logoUrl: pinterest,
+  },
+];
+
 const Footer = () => {
   return (
     <>
-      <Container fluid className="mt-5 bg-dark">
+      <Container fluid className="mt-5 pt-5 bg-dark">
         <Row>
-          <Col className="d-flex col-sm-4 flex-column align-items-center justify-content-center">
-            <FooterMenu title="Help" list={aboutList} />
+          <Col className="col-12  col-md-4 d-flex  flex-column align-items-center justify-content-center">
+            <FooterMenu title="Help" list={menuList} />
           </Col>
-          <Col className="d-flex col-sm-4 flex-column align-items-center justify-content-center">
+          <Col className="col-12 col-md-4 d-flex  flex-column align-items-center justify-content-center">
             <FooterMenu title="About us" list={aboutList} />
           </Col>
-          <Col className="mt-3 col-sm-4 d-flex flex-column align-items-center justify-content-center">
+          <Col className=" col-12  pt-md-5 col-md-4 d-flex flex-column align-items-center justify-content-center">
             <FooterMenu title="Your Account" list={accountList} />
           </Col>
         </Row>
-        
+
         <hr className="hrLine" />
 
         <Row className="mt-4">
           <Col className=" col-12 col-xl-4 col-lg-12  col-md-12 d-flex align-items-center justify-content-center">
-            <SocialLogo socialImage={instagram} />
-            <SocialLogo socialImage={facebook} />
-            <SocialLogo socialImage={twitter} />
-            <SocialLogo socialImage={pinterest} />
+            <SocialLogo logoList={socialImage} />
           </Col>
           <Col className=" mt-lg-3 mt-md-3 mt-3 col-12 col-xl-4 col-lg-12 col-md-12 d-flex align-items-center justify-content-center">
             <p className="text-white text-center ">
-              All rights reserved © 2023 BargainFox.com
+              All rights reserved © 2024 BargainFox.com
             </p>
           </Col>
           <Col className="col-12 col-xl-4 col-lg-12 col-md-12 d-flex align-items-center justify-content-center">

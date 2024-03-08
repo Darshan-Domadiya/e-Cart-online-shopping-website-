@@ -9,7 +9,7 @@ import bestdeal1 from "/Images/bestdeal1.png";
 import bestdeal2 from "/Images/bestdeal2.png";
 import bestdeal3 from "/Images/bestdeal3.png";
 import bestdeal4 from "/Images/bestdeal4.png";
-import { useNavigate } from "react-router-dom";
+import "./bestdeal.scss";
 
 function Arrow(props) {
   const { className, style, onClick } = props;
@@ -19,8 +19,6 @@ function Arrow(props) {
       style={{
         ...style,
         display: "block",
-        background: "#FF7900",
-        color: "whitesmoke",
       }}
       onClick={onClick}
     />
@@ -29,7 +27,6 @@ function Arrow(props) {
 
 const BestDeals = () => {
   var settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
@@ -52,6 +49,7 @@ const BestDeals = () => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
+          initialSlide: 2,
           infinite: true,
           dots: true,
         },
@@ -61,7 +59,6 @@ const BestDeals = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2,
         },
       },
       {
@@ -69,6 +66,7 @@ const BestDeals = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          // arrows: false,
         },
       },
     ],
@@ -90,7 +88,7 @@ const BestDeals = () => {
           </Col>
         </Row>
 
-        <Slider {...settings} className="mt-2">
+        <Slider {...settings} className="mt-2  ">
           <div>
             <SingleBestDeal
               img={bestdeal1}

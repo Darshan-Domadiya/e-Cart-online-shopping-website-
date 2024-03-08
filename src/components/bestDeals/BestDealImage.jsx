@@ -4,7 +4,7 @@ const BestDealImage = ({ imgUrl }) => {
   return (
     <>
       <div>
-        <img src={imgUrl} />
+        <img src={imgUrl} className="img-fluid" />
       </div>
     </>
   );

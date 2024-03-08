@@ -1,7 +1,7 @@
 import React from "react";
 import orangeCircle from "/Images/desCircle.png";
 
-const DescDetails = ({ list, imgUrl }) => {
+const DescDetails = ({ list }) => {
   return (
     <>
       {list.map((item) => {

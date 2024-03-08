@@ -22,7 +22,7 @@ const SingleBestDeal = ({
             <div className="dealCard-border">
               <BestDealImage imgUrl={img} />
 
-              <div className="mx-1">
+              <div className="p-3">
                 <BestDealDescription bestDealDes={bestDealDes} />
                 <div className="d-flex align-items-center gap-3 ">
                   <BestDealReview review={review} />

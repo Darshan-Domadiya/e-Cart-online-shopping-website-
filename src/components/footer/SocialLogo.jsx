@@ -1,11 +1,15 @@
 import React from "react";
 
-const SocialLogo = ({ socialImage }) => {
+const SocialLogo = ({ logoList }) => {
   return (
     <>
-      <div className="mx-3">
-        <img src={socialImage} />
-      </div>
+      {logoList.map((logo) => {
+        return (
+          <div className="mx-3">
+            <img src={logo.logoUrl} />;
+          </div>
+        );
+      })}
     </>
   );
 };

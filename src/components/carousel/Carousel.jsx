@@ -11,7 +11,40 @@ import carousel5 from "/Images/c5.png";
 import carousel6 from "/Images/c6.png";
 import rArrow from "/Images/cArrow.png";
 import { Container, Row, Col } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import "./carousel.scss";
+
+const carouselDetails = [
+  {
+    imgUrl: carousel1,
+    discount: "Upto 40% Off",
+    title: "Women's Western Clothing",
+  },
+  {
+    imgUrl: carousel2,
+    discount: "Upto 40% Off",
+    title: "Men's Western Clothing",
+  },
+  {
+    imgUrl: carousel3,
+    discount: "Upto 40% Off",
+    title: "Casual Shoes",
+  },
+  {
+    imgUrl: carousel4,
+    discount: "Upto 40% Off",
+    title: "Men's Running Shoes",
+  },
+  {
+    imgUrl: carousel5,
+    discount: "Upto 40% Off",
+    title: "Statement Fashion Jewellery",
+  },
+  {
+    imgUrl: carousel6,
+    discount: "Upto 40% Off",
+    title: "Sunglasses",
+  },
+];
 
 function Arrow(props) {
   const { className, style, onClick } = props;
@@ -21,8 +54,6 @@ function Arrow(props) {
       style={{
         ...style,
         display: "block",
-        background: "#FF7900",
-        color: "whitesmoke",
       }}
       onClick={onClick}
     />
@@ -31,30 +62,29 @@ function Arrow(props) {
 
 const Carousel = () => {
   var settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 4,
-    nextArrow: <Arrow />,
+    nextArrow: <Arrow className="slick-prev" />,
     prevArrow: <Arrow />,
     initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
           slidesToScroll: 3,
           infinite: true,
-          dots: true,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 2,
           initialSlide: 2,
+          arrows: false,
         },
       },
       {
@@ -66,13 +96,14 @@ const Carousel = () => {
       },
     ],
   };
+
   return (
-    <div className="slider-container mt-3 mx-4 me-5 ">
+    <div className="slider-container mt-5">
       <Container>
         <Row className="d-flex">
           <Col>
             <div>
-              <p className="h2 fw-fw-bolder">Deals of the Day</p>
+              <p className="h2 fw-bolder">Deals of the Day</p>
             </div>
           </Col>
           <Col className="d-flex justify-content-end  align-items-center ">
@@ -82,49 +113,15 @@ const Carousel = () => {
             </div>
           </Col>
         </Row>
+
         <Slider {...settings}>
-          <div>
-            <SingleCard
-              imgUrl={carousel1}
-              text="Upto 40% off"
-              textDes="Women's Western Clothing"
-            />
-          </div>
-          <div>
-            <SingleCard
-              imgUrl={carousel2}
-              text="Upto 40% off"
-              textDes="Men's Western Clothing"
-            />
-          </div>
-          <div>
-            <SingleCard
-              imgUrl={carousel3}
-              text="Upto 40% off"
-              textDes="Casual Shoes"
-            />
-          </div>
-          <div>
-            <SingleCard
-              imgUrl={carousel4}
-              text="Upto 40% off"
-              textDes="Men's Running shoes"
-            />
-          </div>
-          <div>
-            <SingleCard
-              imgUrl={carousel5}
-              text="Upto 40% off"
-              textDes="Statement Fashion Jewellery"
-            />
-          </div>
-          <div>
-            <SingleCard
-              imgUrl={carousel6}
-              text="Upto 40% off"
-              textDes="Sunglasses "
-            />
-          </div>
+          {carouselDetails.map((value, index) => {
+            return (
+              <div key={index}>
+                <SingleCard list={value} />
+              </div>
+            );
+          })}
         </Slider>
       </Container>
     </div>

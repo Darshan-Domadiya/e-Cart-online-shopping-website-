@@ -1,5 +1,6 @@
 import React from "react";
 import polygon from "/Images/polygon.png";
+import "./bestdealdiscount.scss";
 
 const BestDealDiscount = ({ price, lessPrice, discount }) => {
   return (
@@ -8,8 +9,8 @@ const BestDealDiscount = ({ price, lessPrice, discount }) => {
         {price} <strike>{lessPrice}</strike>
       </div>
       <div className="position-relative mb-2">
-        <img src={polygon} />
-        <div className="position-absolute polygonText text-white fw-600 ">
+        <img src={polygon} className="img-fluid"/>
+        <div className="position-absolute polygonShape text-white fw-600 ">
           {discount} <span>%</span>
         </div>
       </div>

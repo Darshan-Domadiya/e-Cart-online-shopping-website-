@@ -3,7 +3,9 @@ import { Container, Col, Row } from "react-bootstrap";
 import "./singleCard.scss";
 import { useNavigate } from "react-router-dom";
 
-const SingleCard = ({ imgUrl, text, textDes }) => {
+const SingleCard = ({ list }) => {
+  const { imgUrl, discount, title } = list;
+
   const navigate = useNavigate();
 
   return (
@@ -14,13 +16,13 @@ const SingleCard = ({ imgUrl, text, textDes }) => {
       >
         <Row>
           <Col onClick={() => navigate("/productlisting")}>
-            <div className="border-class">
+            <div className="border-class ">
               <div>
-                <img src={imgUrl} />
+                <img src={imgUrl} className="img-fluid" />
               </div>
-              <div>
-                <small>{text}</small>
-                <p>{textDes}</p>
+              <div className="p-3">
+                <small>{discount}</small>
+                <p className="fw-bold">{title}</p>
               </div>
             </div>
           </Col>

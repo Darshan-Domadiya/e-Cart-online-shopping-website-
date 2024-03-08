@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 const OrderSummary = () => {
   return (
     <>
-      <div className="cardBackground px-3">
+      <div className="cardBackground px-3 ">
         <p className="h4 mt-2">Order Summary</p>
         <hr />
         <div className="d-flex align-items-center justify-content-between">
@@ -48,7 +48,7 @@ const OrderSummary = () => {
             </p>
           </div>
           <div>
-            <p className="text-success">Free</p>
+            <p className="text-success fw-bold">Free</p>
           </div>
         </div>
         <hr />
@@ -63,7 +63,7 @@ const OrderSummary = () => {
           </div>
         </div>
         <div className="text-center">
-          <Button className="btn-primary ">Proceed To Checkout</Button>
+          <Button className="custom-button ">Proceed To Checkout</Button>
         </div>
         <div className="mt-2">
           <p>

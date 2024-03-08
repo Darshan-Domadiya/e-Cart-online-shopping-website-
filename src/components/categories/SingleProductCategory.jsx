@@ -2,14 +2,16 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./singleproductcategory.scss";
 
-const SingleProductCategory = ({ imgUrl, textDes }) => {
+const SingleProductCategory = ({ imgUrl, textTitle }) => {
   return (
     <>
-      <Container className="d-flex align-items-center justify-content-center">
+      <Container>
         <Row className="d-flex align-items-center justify-content-center">
-          <Col className="d-flex flex-column align-items-center justify-content-center">
-            <img src={imgUrl} />
-            <p className="text-center fw-bold">{textDes}</p>
+          <Col>
+            <div className="d-flex flex-column align-items-center justify-content-center">
+              <img src={imgUrl} className="img-fluid" />
+              <p className="text-center fw-bold">{textTitle}</p>
+            </div>
           </Col>
         </Row>
       </Container>

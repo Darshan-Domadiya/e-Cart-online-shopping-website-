@@ -1,7 +1,7 @@
 //global css class for grey color text
 
-.greyText{
-    color: grey;
+.greyText {
+  color: grey;
 }
 
 .cardBackground {
@@ -10,8 +10,8 @@
   border-radius: 20px;
 }
 
-.btn-primary {
-  background: #ff7900 0% 0% no-repeat padding-box;
+.custom-button {
+  background: #0063FF  0% 0% no-repeat padding-box;
   border-radius: 25px;
   border: none;
 
@@ -23,9 +23,13 @@
   }
 }
 
-.custom-input{
-    outline: none;
-    border-radius: 10px;
-    text-align: center;
-    border: 1px solid grey;
+.custom-button:active {
+  --bs-btn-active-bg: #0063FF ;
+}
+
+.custom-input {
+  outline: none;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid grey;
 }

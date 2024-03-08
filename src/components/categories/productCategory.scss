@@ -4,38 +4,33 @@
   border-radius: 20px;
 }
 
-.kitchenHover{
-    background: #ffffff 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 16px #00000029;
-    border-radius: 20px;
-
-}
-
-.electronicsHover{
+.kitchenHover {
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 16px #00000029;
   border-radius: 20px;
-
 }
 
-.toysHover{
+.electronicsHover {
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 16px #00000029;
   border-radius: 20px;
-
 }
 
-.sportsHover{
+.toysHover {
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 16px #00000029;
   border-radius: 20px;
-
 }
-.clearanceHover{
+
+.sportsHover {
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 16px #00000029;
   border-radius: 20px;
-
+}
+.clearanceHover {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 16px #00000029;
+  border-radius: 20px;
 }
 
 //Home & Kitchen category submenu on hovering.
@@ -59,18 +54,22 @@
   ul {
     li {
       list-style: none;
-      
       padding: 4px;
     }
   }
 }
 
 
-
-.text-body:hover {
-  background-color: lightgrey;
+.hoverColor:hover {
+  color: black !important;
+  
 }
 
+//width of tab-content.
+.navItem-width {
+  width: 175px;
+  padding-left: 10px;
+}
 
 //Health & Beauty category submenu on hovering.
 .container {
@@ -151,8 +150,3 @@
     }
   }
 }
-
-
-
-
-   

@@ -7,7 +7,6 @@ import Banner from "../banners/Banner";
 import BestDeals from "../bestDeals/BestDeals";
 import Subscribe from "../subscribe/Subscribe";
 import Electronics from "../electronics/Electronics";
-import Footer from "../footer/Footer";
 
 const Home = () => {
   return (

@@ -1,20 +1,36 @@
-import React from 'react'
+import React from "react";
 import normalStar from "/Images/normalStar.png";
 import orangeStar from "/Images/orangeStar.png";
 
-const BestDealReview = ({review}) => {
+const reviewStartList = [
+  {
+    imgUrl: orangeStar,
+  },
+  {
+    imgUrl: orangeStar,
+  },
+  {
+    imgUrl: orangeStar,
+  },
+  {
+    imgUrl: orangeStar,
+  },
+  {
+    imgUrl: normalStar,
+  },
+];
+
+const BestDealReview = ({ review }) => {
   return (
     <>
-         <div className="d-flex gap-2">
-                    <img src={orangeStar} />
-                    <img src={orangeStar} />
-                    <img src={orangeStar} />
-                    <img src={orangeStar} />
-                    <img src={normalStar} />
-                    <span>{review}</span>
-                  </div>
+      <div className="d-flex align-items-center gap-2">
+        {reviewStartList.map((value) => {
+          return <img src={value.imgUrl} className="img-fluid" />;
+        })}
+        <span>{review}</span>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default BestDealReview
+export default BestDealReview;

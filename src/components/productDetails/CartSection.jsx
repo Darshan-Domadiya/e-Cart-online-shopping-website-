@@ -2,8 +2,11 @@ import React from "react";
 import peopleImage from "/Images/people.png";
 import { Button, Image } from "react-bootstrap";
 import "./cartsection.scss";
+import { useNavigate } from "react-router-dom";
 
 const CartSection = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div>
@@ -19,12 +22,15 @@ const CartSection = () => {
 
         {/* Add to cart & Buy Now section */}
         <div className="d-flex">
-          <div className="w-75  mx-2 cartBackground d-flex align-items-center justify-content-center">
+          <button
+            className="w-75 border-0  mx-2 cartBackground d-flex align-items-center justify-content-center"
+            onClick={() => navigate("/shoppingcart")}
+          >
             Add to Cart
-          </div>
-          <div className="w-75 buyBackground d-flex align-items-center justify-content-center">
+          </button>
+          <button className="w-75 buyBackground d-flex align-items-center justify-content-center">
             Buy Now
-          </div>
+          </button>
         </div>
 
         {/* Order within text */}

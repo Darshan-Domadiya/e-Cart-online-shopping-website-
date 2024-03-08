@@ -27,43 +27,43 @@ const ProductCategory = () => {
               <div>
                 <SingleProductCategory
                   imgUrl={product1}
-                  textDes="Home & Kitchen"
+                  textTitle="Home & Kitchen"
                 />
               </div>
               <div className="position-absolute homeHover">
-                <Tab.Container
-                  id="left-tabs-example"
-                  // defaultActiveKey={activeTab}
-                  activeKey={activeTab}
-                >
+                <Tab.Container id="left-tabs-example" activeKey={activeTab}>
                   <Row>
                     <Col sm={3}>
                       <Nav className="flex-column">
-                        <Nav.Item className="mt-2">
+                        <Nav.Item className="mt-2 navItem-width ">
                           <Nav.Link
                             eventKey="first"
                             onMouseEnter={() => handleMouseEnter("first")}
                             className="text-body"
                           >
-                            Home
+                            <span className="hoverColor text-muted">Home</span>
                           </Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className="navItem-width">
                           <Nav.Link
                             eventKey="second"
                             onMouseEnter={() => handleMouseEnter("second")}
                             className="text-body"
                           >
-                            Kitchen
+                            <span className="hoverColor text-muted">
+                              Kitchen
+                            </span>
                           </Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className="navItem-width">
                           <Nav.Link
                             eventKey="third"
                             onMouseEnter={() => handleMouseEnter("third")}
                             className="text-body"
                           >
-                            Office
+                            <span className="hoverColor text-muted">
+                              Office
+                            </span>
                           </Nav.Link>
                         </Nav.Item>
                       </Nav>
@@ -175,43 +175,45 @@ const ProductCategory = () => {
               <div>
                 <SingleProductCategory
                   imgUrl={product2}
-                  textDes="Health & Beauty"
+                  textTitle="Health & Beauty"
                 />
               </div>
               <div className="position-absolute kitchenHover">
-                <Tab.Container
-                  id="left-tabs-example"
-                  // defaultActiveKey={activeTab}
-                  activeKey={activeTab}
-                >
+                <Tab.Container id="left-tabs-example" activeKey={activeTab}>
                   <Row>
                     <Col sm={3}>
                       <Nav className="flex-column">
-                        <Nav.Item className="mt-2">
+                        <Nav.Item className="mt-2 navItem-width">
                           <Nav.Link
                             eventKey="first"
                             onMouseEnter={() => handleMouseEnter("first")}
                             className="text-body"
                           >
-                            Health
+                            <span className="hoverColor text-muted">
+                              Health
+                            </span>
                           </Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className="navItem-width">
                           <Nav.Link
                             eventKey="second"
                             onMouseEnter={() => handleMouseEnter("second")}
                             className="text-body"
                           >
-                            Beauty
+                            <span className="hoverColor text-muted">
+                              Beauty
+                            </span>
                           </Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className="navItem-width">
                           <Nav.Link
                             eventKey="third"
                             onMouseEnter={() => handleMouseEnter("third")}
                             className="text-body"
                           >
-                            Baby & Kids
+                            <span className="hoverColor text-muted">
+                              Baby & Kids
+                            </span>
                           </Nav.Link>
                         </Nav.Item>
                       </Nav>
@@ -288,34 +290,34 @@ const ProductCategory = () => {
               <div>
                 <SingleProductCategory
                   imgUrl={product3}
-                  textDes="Electronics"
+                  textTitle="Electronics"
                 />
               </div>
               <div className="position-absolute electronicsHover">
-                <Tab.Container
-                  id="left-tabs-example"
-                  // defaultActiveKey={activeTab}
-                  activeKey={activeTab}
-                >
+                <Tab.Container id="left-tabs-example" activeKey={activeTab}>
                   <Row>
                     <Col sm={3}>
                       <Nav className="flex-column">
-                        <Nav.Item className="mt-2">
+                        <Nav.Item className="mt-2 navItem-width">
                           <Nav.Link
                             eventKey="first"
                             onMouseEnter={() => handleMouseEnter("first")}
                             className="text-body"
                           >
-                            Computing
+                            <span className="hoverColor text-muted">
+                              Computing
+                            </span>
                           </Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className="navItem-width">
                           <Nav.Link
                             eventKey="second"
                             onMouseEnter={() => handleMouseEnter("second")}
                             className="text-body"
                           >
-                            Appliances
+                            <span className="hoverColor text-muted">
+                              Appliances
+                            </span>
                           </Nav.Link>
                         </Nav.Item>
                       </Nav>
@@ -378,34 +380,36 @@ const ProductCategory = () => {
               <div>
                 <SingleProductCategory
                   imgUrl={product4}
-                  textDes="Toys & Crafts"
+                  textTitle="Toys & Crafts"
                 />
               </div>
               <div className="position-absolute toysHover">
-                <Tab.Container
-                  id="left-tabs-example"
-                  // defaultActiveKey={activeTab}
-                  activeKey={activeTab}
-                >
+                <Tab.Container id="left-tabs-example" activeKey={activeTab}>
                   <Row>
                     <Col sm={3}>
                       <Nav className="flex-column">
-                        <Nav.Item className="mt-2">
+                        <Nav.Item className="mt-2 navItem-width">
                           <Nav.Link
                             eventKey="first"
                             onMouseEnter={() => handleMouseEnter("first")}
                             className="text-body"
                           >
-                            Toys & Games
+                            <span className="hoverColor text-muted">
+                              {" "}
+                              Toys & Games
+                            </span>
                           </Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className="navItem-width">
                           <Nav.Link
                             eventKey="second"
                             onMouseEnter={() => handleMouseEnter("second")}
                             className="text-body"
                           >
-                            Crafts & Party
+                            <span className="hoverColor text-muted">
+                              {" "}
+                              Crafts & Party
+                            </span>
                           </Nav.Link>
                         </Nav.Item>
                       </Nav>
@@ -463,52 +467,60 @@ const ProductCategory = () => {
               <div>
                 <SingleProductCategory
                   imgUrl={product5}
-                  textDes="Sports & Leisure"
+                  textTitle="Sports & Leisure"
                 />
               </div>
               <div className="position-absolute sportsHover">
-                <Tab.Container
-                  id="left-tabs-example"
-                  // defaultActiveKey={activeTab}
-                  activeKey={activeTab}
-                >
+                <Tab.Container id="left-tabs-example" activeKey={activeTab}>
                   <Row>
                     <Col sm={3}>
                       <Nav className="flex-column">
-                        <Nav.Item className="mt-2">
+                        <Nav.Item className="mt-2 navItem-width">
                           <Nav.Link
                             eventKey="first"
                             onMouseEnter={() => handleMouseEnter("first")}
                             className="text-body"
                           >
-                            Sports & Games
+                            <span className="hoverColor text-muted">
+                              {" "}
+                              Sports & Games
+                            </span>
                           </Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className="navItem-width">
                           <Nav.Link
                             eventKey="second"
                             onMouseEnter={() => handleMouseEnter("second")}
                             className="text-body"
                           >
-                            Travel & Camping
+                            <span className="hoverColor text-muted">
+                              {" "}
+                              Travel & Camping
+                            </span>
                           </Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className="navItem-width">
                           <Nav.Link
                             eventKey="third"
                             onMouseEnter={() => handleMouseEnter("third")}
                             className="text-body"
                           >
-                            Garden & DIY
+                            <span className="hoverColor text-muted">
+                              {" "}
+                              Garden & DIY
+                            </span>
                           </Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className="navItem-width">
                           <Nav.Link
                             eventKey="third"
                             onMouseEnter={() => handleMouseEnter("forth")}
                             className="text-body"
                           >
-                            Enterntainment
+                            <span className="hoverColor text-muted">
+                              {" "}
+                              Entertainment
+                            </span>
                           </Nav.Link>
                         </Nav.Item>
                       </Nav>
@@ -612,144 +624,16 @@ const ProductCategory = () => {
           <Col>
             <div className="position-relative categoryClearance">
               <div>
-                <SingleProductCategory imgUrl={product6} textDes="Clearance" />
+                <SingleProductCategory
+                  imgUrl={product6}
+                  textTitle="Clearance"
+                />
               </div>
               <div className="position-absolute clearanceHover">
                 <Tab.Container
                   id="left-tabs-example"
-                  // defaultActiveKey={activeTab}
                   activeKey={activeTab}
-                >
-                  <Row>
-                    {/* <Col sm={3}>
-                      <Nav className="flex-column">
-                        <Nav.Item className="mt-2">
-                          <Nav.Link
-                            eventKey="first"
-                            onMouseEnter={() => handleMouseEnter("first")}
-                            className="text-body"
-                          >
-                            Home
-                          </Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                          <Nav.Link
-                            eventKey="second"
-                            onMouseEnter={() => handleMouseEnter("second")}
-                            className="text-body"
-                          >
-                            Kitchen
-                          </Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                          <Nav.Link
-                            eventKey="third"
-                            onMouseEnter={() => handleMouseEnter("third")}
-                            className="text-body"
-                          >
-                            Office
-                          </Nav.Link>
-                        </Nav.Item>
-                      </Nav>
-                    </Col> */}
-                    {/* <Col sm={9} className="submenu-content mt-2">
-                      <Tab.Content>
-                        <Tab.Pane eventKey="first">
-                          <ul>
-                            <li>
-                              <Link className="text-decoration-none text-body ">
-                                Appliances & Accessories
-                              </Link>
-                            </li>
-                            <li>
-                              <Link className="text-decoration-none text-body">
-                                Cleaning & Household
-                              </Link>
-                            </li>
-                            <li>
-                              <Link className="text-decoration-none text-body">
-                                Lighting
-                              </Link>
-                            </li>
-                            <li>
-                              <Link className="text-decoration-none text-body">
-                                Bedroom
-                              </Link>
-                            </li>
-                            <li>
-                              <Link className="text-decoration-none text-body">
-                                Bathroom
-                              </Link>
-                            </li>
-                            <li>
-                              <Link className="text-decoration-none text-body">
-                                Furnishings
-                              </Link>
-                            </li>
-                            <li>
-                              <Link className="text-decoration-none text-body">
-                                Decor
-                              </Link>
-                            </li>
-                            <li>
-                              <Link className="text-decoration-none text-body">
-                                Mix
-                              </Link>
-                            </li>
-                          </ul>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="second">
-                          <ul>
-                            <li>
-                              <Link className="text-decoration-none text-body">
-                                Utensils, Tools & Household
-                              </Link>
-                            </li>
-                            <li>
-                              <Link className="text-decoration-none text-body">
-                                Kitchen Accessories
-                              </Link>
-                            </li>
-                            <li>
-                              <Link className="text-decoration-none text-body">
-                                Tableware
-                              </Link>
-                            </li>
-                            <li>
-                              <Link className="text-decoration-none text-body">
-                                Utensils
-                              </Link>
-                            </li>
-                          </ul>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="third">
-                          <ul>
-                            <li>
-                              <Link className="text-decoration-none text-body">
-                                Office Gadgets
-                              </Link>
-                            </li>
-                            <li>
-                              <Link className="text-decoration-none text-body">
-                                Furnitures
-                              </Link>
-                            </li>
-                            <li>
-                              <Link className="text-decoration-none text-body">
-                                Laptops & Devices
-                              </Link>
-                            </li>
-                            <li>
-                              <Link className="text-decoration-none text-body">
-                                Office Items
-                              </Link>
-                            </li>
-                          </ul>
-                        </Tab.Pane>
-                      </Tab.Content>
-                    </Col> */}
-                  </Row>
-                </Tab.Container>
+                ></Tab.Container>
               </div>
             </div>
           </Col>
@@ -758,7 +642,7 @@ const ProductCategory = () => {
 
       <Container fluid>
         <Row>
-          <Col>
+          <Col className="p-0">
             <img src={banner} className="img-fluid" />
           </Col>
         </Row>

@@ -3,6 +3,7 @@ import React from "react";
 import { Form, Button } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import * as yup from "yup";
+import "./loginpopup.scss";
 
 const LoginPopUp = ({ show, handleClose }) => {
   const defaultValues = {
@@ -13,10 +14,13 @@ const LoginPopUp = ({ show, handleClose }) => {
   const validationSchema = yup.object({
     name: yup
       .string()
-      .required("Name is required")
-      .min(3, "Name must be more than 3 letters"),
+      .required("* Name is required")
+      .min(3, "* Name must be more than 3 letters"),
 
-    email: yup.string().required("Email is required").email("Invalid format"),
+    email: yup
+      .string()
+      .required("* Email is required")
+      .email("* Invalid format"),
   });
 
   return (
@@ -41,8 +45,9 @@ const LoginPopUp = ({ show, handleClose }) => {
                   className="mb-3"
                   controlId="exampleForm.ControlInput1"
                 >
-                  <Form.Label className="fw-bold">Name</Form.Label>
+                  <Form.Label className="fw-bold">User Name</Form.Label>
                   <Form.Control
+                    className="popup-input"
                     type="text"
                     value={values.name}
                     name="name"
@@ -55,6 +60,7 @@ const LoginPopUp = ({ show, handleClose }) => {
                   <br />
                   <Form.Label className=" fw-bold">Email address</Form.Label>
                   <Form.Control
+                  className="popup-input"
                     type="email"
                     name="email"
                     value={values.email}
@@ -74,7 +80,7 @@ const LoginPopUp = ({ show, handleClose }) => {
                   >
                     Cancel
                   </Button>
-                  <Button variant="primary" type="submit">
+                  <Button className="btn " type="submit">
                     Login
                   </Button>
                 </Modal.Footer>

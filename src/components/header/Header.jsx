@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./header.scss";
-import navbarLogo from "/Images/navbarlogo.png";
+import navbarLogo from "/Images/logoMain.svg";
 import searchImage from "/Images/search-normal.png";
 import wishList from "/Images/wishlist.png";
 import user from "/Images/user.png";
 import shoppingCart from "/Images/shopping-cart.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useNavigate } from "react-router-dom";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Offcanvas from "react-bootstrap/Offcanvas";
 
 import {
   Container,
@@ -23,69 +25,41 @@ import LoginPopUp from "../loginPopUp/LoginPopUp";
 const Header = () => {
   const navigate = useNavigate();
 
+  //For loginPop when clicked on login/Register button.
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
     setShow(false);
   };
 
+  //For hamburgermenu display in mobile screen size.
+  const [showHamburgerMenu, setShowHamburgermenu] = useState(false);
+
+  const hideClose = () => setShowHamburgermenu(false);
+  const handleShow = () => setShowHamburgermenu(true);
+
   return (
     <>
       {/* First header for large screen-xl */}
-      <header className="shadow-sm d-none d-md-flex main-header">
-        <Container fluid>
-          <Row className="d-flex align-items-center  justify-content-between mx-2">
-            <Col>
-              <Navbar>
-                <Link to="/">
-                  <img
-                    src={navbarLogo}
-                    width="187"
-                    height="85"
-                    className="d-inline-block align-top"
-                  />
-                </Link>
-              </Navbar>
-            </Col>
-
-            <Col>
-              <InputGroup>
-                <Form.Control placeholder="Search Products" />
-                <Button className="p-2 ">
-                  <img src={searchImage} />
-                </Button>
-              </InputGroup>
-            </Col>
-
-            <Col className="d-flex justify-content-end mt-2">
-              <Nav.Link className="position-relative">
-                <img src={wishList} width="31" height="31" />
-                <span className="circle position-absolute d-flex align-items-center justify-content-center">
-                  5
-                </span>
-              </Nav.Link>
-
-              <Nav.Link
-                className="mx-4 position-relative"
-                onClick={() => navigate("/shoppingcart")}
-              >
-                <img src={shoppingCart} width="31" height="31" />
-                <span className="circle position-absolute d-flex align-items-center justify-content-center">
-                  3
-                </span>
-              </Nav.Link>
-
-              <Nav.Link className="loginMenu">
-                <div className=" d-flex gap-2 justify-content-center">
-                  <img src={user} width="31" height="31" />
-
-                  <div className="d-xl-flex  justify-content-center flex-column d-none">
-                    <span>Hello there,</span>
-                    <span className="fw-bold ">SIGNUP/REGISTER</span>
-                    <div className=" border-2  bg-white">
-                      <ul className="dropDownMenu text-center  list-unstyled text-black">
+      <header className="shadow-sm  main-header">
+        <Container fluid className="mt-2 mb-3 p-3">
+          <Row className="d-flex align-items-center  justify-content-between px-1">
+            <Col className="col-6 col-sm-6 col-md-4">
+              <Navbar className="gap-1">
+                <div onClick={handleShow}>
+                  <GiHamburgerMenu className=" d-flex d-sm-none" />
+                </div>
+                <Offcanvas show={showHamburgerMenu} onHide={hideClose}>
+                  <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>
+                      <p className="fw-bold h3">Sign In/Register</p>
+                    </Offcanvas.Title>
+                  </Offcanvas.Header>
+                  <Offcanvas.Body>
+                    <div className="hamburgerMenu border-2  bg-white d-sm-none">
+                      <ul className=" text-center  list-unstyled text-black">
                         <Button
-                          className="rounded-4 mt-2 border-0 text-white fw-bold"
+                          className="hamburger-loginButton rounded-4 mt-2 border-0 text-white fw-bold"
                           onClick={() => setShow(true)}
                         >
                           Login/Register
@@ -112,98 +86,98 @@ const Header = () => {
                         </li>
                       </ul>
                     </div>
+                  </Offcanvas.Body>
+                </Offcanvas>
+                <Link to="/">
+                  <div style={{ width: "110px" }}>
+                    <img
+                      src={navbarLogo}
+                      className=" align-top mx-1 w-100 img-fluid"
+                    />
                   </div>
-                </div>
-              </Nav.Link>
-            </Col>
-          </Row>
-        </Container>
-      </header>
-
-      {/* Second header for medium and small screen. */}
-      <header className=" d-flex d-md-none shadow-sm main-header">
-        <Container>
-          <Row className="d-flex align-items-center  justify-content-between">
-            <Col className="col-6">
-              <Navbar>
-                <GiHamburgerMenu className="mx-1 " height="24" width="24" />
-                <Link to="#">
-                  <img
-                    src={navbarLogo}
-                    width="100"
-                    height="60"
-                    className="d-inline-block align-top "
-                  />
                 </Link>
               </Navbar>
             </Col>
 
-            <Col className="d-flex justify-content-end mt-2 col-6">
+            <Col className="d-none d-md-flex">
+              <InputGroup>
+                <Form.Control placeholder="Search Products" className="searchbar-header"/>
+                <Button className="p-2 ">
+                  <img src={searchImage} className="img-fluid" />
+                </Button>
+              </InputGroup>
+            </Col>
+
+            <Col className="col-6 col-sm-6  col-md-4 d-flex justify-content-end mt-2 align-items-center">
               <Nav.Link className="position-relative">
-                <img src={wishList} width="24" height="24" />
+                <img src={wishList} className="img-fluid" />
                 <span className="circle position-absolute d-flex align-items-center justify-content-center">
                   5
                 </span>
               </Nav.Link>
 
-              <Nav.Link className="mx-4 position-relative">
-                <img src={shoppingCart} width="24" height="24" />
+              <Nav.Link
+                className="mx-4 position-relative"
+                onClick={() => navigate("/shoppingcart")}
+              >
+                <img src={shoppingCart} className="img-fluid" />
+
                 <span className="circle position-absolute d-flex align-items-center justify-content-center">
                   3
                 </span>
               </Nav.Link>
 
-              <Nav.Link className="secongLoginMenu">
-                <div className=" d-flex gap-2 justify-content-center">
-                  <img src={user} width="25" height="25" />
+              <Nav.Link className="loginMenu">
+                <div className=" d-flex gap-2 align-items-center">
+                  <img src={user} className="img-fluid" />
 
-                  <ul className="secondDropdownMenu   text-center  list-unstyled text-black">
-                    <Button
-                      className="rounded-4 mt-2 border-0 text-white fw-bold"
-                      onClick={() => setShow(true)}
-                    >
-                      Login/Register
-                    </Button>
-
-                    <li>
-                      <Link to="#">Your Profile</Link>
-                    </li>
-
-                    <li>
-                      <Link to="#">Fastfox Subscription</Link>
-                    </li>
-                    <li>
-                      <Link to="#">Your Orders</Link>
-                    </li>
-                    <li>
-                      <Link to="#">Addresses</Link>
-                    </li>
-                    <li>
-                      <Link to="#">Notifications</Link>
-                    </li>
-                    <li>
-                      <Link to="#">Wishlists</Link>
-                    </li>
-                  </ul>
-
-                  <div className="  justify-content-center flex-column d-none">
+                  <div className="d-xl-flex  justify-content-center flex-column d-none">
                     <span>Hello there,</span>
                     <span className="fw-bold ">SIGNUP/REGISTER</span>
+                  </div>
+                  <div className=" border-2  bg-white d-none d-md-flex">
+                    <ul className="dropDownMenu text-center  list-unstyled text-black">
+                      <Button
+                        className="rounded-4 mt-2 border-0 text-white fw-bold"
+                        onClick={() => setShow(true)}
+                      >
+                        Login/Register
+                      </Button>
+
+                      <li>
+                        <Link to="#">Your Profile</Link>
+                      </li>
+
+                      <li>
+                        <Link to="#">Fastfox Subscription</Link>
+                      </li>
+                      <li>
+                        <Link to="#">Your Orders</Link>
+                      </li>
+                      <li>
+                        <Link to="#">Addresses</Link>
+                      </li>
+                      <li>
+                        <Link to="#">Notifications</Link>
+                      </li>
+                      <li>
+                        <Link to="#">Wishlists</Link>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </Nav.Link>
             </Col>
 
-            <div className="mb-2 ">
-              <Col>
-                <InputGroup>
-                  <Form.Control placeholder="Search Products" />
-                  <Button className="p-2 ">
-                    <img src={searchImage} />
-                  </Button>
-                </InputGroup>
-              </Col>
-            </div>
+            {/* SearchBar for small screen */}
+            <Col className="d-md-none d-flex mt-3 ">
+              <InputGroup>
+                <Form.Control placeholder="Search Products" />
+                <Button className="p-2 ">
+                  <img src={searchImage} />
+                </Button>
+              </InputGroup>
+            </Col>
           </Row>
         </Container>
       </header>

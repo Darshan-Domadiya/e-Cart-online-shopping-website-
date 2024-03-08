@@ -22,7 +22,7 @@ const SingleEleProduct = ({
             <div className="product-border">
               <ElectronicImage imgUrl={imgUrl} />
 
-              <div className="mx-1">
+              <div className="p-3">
                 <ElectronicDescription prodDes={prodDes} />
                 <div className="d-flex align-items-center gap-3 ">
                   <ElectronicReview review={review} />

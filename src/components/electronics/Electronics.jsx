@@ -9,6 +9,7 @@ import electronics2 from "/Images/electronics2.png";
 import electronics3 from "/Images/electronics3.png";
 import electronics4 from "/Images/electronics4.png";
 import SingleEleProduct from "./SingleEleProduct";
+import "./electronics.scss";
 
 function Arrow(props) {
   const { className, style, onClick } = props;
@@ -18,8 +19,6 @@ function Arrow(props) {
       style={{
         ...style,
         display: "block",
-        background: "#FF7900",
-        color: "whitesmoke",
       }}
       onClick={onClick}
     />
@@ -28,7 +27,6 @@ function Arrow(props) {
 
 const Electronics = () => {
   var settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
@@ -113,7 +111,7 @@ const Electronics = () => {
           <div>
             <SingleEleProduct
               imgUrl={electronics3}
-              prodDes="LOBKIN Wireless Bluetooth Headphones, Over-Ear Headphones with Built-in HD Mic,With smooth sound and comfort "
+              prodDes="LOBKIN Wireless Bluetooth Headphones, Over-Ear Headphones with Built-in HD Mic "
               review="45,443"
               price="$50"
               lessPrice="$150"
