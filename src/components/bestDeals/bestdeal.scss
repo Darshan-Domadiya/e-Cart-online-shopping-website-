@@ -2,3 +2,23 @@
 .slick-arrow:before{
     color: #0063FF ;
 }
+
+
+.slick-prev{
+    left: -17px ;
+}
+
+.slick-next{
+    right: -17px ;
+}
+
+@media only screen and (max-width: 400px) and (min-width: 320px) {
+    .fontsize-title{
+        font-size: 18px;
+    }
+    .fontsize-deals{
+        font-size: 13px;
+    }
+}
+
+

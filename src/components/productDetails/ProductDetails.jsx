@@ -30,13 +30,13 @@ const ProductDetails = () => {
         </Row>
 
         <Row>
-          <Col>
+          <Col className="col-12 col-md-6">
             <Container>
               <CustomerReview />
               <CustomerComments />
             </Container>
           </Col>
-          <Col>
+          <Col className="col-12 col-md-6">
             <ProductDescription />
           </Col>
         </Row>

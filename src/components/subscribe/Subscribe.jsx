@@ -6,29 +6,29 @@ import "./subscribe.scss";
 const Subscribe = () => {
   return (
     <>
-      <Container className="mt-5">
-        <Row className="subscribeBg  d-flex align-items-center justify-content-center p-3 ">
-          <Col className="my-3 col-sm-12 col-lg-7 col-xl-6 col-md-12 col-12 ">
-            <p className="fw-bolder text-white h1 ">
-              Subscribe to Our Newsletters
-            </p>
-            <p className="text-white h6">
+      <Container className="p-4">
+        <Row className="subscribeBg p-md-4 ">
+          <Col className="mt-3 p-2 p-sm-0 text-white text-center text-lg-start col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <p className="h2 fw-bold">Subscribe to Our Newsletters</p>
+            <p>
               Receive exclusive offers, unique gift ideas, and personalised tips
-              for shopping and selling on <strong> BargainFox </strong>.
+              for shopping and selling on <strong>BargainFox</strong>.
             </p>
           </Col>
-          <Col className="d-none d-xl-flex justify-content-end">
+          <Col className="d-none d-xl-flex col-xl-2 d-flex align-items-center justify-content-end">
             <img src={sArrow} className="img-fluid" />
           </Col>
-          <Col className="mb-4 mt-lg-4 mt-sm-0 d-flex mt-4 col-lg-5 col-sm-12 col-xl-4 col-md-12 justify-content-center mb-md-4 mb-4">
-            <input
-              type="text"
-              placeholder="Enter your Email"
-              className="subscribe-input border-0 p-3 rounded-start-5"
-            />
-            <Button className=" subscribe-button btn-dark rounded-end-5 border-0 p-3">
-              Subscribe Now
-            </Button>
+          <Col className="mb-4 col-12 col-sm-12 col-md-12 d-flex align-items-center justify-content-center col-lg-6 col-xl-4 ">
+            <div className="inputButton d-flex align-items-center justify-content-start mx-md-3">
+              <input
+                type="text"
+                placeholder="Enter your Email"
+                className="subscribe-input "
+              />
+              <button className="bg-dark text-white btn subscribe-button  ">
+                Subscribe Now
+              </button>
+            </div>
           </Col>
         </Row>
       </Container>

@@ -9,17 +9,18 @@ import { useNavigate } from "react-router-dom";
 const SingleProduct = ({ details }) => {
   const navigate = useNavigate();
 
-  
-
   return (
     <>
       {details.map((eachDetail) => {
         return (
-          <Col className="col-xl-3 col-lg-4 col-md-6  ">
-            <div className="dealCard-border" onClick={() => navigate("/productdetails")}>
+          <Col className="col-9 d-flex align-items-center justify-content-center col-xl-3 col-lg-4 col-md-6  ">
+            <div
+              className="dealCard-border mt-3 mt-sm-3  mt-lg-3 mt-xl-0"
+              onClick={() => navigate("/productdetails")}
+            >
               <ProductImage productImage={eachDetail.imgUrl} />
 
-              <div className="mx-1">
+              <div className="p-2">
                 <ProductTitle productDescription={eachDetail.desc} />
                 <div className="d-flex align-items-center gap-3 ">
                   <ProductReview review={eachDetail.review} />

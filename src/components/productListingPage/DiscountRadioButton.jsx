@@ -5,8 +5,8 @@ const DiscountRadioButton = ({ discountList }) => {
     <>
       {discountList.map((item) => {
         return (
-          <div>
-            <input type="radio" />
+          <div className="mx-2">
+            <input type="radio" className="mx-1"/>
             <span>{item.discount}</span>
           </div>
         );

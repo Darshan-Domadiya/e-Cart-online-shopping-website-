@@ -24,22 +24,24 @@ const detailsList = [
 const ProductDescription = () => {
   return (
     <>
-      <hr />
-      <div className="mt-4">
-        <p className="h4 fw-bold">Highlight</p>
-        <div className="d-flex gap-2 mt-4 mb-4">
-          <div>
-            <Image src={highlight} />
-          </div>
-          <div>
-            <p>80+ Customers bought this item</p>
+      <div className="col-12 col-md-12 col-sm-12">
+        <hr />
+        <div className="mt-4 ">
+          <p className="h4 fw-bold">Highlight</p>
+          <div className="d-flex gap-2 mt-4 mb-4">
+            <div>
+              <Image src={highlight} />
+            </div>
+            <div>
+              <p>80+ Customers bought this item</p>
+            </div>
           </div>
         </div>
-      </div>
-      <hr />
-      <div>
-        <p className="fw-bold h3 mb-4">Product Description</p>
-        <DescDetails list={detailsList} />
+        <hr />
+        <div>
+          <p className="fw-bold h3 mb-4">Product Description</p>
+          <DescDetails list={detailsList} />
+        </div>
       </div>
     </>
   );

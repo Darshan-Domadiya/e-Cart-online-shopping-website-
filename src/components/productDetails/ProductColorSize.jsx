@@ -33,12 +33,12 @@ const colorChart = [
 const ProductColorSize = () => {
   return (
     <>
-      <div>
+      <div className="mx-3">
         <p>
           Color : <span className="fw-bold">Orange</span>
         </p>
       </div>
-      <div className="d-flex gap-2">
+      <div className="d-flex gap-2 mx-3">
         {colorChart.map((value) => {
           return (
             <div
@@ -48,7 +48,7 @@ const ProductColorSize = () => {
           );
         })}
       </div>
-      <div className="d-flex gap-2 align-items-center mt-4">
+      <div className="d-flex gap-2 align-items-center mt-4 mx-3">
         <span>Size :</span>
         <div className="d-flex gap-3 ">
           {sizeChart.map((item) => {
@@ -58,11 +58,11 @@ const ProductColorSize = () => {
           })}
         </div>
       </div>
-      <div className="mt-3 sizeGuideBackground text-center">
+      <div className="mt-3 sizeGuideBackground text-center mx-3">
         <Image src={ruler} />
         <span> Size guide</span>
       </div>
-      <div className="d-flex mt-4 gap-3 align-items-center">
+      <div className="d-flex mt-4 gap-3 align-items-center mx-3">
         Quantity<span>:</span>
         <input
           type="number"

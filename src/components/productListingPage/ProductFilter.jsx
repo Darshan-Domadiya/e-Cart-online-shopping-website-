@@ -27,11 +27,13 @@ const ProductFilter = () => {
       <div>
         <p className="fw-bold h3">Filters</p>
 
-        <p className="h4 fw-bold mt-5">Price</p>
-        <PriceRadioButton priceList={priceList} />
+        <div className="gap-2">
+          <p className="h4 fw-bold mt-3 mt-md-5 ">Price</p>
+          <PriceRadioButton priceList={priceList} />
+        </div>
 
         <div className="mt-4">
-          <p className="h4 fw-bold">Discount</p>
+          <p className="h4 fw-bold  mt-3 mt-md-5">Discount</p>
           <DiscountRadioButton discountList={discountList} />
         </div>
       </div>

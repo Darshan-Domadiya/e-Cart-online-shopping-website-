@@ -6,14 +6,9 @@ import BestDealDescription from "./BestDealDescription";
 import BestDealReview from "./BestDealReview";
 import BestDealDiscount from "./BestDealDiscount";
 
-const SingleBestDeal = ({
-  img,
-  bestDealDes,
-  review,
-  price,
-  lessPrice,
-  discount,
-}) => {
+const SingleBestDeal = ({ bestDealList }) => {
+  const { img, bestDealDes, review, price, lessPrice, discount } = bestDealList;
+
   return (
     <>
       <Container className="border-danger mt-1 d-flex align-items-center justify-content-center">

@@ -1,6 +1,7 @@
 import React from "react";
 import orangePolygon from "/Images/orangePolygon.png";
 import normalPolygon from "/Images/normalPolygon.png";
+import { Row, Col } from "react-bootstrap";
 
 const reviewStarsList = [
   { imgUrl: orangePolygon },
@@ -14,36 +15,36 @@ const Comment = ({ list }) => {
   return (
     <>
       <p>Customer Reviews(3)</p>
-      {list.map((item) => {
+      {list.map((value) => {
         return (
-          <div className="mb-3">
-            <div className="d-flex align-items-center gap-3">
+          <Row className="mb-3 col-12">
+            <Row className="d-flex align-items-center gap-3">
               <div>
-                <img src={item.customerImage} />
+                <img src={value.customerImage} />
               </div>
               <div>
                 {" "}
-                <p className="fw-bold h6">{item.name}</p>
+                <p className="fw-bold h6">{value.name}</p>
               </div>
-            </div>
-            <div className="mt-2">
-              <p>{item.review}</p>
-              <p>{item.additionalComment}</p>
-            </div>
-            <div className="d-flex align-items-center justify-content-between">
-              <div className="d-flex align-items-center gap-1">
+            </Row>
+            <Row className="mt-2">
+              <p>{value.review}</p>
+              <p>{value.additionalComment}</p>
+            </Row>
+            <Row className="d-flex align-items-center justify-content-between">
+              <Col className="d-flex align-items-center gap-1 col-12 col-lg-6">
                 {" "}
                 {reviewStarsList.map((star) => {
                   return <img src={star.imgUrl} />;
                 })}
-                <small>{item.date}</small>
-              </div>
-              <div className="d-flex align-items-center gap-2">
-                <small>{item.helpful}</small>
-                <img src={item.likeImage} />
-              </div>
-            </div>
-          </div>
+                <small>{value.date}</small>
+              </Col>
+              <Col className="d-flex align-items-center gap-2 col-12 col-lg-6 mt-2">
+                <small>{value.helpful}</small>
+                <img src={value.likeImage} />
+              </Col>
+            </Row>
+          </Row>
         );
       })}
     </>

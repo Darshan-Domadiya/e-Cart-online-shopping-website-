@@ -5,6 +5,9 @@ import { Container, Row, Col } from "react-bootstrap";
 import SingleProduct from "./SingleProduct";
 import ProductFilter from "./ProductFilter";
 import Paging from "./Paging";
+import { IoFilter } from "react-icons/io5";
+import Button from "react-bootstrap/Button";
+import { Offcanvas } from "react-bootstrap";
 
 const singleProductDetails = [
   {
@@ -18,7 +21,7 @@ const singleProductDetails = [
   {
     price: "$34",
     less: "$20",
-    review: "32,45",
+    review: "32,456",
     discount: "-8",
     imgUrl: productList1,
     desc: "Lucky Cat Print Open Front Kimono, Casual Cover Up Kimono For Spring & Summer, Women's Clothing",
@@ -31,9 +34,22 @@ const singleProductDetails = [
     imgUrl: productList1,
     desc: "Lucky Cat Print Open Front Kimono, Casual Cover Up Kimono For Spring & Summer, Women's Clothing",
   },
+  {
+    price: "$34",
+    less: "$12",
+    review: "12,565",
+    discount: "-12",
+    imgUrl: productList1,
+    desc: "Lucky Cat Print Open Front Kimono, Casual Cover Up Kimono For Spring & Summer, Women's Clothing",
+  },
 ];
 
 const ProductListPage = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
       <Container fluid>
@@ -42,19 +58,35 @@ const ProductListPage = () => {
         <Row className="mt-5 ">
           {/* Filter column */}
 
-          <Col className="col-xl-3 col-lg-3 col-md-3 ">
+          <Col className="d-none d-md-flex col-xl-3 col-lg-3 col-md-3 ">
             <ProductFilter />
           </Col>
 
           {/* Results section column */}
           <Col className="col-xl-9 col-lg-9 ">
             <Row>
-              <Col className="text-md-center">
+              <Col className="d-flex align-items-center justify-content-around gap-2 text-md-start text-lg-start text-xl-start col-12 col-sm-6 col-md-4 col-lg-6 col-xl-6 text-center ">
                 <p className="fw-bold h2">Results</p>
+                <div className="d-flex align-items-center gap-2 d-md-none">
+                  <Button onClick={handleShow} className="px-2 ">
+                    {" "}
+                    <div className="d-flex align-items-center gap-2 d-md-none">
+                      <p className="fw-bold h5">Filter</p>
+                      <IoFilter />
+                    </div>
+                  </Button>
+                  <Offcanvas show={show} onHide={handleClose} placement="end" className="d-md-none offcanvas-style">
+                    <Offcanvas.Header closeButton></Offcanvas.Header>
+                    <Offcanvas.Body>
+                      {" "}
+                      <ProductFilter />
+                    </Offcanvas.Body>
+                  </Offcanvas>
+                </div>
               </Col>
 
-              <Col className="col-md-8 d-flex align-items-center justify-content-center">
-                <div className="filter-div filter-border rounded-5 p-2 input-div d-flex justify-content-center align-items-center gap-2">
+              <Col className="mt-3 mt-sm-0 col-12 col-sm-6 col-md-7 col-lg-6 col-xl-6 justify-content-sm-end col-md-8 d-flex align-items-center justify-content-center">
+                <div className="text-md-end  filter-div filter-border rounded-5 p-2 input-div d-flex justify-content-center align-items-center gap-2">
                   <label>
                     Sort By <span>:</span>
                   </label>
@@ -71,15 +103,17 @@ const ProductListPage = () => {
 
                     <option defaultChecked>Select...</option>
                     <option value="highest price">Highest Price</option>
-                    <option value="highest price">Lowest Price</option>
-                    <option value="highest price">Top Customer Reviews</option>
-                    <option value="highest price">Most Recent</option>
+                    <option value="lowest price">Lowest Price</option>
+                    <option value="top customer revies">
+                      Top Customer Reviews
+                    </option>
+                    <option value="most recent">Most Recent</option>
                   </select>
                 </div>
               </Col>
             </Row>
 
-            <Row className="mt-5">
+            <Row className="mt-5 mt-sm-5 mt-md-5 d-flex align-items-center justify-content-center justify-content-sm-start">
               {/* Productlisting section */}
               <SingleProduct details={singleProductDetails} />
             </Row>

@@ -10,7 +10,6 @@ import bestdeal2 from "/Images/bestdeal2.png";
 import bestdeal3 from "/Images/bestdeal3.png";
 import bestdeal4 from "/Images/bestdeal4.png";
 import "./bestdeal.scss";
-
 function Arrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -24,6 +23,47 @@ function Arrow(props) {
     />
   );
 }
+
+const bestDealDetails = [
+  {
+    img: bestdeal1,
+    bestDealDes:
+      "Oismys Glow in Dark Tree Elves Fairy 20Pcs Luminous Ghost Micro Landscape Accessories Garden...",
+    review: "34,564",
+    price: "$34",
+    lessPrice: "$56",
+    discount: "-20",
+  },
+  {
+    img: bestdeal2,
+    bestDealDes:
+      "Oismys Glow in Dark Tree Elves Fairy 20Pcs Luminous Ghost Micro Landscape Accessories Garden...",
+    review: "34,564",
+    price: "$34",
+    lessPrice: "$56",
+    discount: "-12",
+  },
+  ,
+  {
+    img: bestdeal3,
+    bestDealDes:
+      "Oismys Glow in Dark Tree Elves Fairy 20Pcs Luminous Ghost Micro Landscape Accessories Garden...",
+    review: "34,564",
+    price: "$34",
+    lessPrice: "$56",
+    discount: "-12",
+  },
+  ,
+  {
+    img: bestdeal4,
+    bestDealDes:
+      "Oismys Glow in Dark Tree Elves Fairy 20Pcs Luminous Ghost Micro Landscape Accessories Garden...",
+    review: "34,564",
+    price: "$34",
+    lessPrice: "$56",
+    discount: "-15",
+  },
+];
 
 const BestDeals = () => {
   var settings = {
@@ -72,63 +112,30 @@ const BestDeals = () => {
     ],
   };
   return (
-    <div className="slider-container ">
+    <div className="slider-container p-3 ">
       <Container className="mt-5 ">
-        <Row className="d-flex">
+        <Row className="d-flex justify-content-center ">
           <Col>
             <div>
-              <p className="h2 fw-fw-bolder">Garden & DIY</p>
+              <p className="h2 fw-bolder fontsize-title ">Garden & DIY</p>
             </div>
           </Col>
-          <Col className="d-flex justify-content-end col-md-6">
+          <Col className="d-flex justify-content-end align-items-center col-md-6">
             <div>
-              View All Deals
-              <img src={rArrow} className="mx-3" />
+              <span className="fontsize-deals">View All Deals</span>
+              <img src={rArrow} className="mx-2" />
             </div>
           </Col>
         </Row>
 
         <Slider {...settings} className="mt-2  ">
-          <div>
-            <SingleBestDeal
-              img={bestdeal1}
-              bestDealDes="Oismys Glow in Dark Tree Elves Fairy 20Pcs Luminous Ghost Micro Landscape Accessories Garden..."
-              review="34,564"
-              price="$34"
-              lessPrice="$56"
-              discount="-20"
-            />
-          </div>
-          <div>
-            <SingleBestDeal
-              img={bestdeal2}
-              bestDealDes="Oismys Glow in Dark Tree Elves Fairy 20Pcs Luminous Ghost Micro Landscape Accessories Garden..."
-              review="34,564"
-              price="$34"
-              lessPrice="$56"
-              discount="-12"
-            />
-          </div>
-          <div>
-            <SingleBestDeal
-              img={bestdeal3}
-              bestDealDes="Oismys Glow in Dark Tree Elves Fairy 20Pcs Luminous Ghost Micro Landscape Accessories Garden..."
-              review="34,564"
-              price="$34"
-              lessPrice="$56"
-              discount="-12"
-            />
-          </div>
-          <div>
-            <SingleBestDeal
-              img={bestdeal4}
-              bestDealDes="Oismys Glow in Dark Tree Elves Fairy 20Pcs Luminous Ghost Micro Landscape Accessories Garden..."
-              review="34,564"
-              price="$34"
-              lessPrice="$56"
-              discount="-15"
-            />
-          </div>
+          {bestDealDetails.map((list) => {
+            return (
+              <div>
+                <SingleBestDeal bestDealList={list} />
+              </div>
+            );
+          })}
         </Slider>
       </Container>
     </div>

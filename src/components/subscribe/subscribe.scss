@@ -1,15 +1,43 @@
-.subscribeBg{
-    background: #0063FF  0% 0% no-repeat padding-box;
-    border-radius: 20px;
+.subscribeBg {
+  background: #0063ff;
+  border-radius: 20px;
+}
+
+.inputBorder {
+  border: 2px solid #f5f5fc;
+  border-radius: 25px;
+}
+
+.subscribe-input {
+  outline: none;
+  border: 0;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  padding: 8px;
+}
+
+.subscribe-button {
+  outline: none;
+  border: 0;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 8px;
+}
+
+.inputButton {
+  margin-top: 25px;
 }
 
 
-.inputBorder{
-    border: 2px solid #F5F5FC;
-    border-radius: 25px;
-}
+//media queries for input and button.
+@media screen and (min-width: 320px) and (max-width: 380px) {
+  .subscribe-button {
+    font-size: 12px;
+  }
 
-.subscribe-input{
-    outline: none;
+  .subscribe-input {
+    font-size: 12px;
+  }
 }
-

@@ -40,7 +40,7 @@ const Header = () => {
 
   return (
     <>
-      {/* First header for large screen-xl */}
+
       <header className="shadow-sm  main-header">
         <Container fluid className="mt-2 mb-3 p-3">
           <Row className="d-flex align-items-center  justify-content-between px-1">
@@ -101,7 +101,10 @@ const Header = () => {
 
             <Col className="d-none d-md-flex">
               <InputGroup>
-                <Form.Control placeholder="Search Products" className="searchbar-header"/>
+                <Form.Control
+                  placeholder="Search Products"
+                  className="custom-searchbar"
+                />
                 <Button className="p-2 ">
                   <img src={searchImage} className="img-fluid" />
                 </Button>
@@ -172,9 +175,12 @@ const Header = () => {
             {/* SearchBar for small screen */}
             <Col className="d-md-none d-flex mt-3 ">
               <InputGroup>
-                <Form.Control placeholder="Search Products" />
+                <Form.Control
+                  placeholder="Search Products"
+                  className="custom-searchbar"
+                />
                 <Button className="p-2 ">
-                  <img src={searchImage} />
+                  <img src={searchImage} className="img-fluid" />
                 </Button>
               </InputGroup>
             </Col>

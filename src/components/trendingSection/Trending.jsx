@@ -18,14 +18,14 @@ const Trending = () => {
         <Row>
           <Col>
             <div>
-              <p className="h2 fw-fw-bolder">Trending on BargainFox</p>
+              <p className="h2 fw-bolder fontsize-trending">Trending on BargainFox</p>
             </div>
           </Col>
 
           <Col className="d-flex justify-content-end align-items-center">
             <div>
-              View All Deals
-              <img src={rArrow} className="mx-3" />
+              <span className="fontsize-allDeals"> View All Deals</span>
+              <img src={rArrow} className="mx-1" />
             </div>
           </Col>
         </Row>

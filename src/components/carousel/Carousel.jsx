@@ -17,12 +17,12 @@ const carouselDetails = [
   {
     imgUrl: carousel1,
     discount: "Upto 40% Off",
-    title: "Women's Western Clothing",
+    title: "Women's Western ",
   },
   {
     imgUrl: carousel2,
     discount: "Upto 40% Off",
-    title: "Men's Western Clothing",
+    title: "Men's  Clothing",
   },
   {
     imgUrl: carousel3,
@@ -37,7 +37,7 @@ const carouselDetails = [
   {
     imgUrl: carousel5,
     discount: "Upto 40% Off",
-    title: "Statement Fashion Jewellery",
+    title: "Statement Fashion ",
   },
   {
     imgUrl: carousel6,
@@ -84,7 +84,6 @@ const Carousel = () => {
           slidesToShow: 3,
           slidesToScroll: 2,
           initialSlide: 2,
-          arrows: false,
         },
       },
       {
@@ -98,18 +97,20 @@ const Carousel = () => {
   };
 
   return (
-    <div className="slider-container mt-5">
+    <div className="slider-container mt-5 p-3">
       <Container>
         <Row className="d-flex">
-          <Col>
+          <Col className="col-7">
             <div>
-              <p className="h2 fw-bolder">Deals of the Day</p>
+              <p className="h2 fw-bolder fontsize-dealOfDay">
+                Deals of the Day
+              </p>
             </div>
           </Col>
           <Col className="d-flex justify-content-end  align-items-center ">
             <div>
-              View All Deals
-              <img src={rArrow} className="mx-2" />
+              <span className="fontsize-viewDeals">View All Deals</span>
+              <img src={rArrow} className="mx-2 img-fluid" />
             </div>
           </Col>
         </Row>

@@ -6,14 +6,9 @@ import ElectronicDescription from "./ElectronicDescription";
 import ElectronicReview from "./ElectronicReview";
 import ElectronicsDiscount from "./ElectronicsDiscount";
 
-const SingleEleProduct = ({
-  imgUrl,
-  prodDes,
-  review,
-  price,
-  lessPrice,
-  discount,
-}) => {
+const SingleEleProduct = ({ productList }) => {
+  const { imgUrl, prodDes, review, price, lessPrice, discount } = productList;
+
   return (
     <>
       <Container className="border-danger mt-1 d-flex align-items-center justify-content-center">

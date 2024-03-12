@@ -25,6 +25,45 @@ function Arrow(props) {
   );
 }
 
+const productDetails = [
+  {
+    imgUrl: electronics1,
+    prodDes:
+      "Apple iPad (9th Generation): with A13 Bionic chip, 10.2-inch Retina Display, 256GB, Wi-Fi, 12MP",
+    review: "23,443",
+    price: "$34",
+    lessPrice: "$56",
+    discount: "25",
+  },
+  {
+    imgUrl: electronics2,
+    prodDes:
+      "Eilik - an Electronic Robot Pets Toys with Intelligent and Interactive | Abundant Emotions, Idle...",
+    review: "34,443",
+    price: "$67",
+    lessPrice: "$95",
+    discount: "15",
+  },
+  {
+    imgUrl: electronics3,
+    prodDes:
+      "LOBKIN Wireless Bluetooth Headphones, Over-Ear Headphones with Built-in HD Mic ",
+    review: "45,443",
+    price: "$50",
+    lessPrice: "$150",
+    discount: "75",
+  },
+  {
+    imgUrl: electronics4,
+    prodDes:
+      "SAMSUNG Galaxy Watch 5 40mm Bluetooth Smartwatch w/ Body, Health, Fitness and Sleep Tracker..",
+    review: "13,322",
+    price: "$64",
+    lessPrice: "$76",
+    discount: "10",
+  },
+];
+
 const Electronics = () => {
   var settings = {
     infinite: true,
@@ -71,63 +110,30 @@ const Electronics = () => {
     ],
   };
   return (
-    <div className="slider-container ">
+    <div className="slider-container p-3">
       <Container className="mt-5">
         <Row className="d-flex">
           <Col>
             <div>
-              <p className="h2 fw-fw-bolder">Electronics</p>
+              <p className="h2 fw-bolder fontsize-electronics">Electronics</p>
             </div>
           </Col>
           <Col className="d-flex justify-content-end align-items-center ">
             <div>
-              View All Deals
-              <img src={rArrow} className="mx-3" />
+              <span className="fontsize-deal">View All Deals</span>
+              <img src={rArrow} className="mx-2" />
             </div>
           </Col>
         </Row>
 
-        <Slider {...settings}>
-          <div>
-            <SingleEleProduct
-              imgUrl={electronics1}
-              prodDes="Apple iPad (9th Generation): with A13 Bionic chip, 10.2-inch Retina Display, 256GB, Wi-Fi, 12MP"
-              review="23,443"
-              price="$34"
-              lessPrice="$56"
-              discount="25"
-            />
-          </div>
-          <div>
-            <SingleEleProduct
-              imgUrl={electronics2}
-              prodDes="Eilik - an Electronic Robot Pets Toys with Intelligent and Interactive | Abundant Emotions, Idle..."
-              review="34,443"
-              price="$67"
-              lessPrice="$95"
-              discount="15"
-            />
-          </div>
-          <div>
-            <SingleEleProduct
-              imgUrl={electronics3}
-              prodDes="LOBKIN Wireless Bluetooth Headphones, Over-Ear Headphones with Built-in HD Mic "
-              review="45,443"
-              price="$50"
-              lessPrice="$150"
-              discount="75"
-            />
-          </div>
-          <div>
-            <SingleEleProduct
-              imgUrl={electronics4}
-              prodDes="SAMSUNG Galaxy Watch 5 40mm Bluetooth Smartwatch w/ Body, Health, Fitness and Sleep Tracker.."
-              review="13,322"
-              price="$64"
-              lessPrice="$76"
-              discount="10"
-            />
-          </div>
+        <Slider {...settings} className="mt-4">
+          {productDetails.map((list) => {
+            return (
+              <div>
+                <SingleEleProduct productList={list} />
+              </div>
+            );
+          })}
         </Slider>
       </Container>
     </div>

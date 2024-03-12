@@ -8,7 +8,7 @@ const ProductPrice = ({ price, discount }) => {
       <Container>
         <Row className="d-flex align-items-center justify-content-between">
           <Col className="d-flex align-items-center  gap-3 col-12 col-sm-12 col-lg-6">
-            <div className="h2 fw-bold">
+            <div className="h1 fw-bold">
               <sup>$</sup>
               <span>{price}</span>
             </div>

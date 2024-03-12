@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-
 const OrderSummary = () => {
   return (
     <>
@@ -68,7 +67,7 @@ const OrderSummary = () => {
         <div className="mt-2">
           <p>
             Order within <span className="text-warning">2h 25m</span> and choose{" "}
-            <span className="text-warning">Express Shipping</span> to get it by
+            <span className="text-warning">Express Shipping</span> to get it by{" "}
             <span className="text-warning">Tuesday 25/7/2023</span>
           </p>
         </div>

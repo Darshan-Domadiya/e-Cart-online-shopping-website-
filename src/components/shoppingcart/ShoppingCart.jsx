@@ -24,6 +24,8 @@ const ShoppingCart = () => {
             </Row>
 
             <CartProduct />
+            <CartProduct />
+            <CartProduct />
           </Col>
 
           <Col className="col-md-12   mt-5 mt-md-5 col-lg-4 col-xl-4">

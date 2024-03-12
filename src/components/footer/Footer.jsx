@@ -90,15 +90,15 @@ const socialImage = [
 const Footer = () => {
   return (
     <>
-      <Container fluid className="mt-5 pt-5 bg-dark">
-        <Row>
-          <Col className="col-12  col-md-4 d-flex  flex-column align-items-center justify-content-center">
+      <Container fluid className="mt-5  pt-5 bg-dark">
+        <Row className="mx-4">
+          <Col className="col-12 helpList-margin  col-md-4 d-flex  flex-column align-items-center justify-content-center">
             <FooterMenu title="Help" list={menuList} />
           </Col>
           <Col className="col-12 col-md-4 d-flex  flex-column align-items-center justify-content-center">
             <FooterMenu title="About us" list={aboutList} />
           </Col>
-          <Col className=" col-12  pt-md-5 col-md-4 d-flex flex-column align-items-center justify-content-center">
+          <Col className=" accountList-margin col-12  pt-md-5 col-md-4 d-flex flex-column align-items-center justify-content-center">
             <FooterMenu title="Your Account" list={accountList} />
           </Col>
         </Row>

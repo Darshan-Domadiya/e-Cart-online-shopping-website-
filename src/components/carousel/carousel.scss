@@ -6,3 +6,12 @@
 .slick-arrow:before{
     color: #0063FF ;
 }
+
+@media only screen and (max-width: 425px) and (min-width: 320px) {
+    .fontsize-dealOfDay {
+      font-size: 15px;
+    }
+    .fontsize-viewDeals {
+      font-size: 10px;
+    }
+  }

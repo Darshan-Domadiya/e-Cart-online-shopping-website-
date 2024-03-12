@@ -5,8 +5,8 @@ const SocialLogo = ({ logoList }) => {
     <>
       {logoList.map((logo) => {
         return (
-          <div className="mx-3">
-            <img src={logo.logoUrl} />;
+          <div className="mx-3 social-background  p-sm-2 d-flex align-items-center justify-content-center">
+            <img src={logo.logoUrl} className="img-fluid" />
           </div>
         );
       })}

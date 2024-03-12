@@ -73,19 +73,19 @@ const CustomerReview = () => {
             </div>
           </Col>
           <Col className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-            
-              <ProgressbarReviewSection list={progressBarValues} />
-           
+            <ProgressbarReviewSection list={progressBarValues} />
           </Col>
         </Row>
         <hr />
-        <Row>
-          <Col className="d-flex align-items-center justify-content-between">
+        <Row className="text-center">
+          <Col className="text-md-center col-12 col-md-12 col-lg-8 col-xl-6  ">
             <div>
               {bigStars.map((star) => {
                 return <img src={star.imgUrl} />;
               })}
             </div>
+          </Col>
+          <Col className="mt-3 mt-lg-0 text-md-center col-12 col-md-12 col-lg-4 col-xl-6">
             <div>
               <p className=" fw-bold h4">Rate This Product</p>
             </div>
