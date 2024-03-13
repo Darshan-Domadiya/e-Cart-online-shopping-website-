@@ -23,9 +23,11 @@ const bannerDetails = [
 const Banner = () => {
   return (
     <>
-      <Container className="mt-5">
-        <Row className="d-flex align-items-center justify-content-center">
-          <SingleBanner list={bannerDetails} />
+      <Container className="mt-5 ">
+        <Row className=" d-flex align-items-center justify-content-center">
+          {bannerDetails.map((bannerList,index) => {
+            return <SingleBanner key={index} list={bannerList} className="mt-5" />;
+          })}
         </Row>
       </Container>
     </>

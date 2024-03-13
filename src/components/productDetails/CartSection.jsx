@@ -1,6 +1,6 @@
 import React from "react";
 import peopleImage from "/Images/people.png";
-import { Button, Image } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 import "./cartsection.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +15,7 @@ const CartSection = () => {
             <p>HURRY, THERE ARE ONLY 6 ITEM(S) LEFT!</p>
           </div>
           <div>
-            <Image src={peopleImage} />8
+            <img src={peopleImage} className="img-fluid mx-1" />8
             <span className="mx-1">People looking at this product</span>
           </div>
         </div>

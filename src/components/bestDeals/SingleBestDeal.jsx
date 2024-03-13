@@ -7,7 +7,8 @@ import BestDealReview from "./BestDealReview";
 import BestDealDiscount from "./BestDealDiscount";
 
 const SingleBestDeal = ({ bestDealList }) => {
-  const { img, bestDealDes, review, price, lessPrice, discount } = bestDealList;
+  const { img, bestDealDescription, review, price, lessPrice, discount } =
+    bestDealList;
 
   return (
     <>
@@ -18,7 +19,9 @@ const SingleBestDeal = ({ bestDealList }) => {
               <BestDealImage imgUrl={img} />
 
               <div className="p-3">
-                <BestDealDescription bestDealDes={bestDealDes} />
+                <BestDealDescription
+                  bestDealDescription={bestDealDescription}
+                />
                 <div className="d-flex align-items-center gap-3 ">
                   <BestDealReview review={review} />
                 </div>

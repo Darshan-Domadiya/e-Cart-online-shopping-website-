@@ -16,7 +16,8 @@ const singleProductDetails = [
     review: "34,565",
     discount: "-10",
     imgUrl: productList1,
-    desc: "Lucky Cat Print Open Front Kimono, Casual Cover Up Kimono For Spring & Summer, Women's Clothing",
+    description:
+      "Lucky Cat Print Open Front Kimono, Casual Cover Up Kimono For Spring & Summer, Women's Clothing",
   },
   {
     price: "$34",
@@ -24,7 +25,8 @@ const singleProductDetails = [
     review: "32,456",
     discount: "-8",
     imgUrl: productList1,
-    desc: "Lucky Cat Print Open Front Kimono, Casual Cover Up Kimono For Spring & Summer, Women's Clothing",
+    description:
+      "Lucky Cat Print Open Front Kimono, Casual Cover Up Kimono For Spring & Summer, Women's Clothing",
   },
   {
     price: "$56",
@@ -32,7 +34,8 @@ const singleProductDetails = [
     review: "22,565",
     discount: "-15",
     imgUrl: productList1,
-    desc: "Lucky Cat Print Open Front Kimono, Casual Cover Up Kimono For Spring & Summer, Women's Clothing",
+    description:
+      "Lucky Cat Print Open Front Kimono, Casual Cover Up Kimono For Spring & Summer, Women's Clothing",
   },
   {
     price: "$34",
@@ -40,7 +43,8 @@ const singleProductDetails = [
     review: "12,565",
     discount: "-12",
     imgUrl: productList1,
-    desc: "Lucky Cat Print Open Front Kimono, Casual Cover Up Kimono For Spring & Summer, Women's Clothing",
+    description:
+      "Lucky Cat Print Open Front Kimono, Casual Cover Up Kimono For Spring & Summer, Women's Clothing",
   },
 ];
 
@@ -75,7 +79,12 @@ const ProductListPage = () => {
                       <IoFilter />
                     </div>
                   </Button>
-                  <Offcanvas show={show} onHide={handleClose} placement="end" className="d-md-none offcanvas-style">
+                  <Offcanvas
+                    show={show}
+                    onHide={handleClose}
+                    placement="end"
+                    className="d-md-none offcanvas-style"
+                  >
                     <Offcanvas.Header closeButton></Offcanvas.Header>
                     <Offcanvas.Body>
                       {" "}
@@ -115,7 +124,9 @@ const ProductListPage = () => {
 
             <Row className="mt-5 mt-sm-5 mt-md-5 d-flex align-items-center justify-content-center justify-content-sm-start">
               {/* Productlisting section */}
-              <SingleProduct details={singleProductDetails} />
+              {singleProductDetails.map((values) => {
+                return <SingleProduct details={values} />;
+              })}
             </Row>
 
             <Row>

@@ -9,9 +9,9 @@ import carousel3 from "/Images/c3.png";
 import carousel4 from "/Images/c4.png";
 import carousel5 from "/Images/c5.png";
 import carousel6 from "/Images/c6.png";
-import rArrow from "/Images/cArrow.png";
 import { Container, Row, Col } from "react-bootstrap";
 import "./carousel.scss";
+import CarouselHeading from "./CarouselHeading";
 
 const carouselDetails = [
   {
@@ -99,21 +99,7 @@ const Carousel = () => {
   return (
     <div className="slider-container mt-5 p-3">
       <Container>
-        <Row className="d-flex">
-          <Col className="col-7">
-            <div>
-              <p className="h2 fw-bolder fontsize-dealOfDay">
-                Deals of the Day
-              </p>
-            </div>
-          </Col>
-          <Col className="d-flex justify-content-end  align-items-center ">
-            <div>
-              <span className="fontsize-viewDeals">View All Deals</span>
-              <img src={rArrow} className="mx-2 img-fluid" />
-            </div>
-          </Col>
-        </Row>
+      <CarouselHeading />
 
         <Slider {...settings}>
           {carouselDetails.map((value, index) => {

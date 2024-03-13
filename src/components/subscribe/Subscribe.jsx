@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Button, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import sArrow from "/Images/subscribeArrow.png";
 import "./subscribe.scss";
 

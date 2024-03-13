@@ -20,9 +20,9 @@ const ProductCategory = () => {
 
   return (
     <>
-      <Container className="mt-5 d-flex align-items-center justify-content-center">
+      <Container className="mt-5 d-flex align-items-center justify-content-center ">
         <Row className="d-flex align-items-center justify-content-center">
-          <Col>
+          <Col className="col-6 col-sm-6 col-md-2 col-lg-2 ">
             <div className="position-relative categoryHome">
               <div>
                 <SingleProductCategory
@@ -170,7 +170,7 @@ const ProductCategory = () => {
             </div>
           </Col>
 
-          <Col>
+          <Col className="col-6 col-sm-6 col-md-2 col-lg-2 ">
             <div className="position-relative categoryKitchen">
               <div>
                 <SingleProductCategory
@@ -285,7 +285,7 @@ const ProductCategory = () => {
             </div>
           </Col>
 
-          <Col>
+          <Col className="col-6 col-sm-6 col-md-2 col-lg-2 ">
             <div className="position-relative categoryElectronics">
               <div>
                 <SingleProductCategory
@@ -375,7 +375,7 @@ const ProductCategory = () => {
             </div>
           </Col>
 
-          <Col>
+          <Col className="col-6 col-sm-6 col-md-2 col-lg-2 ">
             <div className="position-relative categoryToys">
               <div>
                 <SingleProductCategory
@@ -462,7 +462,7 @@ const ProductCategory = () => {
             </div>
           </Col>
 
-          <Col>
+          <Col className="col-6 col-sm-6 col-md-2 col-lg-2 ">
             <div className="position-relative categorySports">
               <div>
                 <SingleProductCategory
@@ -621,7 +621,7 @@ const ProductCategory = () => {
             </div>
           </Col>
 
-          <Col>
+          <Col className="col-6 col-sm-6 col-md-2 col-lg-2 ">
             <div className="position-relative categoryClearance">
               <div>
                 <SingleProductCategory

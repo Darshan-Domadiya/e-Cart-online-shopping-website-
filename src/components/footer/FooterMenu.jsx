@@ -7,8 +7,8 @@ const FooterMenu = ({ title, list }) => {
         <h3 className="text-white">{title}</h3>
 
         <ul className="text-white list-unstyled ">
-          {list.map((menu) => {
-            return <li>{menu.title}</li>;
+          {list.map((menu, index) => {
+            return <li key={index}>{menu.title}</li>;
           })}
         </ul>
       </div>

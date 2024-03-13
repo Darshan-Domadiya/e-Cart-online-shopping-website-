@@ -1,10 +1,13 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const OrderSummary = () => {
+  const navigate = useNavigate();
+
   return (
     <>
-      <div className="cardBackground px-3 ">
+      <div className="cardBackground px-3 mx-md-5 mx-lg-0 ">
         <p className="h4 mt-2">Order Summary</p>
         <hr />
         <div className="d-flex align-items-center justify-content-between">
@@ -62,7 +65,12 @@ const OrderSummary = () => {
           </div>
         </div>
         <div className="text-center">
-          <Button className="custom-button ">Proceed To Checkout</Button>
+          <Button
+            className="custom-button"
+            onClick={() => navigate("/checkout")}
+          >
+            Proceed To Checkout
+          </Button>
         </div>
         <div className="mt-2">
           <p>

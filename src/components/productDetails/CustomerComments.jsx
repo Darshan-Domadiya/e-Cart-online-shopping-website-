@@ -65,7 +65,9 @@ const CustomerComments = () => {
         <Row>
           <Col>
             <CustomerPhotos />
-            <Comment list={customerReview} />
+            {customerReview.map((reviewDetails) => {
+              return <Comment list={reviewDetails} />;
+            })}
           </Col>
         </Row>
       </Container>

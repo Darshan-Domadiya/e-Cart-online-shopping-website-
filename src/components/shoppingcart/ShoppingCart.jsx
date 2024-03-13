@@ -8,7 +8,7 @@ import CartProduct from "./CartProduct";
 const ShoppingCart = () => {
   return (
     <>
-      <Container className="mt-5">
+      <Container className="mt-5 ">
         <Row>
           <Col>
             {/* For heading */}

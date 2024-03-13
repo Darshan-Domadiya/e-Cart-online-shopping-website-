@@ -49,7 +49,7 @@ const Header = () => {
                 <div onClick={handleShow}>
                   <GiHamburgerMenu className=" d-flex d-sm-none" />
                 </div>
-                <Offcanvas show={showHamburgerMenu} onHide={hideClose}>
+                <Offcanvas show={showHamburgerMenu} onHide={hideClose} className="d-sm-none">
                   <Offcanvas.Header closeButton>
                     <Offcanvas.Title>
                       <p className="fw-bold h3">Sign In/Register</p>

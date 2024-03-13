@@ -1,7 +1,7 @@
 import React from "react";
 import orangeCircle from "/Images/desCircle.png";
 
-const DescDetails = ({ list }) => {
+const DescriptionDetails = ({ list }) => {
   return (
     <>
       {list.map((item) => {
@@ -20,4 +20,4 @@ const DescDetails = ({ list }) => {
   );
 };
 
-export default DescDetails;
+export default DescriptionDetails;

@@ -2,7 +2,6 @@ import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import rArrow from "/Images/cArrow.png";
 import { Container, Row, Col } from "react-bootstrap";
 import electronics1 from "/Images/electronics1.png";
 import electronics2 from "/Images/electronics2.png";
@@ -10,6 +9,7 @@ import electronics3 from "/Images/electronics3.png";
 import electronics4 from "/Images/electronics4.png";
 import SingleEleProduct from "./SingleEleProduct";
 import "./electronics.scss";
+import ElectronicsHeading from "./ElectronicsHeading";
 
 function Arrow(props) {
   const { className, style, onClick } = props;
@@ -112,24 +112,12 @@ const Electronics = () => {
   return (
     <div className="slider-container p-3">
       <Container className="mt-5">
-        <Row className="d-flex">
-          <Col>
-            <div>
-              <p className="h2 fw-bolder fontsize-electronics">Electronics</p>
-            </div>
-          </Col>
-          <Col className="d-flex justify-content-end align-items-center ">
-            <div>
-              <span className="fontsize-deal">View All Deals</span>
-              <img src={rArrow} className="mx-2" />
-            </div>
-          </Col>
-        </Row>
+       <ElectronicsHeading />
 
-        <Slider {...settings} className="mt-4">
-          {productDetails.map((list) => {
+        <Slider {...settings} className="mt-2">
+          {productDetails.map((list,index) => {
             return (
-              <div>
+              <div key={index}>
                 <SingleEleProduct productList={list} />
               </div>
             );

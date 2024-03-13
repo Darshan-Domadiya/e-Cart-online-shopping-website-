@@ -24,8 +24,8 @@ const ElectronicReview = ({ review }) => {
   return (
     <>
       <div className="d-flex align-items-center gap-2">
-        {reviewStartList.map((value) => {
-          return <img src={value.imgUrl} className="img-fluid" />;
+        {reviewStartList.map((value, index) => {
+          return <img key={index} src={value.imgUrl} className="img-fluid" />;
         })}
         <span>{review}</span>
       </div>

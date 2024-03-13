@@ -1,16 +1,21 @@
 import React from "react";
+import { Col } from "react-bootstrap";
 import TrendingImage from "./TrendingImage";
+import TrendingDiscount from "./TrendingDiscount";
+import TrendingTitle from "./TrendingTitle";
 
-const SingleTrendingProduct = ({ imgUrl, discount, productName }) => {
+const SingleTrendingProduct = ({ list }) => {
+  const { imgUrl, title, discount } = list;
+
   return (
     <>
-      <div className="d-flex justify-content-center   ">
+      <Col className="trendingCard-width col-6 col-sm-3 col-md-3 col-lg-2 d-flex  flex-column align-items-center justify-content-center">
         <TrendingImage imgUrl={imgUrl} />
-      </div>
-      <div className="text-center  ">
-        <p className="text-white textBackground">{discount}</p>
-      </div>
-      <div className="text-center fw-bold">{productName}</div>
+
+        <TrendingDiscount discount={discount} />
+
+        <TrendingTitle title={title} />
+      </Col>
     </>
   );
 };

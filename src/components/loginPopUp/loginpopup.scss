@@ -1,6 +1,7 @@
 .popup-input {
-  background: #f2f2f8 0% 0% no-repeat padding-box;
-  border-radius: 27px;
+  background: #F2F2F8 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 26px #0B5ED70D;
+  border-radius: 20px;
   outline: none;
 }
 
@@ -9,3 +10,15 @@
   outline: none;
 }
 
+.continue-button{
+  box-shadow: 0px 3px 26px #0B5ED70D;
+  border-radius: 20px;
+  outline: none;
+}
+
+.login-logos{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 1px solid #D8D8D8;
+border-radius: 27px;
+width: 200px;
+}

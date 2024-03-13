@@ -1,0 +1,24 @@
+.register-input:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.register-input {
+  background: #f2f2f8 0% 0% no-repeat padding-box;
+  border-radius: 27px;
+}
+
+
+//Register continue button.
+.register-button{
+    background: #0063ff 0% 0% no-repeat padding-box;
+border-radius: 25px;
+}
+
+.register-button:active{
+   outline: none;
+}
+
+.register-button:hover{
+    background-color: #0059E6;
+ }

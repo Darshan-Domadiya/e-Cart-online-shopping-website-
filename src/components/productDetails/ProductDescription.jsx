@@ -1,7 +1,7 @@
 import React from "react";
 import highlight from "/Images/highlight.png";
 import { Image } from "react-bootstrap";
-import DescDetails from "./DescDetails";
+import DescriptionDetails from "./DescriptionDetails";
 
 const detailsList = [
   {
@@ -24,7 +24,7 @@ const detailsList = [
 const ProductDescription = () => {
   return (
     <>
-      <div className="col-12 col-md-12 col-sm-12">
+      <div className="col-12 col-md-12 col-sm-12 px-3 px-sm-0">
         <hr />
         <div className="mt-4 ">
           <p className="h4 fw-bold">Highlight</p>
@@ -40,7 +40,7 @@ const ProductDescription = () => {
         <hr />
         <div>
           <p className="fw-bold h3 mb-4">Product Description</p>
-          <DescDetails list={detailsList} />
+          <DescriptionDetails list={detailsList} />
         </div>
       </div>
     </>
