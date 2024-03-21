@@ -1,20 +1,22 @@
 import { Formik, ErrorMessage } from "formik";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import * as yup from "yup";
 import "./loginpopup.scss";
-import google from "/Images/googleLogo.png";
-import apple from "/Images/appleLogo.png";
-import RegisterPopUp from "../registerpopup/RegisterPopUp";
+import axios from "axios";
+import VerificationPopUp from "./VerificationPopUp";
+import { useDispatch, useSelector } from "react-redux";
+import { userInfo } from "../../app/features/UserSlice";
 
 const LoginPopUp = ({ show, handleClose }) => {
-  //For showing Register pop up on click of signUp button.
-  const [showRegister, setShowRegister] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleRegister = () => {
-    setShowRegister(true);
-  };
+  //For showing the verification modal on click of continue button.
+  const [verification, setVerification] = useState(false);
+
+  //For loginpopup hiding when verification popup shows up.
+  const [loginPopUpVisible, setLoginPopUpVisible] = useState(true);
 
   const defaultValues = {
     username: "",
@@ -27,12 +29,37 @@ const LoginPopUp = ({ show, handleClose }) => {
       .min(3, "* UserName must be more than 3 letters"),
   });
 
+  const handleLogin = async (values) => {
+    const { username } = values;
+
+    try {
+      const response = await axios.post(
+        "https://bargainfox-dev.concettoprojects.com/api/send-otp",
+        {
+          email: username,
+        }
+      );
+
+      if (response.status === 200) {
+        setVerification(true);
+        setLoginPopUpVisible(false);
+        dispatch(userInfo(username));
+      } else {
+        console.log("Something went wrong");
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 422) {
+        alert("Please enter valid Email or Mobile number");
+      }
+    }
+  };
+
   return (
     <>
       {" "}
-      {!showRegister && (
-        <Modal show={show} onHide={handleClose} backdrop="static">
-          <Modal.Header className="border-bottom-0 p-4 " closeButton>
+      {loginPopUpVisible && (
+        <Modal show={show} onHide={handleClose} backdrop="static" size="md">
+          <Modal.Header className="border-bottom-0 p-4" closeButton>
             <Modal.Title className="text-start">
               <div>
                 <span className="fw-bold h2 ">Sign In / Register</span>
@@ -50,7 +77,7 @@ const LoginPopUp = ({ show, handleClose }) => {
               validationSchema={validationSchema}
               initialValues={defaultValues}
               onSubmit={(values, { resetForm }) => {
-                alert(JSON.stringify(values));
+                handleLogin(values);
                 resetForm();
               }}
             >
@@ -76,38 +103,11 @@ const LoginPopUp = ({ show, handleClose }) => {
                     </small>
                     <br />
                     <button
-                      onClick={() => handleLogin}
+                      type="submit"
                       className="mt-2 continue-button btn btn-primary w-100"
                     >
                       Continue
                     </button>
-                    <p className="greyText continue-text text-center mt-4">
-                      Or Continue with
-                    </p>
-
-                    <div className="d-flex gap-3 align-items-center justify-content-center">
-                      <button className="login-logos login-logos px-4 py-2 d-flex gap-2 align-items-center justify-content-center">
-                        <img src={google} className="img-fluid" />
-                        <span className="fw-bold">Google</span>
-                      </button>
-                      <button className="login-logos px-4 py-2 d-flex gap-2 align-items-center justify-content-center">
-                        <img src={apple} className="img-fluid" />
-                        <span className="fw-bold">Apple</span>
-                      </button>
-                    </div>
-
-                    <div className="mt-3 text-center greyText ">
-                      <small>
-                        Don't have Account?{" "}
-                        <span
-                          style={{ cursor: "pointer" }}
-                          onClick={handleRegister}
-                          className=" fw-bold border-bottom"
-                        >
-                          Sign Up
-                        </span>
-                      </small>
-                    </div>
                   </Form.Group>
 
                   <Modal.Footer className="text-center greyText border-top-0">
@@ -135,10 +135,12 @@ const LoginPopUp = ({ show, handleClose }) => {
           </Modal.Body>
         </Modal>
       )}
-      {showRegister && (
+      {/* {showRegister && (
         <RegisterPopUp show={showRegister} handleClose={handleClose} />
+      )} */}
+      {verification && (
+        <VerificationPopUp show={verification} handleClose={handleClose} />
       )}
-      
     </>
   );
 };

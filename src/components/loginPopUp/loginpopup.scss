@@ -22,3 +22,30 @@ border: 1px solid #D8D8D8;
 border-radius: 27px;
 width: 200px;
 }
+
+.verificationCode-background{
+  background: #F2F2F8 0% 0% no-repeat padding-box;
+border-radius: 15px;
+outline: none;
+border: 0;
+}
+
+.verificationCode-background:focus{
+ box-shadow: none;
+ background: #F2F2F8 0% 0% no-repeat padding-box;
+ border-radius: 15px;
+ outline: none;
+ border: 0;
+}
+
+.resendCode-button{
+  outline: none;
+  background: none;
+  border: 0;
+}
+
+.resendCode-button:hover{
+  outline: none;
+  background: white;
+  border: 0;
+}

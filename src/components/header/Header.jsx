@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./header.scss";
 import navbarLogo from "/Images/logoMain.svg";
 import searchImage from "/Images/search-normal.png";
 import wishList from "/Images/wishlist.png";
-import user from "/Images/user.png";
+import userImage from "/Images/user.png";
 import shoppingCart from "/Images/shopping-cart.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useNavigate } from "react-router-dom";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
 import {
@@ -21,8 +20,11 @@ import {
   Button,
 } from "react-bootstrap";
 import LoginPopUp from "../loginPopUp/LoginPopUp";
+import UserContext from "../context/UserContext";
 
 const Header = () => {
+  const { user, setUser } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   //For loginPop when clicked on login/Register button.
@@ -40,7 +42,6 @@ const Header = () => {
 
   return (
     <>
-
       <header className="shadow-sm  main-header">
         <Container fluid className="mt-2 mb-3 p-3">
           <Row className="d-flex align-items-center  justify-content-between px-1">
@@ -49,16 +50,21 @@ const Header = () => {
                 <div onClick={handleShow}>
                   <GiHamburgerMenu className=" d-flex d-sm-none" />
                 </div>
-                <Offcanvas show={showHamburgerMenu} onHide={hideClose} className="d-sm-none">
+                <Offcanvas
+                  show={showHamburgerMenu}
+                  onHide={hideClose}
+                  className="d-sm-none"
+                >
                   <Offcanvas.Header closeButton>
                     <Offcanvas.Title>
-                      <p className="fw-bold h3">Sign In/Register</p>
+                      <p className="fw-bold h3"> Sign In/Register</p>
                     </Offcanvas.Title>
                   </Offcanvas.Header>
                   <Offcanvas.Body>
                     <div className="hamburgerMenu border-2  bg-white d-sm-none">
                       <ul className=" text-center  list-unstyled text-black">
                         <Button
+                          type="button"
                           className="hamburger-loginButton rounded-4 mt-2 border-0 text-white fw-bold"
                           onClick={() => setShow(true)}
                         >
@@ -69,18 +75,18 @@ const Header = () => {
                           <Link to="#">Your Profile</Link>
                         </li>
 
-                        <li>
+                        {/* <li>
                           <Link to="#">Fastfox Subscription</Link>
-                        </li>
+                        </li> */}
                         <li>
                           <Link to="#">Your Orders</Link>
                         </li>
                         <li>
                           <Link to="#">Addresses</Link>
                         </li>
-                        <li>
+                        {/* <li>
                           <Link to="#">Notifications</Link>
-                        </li>
+                        </li> */}
                         <li>
                           <Link to="#">Wishlists</Link>
                         </li>
@@ -132,11 +138,11 @@ const Header = () => {
 
               <Nav.Link className="loginMenu">
                 <div className=" d-flex gap-2 align-items-center">
-                  <img src={user} className="img-fluid" />
+                  <img src={userImage} className="img-fluid" />
 
                   <div className="d-xl-flex  justify-content-center flex-column d-none">
                     <span>Hello there,</span>
-                    <span className="fw-bold ">SIGNUP/REGISTER</span>
+                    <span className="fw-bold ">SIGN UP/REGISTER</span>
                   </div>
                   <div className=" border-2  bg-white d-none d-md-flex">
                     <ul className="dropDownMenu text-center  list-unstyled text-black">
@@ -151,18 +157,18 @@ const Header = () => {
                         <Link to="#">Your Profile</Link>
                       </li>
 
-                      <li>
+                      {/* <li>
                         <Link to="#">Fastfox Subscription</Link>
-                      </li>
+                      </li> */}
                       <li>
                         <Link to="#">Your Orders</Link>
                       </li>
                       <li>
                         <Link to="#">Addresses</Link>
                       </li>
-                      <li>
+                      {/* <li>
                         <Link to="#">Notifications</Link>
-                      </li>
+                      </li> */}
                       <li>
                         <Link to="#">Wishlists</Link>
                       </li>

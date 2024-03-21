@@ -1,15 +1,58 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./registerpopup.scss";
 import { Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { userInfo } from "../../app/features/UserSlice";
+import UserContext from "../context/UserContext";
 
 const RegisterPopUp = ({ show, handleClose }) => {
+  const { setUser } = useContext(UserContext);
+  const userName = useSelector((state) => state.user.name);
+
+  const [registerPopUpClose, setRegisterPopUpClose] = useState(true);
+
   const defaultValues = {
     name: "",
     email: "",
     phoneNumber: "",
+  };
+
+  if (userName) {
+    if (typeof userName === "string" && userName.includes("@")) {
+      defaultValues.email = userName;
+    } else if (!isNaN(userName)) {
+      defaultValues.phoneNumber = userName.toString();
+    }
+  }
+
+  const handleRegister = async (values) => {
+    const { name, email, phoneNumber } = values;
+
+    try {
+      const response = await axios.post(
+        "https://bargainfox-dev.concettoprojects.com/api/register",
+        {
+          name,
+          email,
+          mobile: phoneNumber,
+        }
+      );
+      console.log(response.data);
+      if (response.status == 200) {
+        alert("Successfully Registered");
+        setUser(response.data.result);
+        console.log("first", response.data.result);
+        setRegisterPopUpClose(false);
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 422) {
+        alert("Something went wrong while registration");
+      }
+    }
   };
 
   const validationSchema = yup.object({
@@ -34,92 +77,98 @@ const RegisterPopUp = ({ show, handleClose }) => {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose} backdrop="static">
-        <Modal.Header className="border-bottom-0 p-sm-4 " closeButton>
-          <Modal.Title className="text-start">
-            <div>
-              <span className="fw-bold h2 ">Looks like you are new here</span>
-            </div>
-            <div>
-              <small className="fs-6 text-muted  ">
-                Please fill your information below.
-              </small>
-            </div>
-          </Modal.Title>
-        </Modal.Header>
+      {registerPopUpClose && (
+        <Modal show={show} onHide={handleClose} backdrop="static" size="md">
+          <Modal.Header className="border-bottom-0 p-sm-4 " closeButton>
+            <Modal.Title className="text-start">
+              <div>
+                <span className="fw-bold h2 ">Looks like you are new here</span>
+              </div>
+              <div>
+                <small className="fs-6 text-muted  ">
+                  Please fill your information below.
+                </small>
+              </div>
+            </Modal.Title>
+          </Modal.Header>
 
-        <Modal.Body>
-          <Formik
-            validationSchema={validationSchema}
-            initialValues={defaultValues}
-            onSubmit={(values, { resetForm }) => {
-              alert(JSON.stringify(values));
-              resetForm();
-            }}
-          >
-            {({ handleSubmit, handleChange, values }) => (
-              <Form onSubmit={handleSubmit} className="px-3">
-                <Form.Group
-                  className="mb-3"
-                  controlId="exampleForm.ControlInput1"
-                >
-                  <Form.Label className="fw-bold">
-                    <sup className="text-danger mx-1">*</sup>Name
-                  </Form.Label>
-                  <Form.Control
-                    className="register-input"
-                    type="text"
-                    value={values.name}
-                    name="name"
-                    onChange={handleChange}
-                    autoComplete="off"
-                  />
-                  <small className="text-danger">
-                    <ErrorMessage name="name" />
-                  </small>
-                  <br />
+          <Modal.Body>
+            <Formik
+              validationSchema={validationSchema}
+              initialValues={defaultValues}
+              onSubmit={(values, { resetForm }) => {
+                handleRegister(values);
+                resetForm();
+              }}
+            >
+              {({ handleSubmit, handleChange, values }) => (
+                <Form onSubmit={handleSubmit} className="px-3">
+                  <Form.Group
+                    className="mb-3"
+                    controlId="exampleForm.ControlInput1"
+                  >
+                    <Form.Label className="fw-bold">
+                      <sup className="text-danger mx-1">*</sup>Name
+                    </Form.Label>
+                    <Form.Control
+                      className="register-input"
+                      type="text"
+                      value={values.name}
+                      name="name"
+                      onChange={handleChange}
+                      autoComplete="off"
+                    />
+                    <small className="text-danger">
+                      <ErrorMessage name="name" />
+                    </small>
+                    <br />
 
-                  <Form.Label className="fw-bold">
-                    <sup className="text-danger mx-1">*</sup>Phone Number
-                  </Form.Label>
-                  <Form.Control
-                    className="register-input"
-                    type="number"
-                    value={values.phoneNumber}
-                    name="phoneNumber"
-                    onChange={handleChange}
-                    autoComplete="off"
-                  />
-                  <small className="text-danger">
-                    <ErrorMessage name="phoneNumber" />
-                  </small>
-                  <br />
+                    <Form.Label className="fw-bold">
+                      <sup className="text-danger mx-1">*</sup>Phone Number
+                    </Form.Label>
+                    <Form.Control
+                      className="register-input"
+                      // type="number"
+                      value={values.phoneNumber}
+                      name="phoneNumber"
+                      onChange={handleChange}
+                      autoComplete="off"
+                    />
+                    <small className="text-danger">
+                      <ErrorMessage name="phoneNumber" />
+                    </small>
+                    <br />
 
-                  <Form.Label className="fw-bold">
-                    <sup className="text-danger mx-1">*</sup>Email
-                  </Form.Label>
-                  <Form.Control
-                    className="register-input"
-                    type="email"
-                    value={values.email}
-                    name="email"
-                    onChange={handleChange}
-                    autoComplete="off"
-                  />
-                  <small className="text-danger">
-                    <ErrorMessage name="email" />
-                  </small>
-                  <br />
+                    <Form.Label className="fw-bold">
+                      <sup className="text-danger mx-1">*</sup>Email
+                    </Form.Label>
+                    <Form.Control
+                      className="register-input"
+                      type="email"
+                      value={values.email}
+                      name="email"
+                      onChange={handleChange}
+                      autoComplete="off"
+                    />
 
-                  <button className="register-button text-white w-100 p-2 border-0 mt-3">
-                    Continue
-                  </button>
-                </Form.Group>
-              </Form>
-            )}
-          </Formik>
-        </Modal.Body>
-      </Modal>
+                    <small className="text-danger">
+                      <ErrorMessage name="email" />
+                    </small>
+                    <br />
+
+                    <button
+                      type="submit"
+                      className="register-button text-white w-100 p-2 border-0 mt-3"
+                    >
+                      Continue
+                    </button>
+                  </Form.Group>
+                </Form>
+              )}
+            </Formik>
+          </Modal.Body>
+        </Modal>
+      )}
     </>
   );
 };

@@ -86,34 +86,19 @@ const AddDeliveryAddress = ({ show, handleClose }) => {
                     aria-label="Default select example"
                     className="select-input text-dark px-3"
                     value={values.selectField}
+                    onChange={handleChange}
                     name="selectField"
                   >
                     <option className="text-dark">
                       Country/Region <sup className="text-danger">*</sup>
                     </option>
-                    <option value="1">India</option>
-                    <option value="2">UK</option>
-                    <option value="3">USA</option>
+                    <option value="india">India</option>
+                    <option value="uk">UK</option>
+                    <option value="usa">USA</option>
                   </Form.Select>
                   <small className="mx-2 text-danger">
                     <ErrorMessage name="selectField" />
                   </small>
-                  <br />
-
-                  {/* <Form.Label className="fw-bold">
-                    Country/Region<sup className="text-danger mx-1">*</sup>
-                  </Form.Label>
-                  <Form.Control
-                    className="register-input"
-                    type="text"
-                    value={values.name}
-                    name="country"
-                    onChange={handleChange}
-                    autoComplete="off"
-                  />
-                  <small className="text-danger">
-                    <ErrorMessage name="name" />
-                  </small> */}
                   <br />
 
                   <Form.Label className="fw-bold">

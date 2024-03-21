@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../header/Header";
 import ProductCategory from "../categories/ProductCategory";
 import Carousel from "../carousel//Carousel";
 import Trending from "../trendingSection//Trending";

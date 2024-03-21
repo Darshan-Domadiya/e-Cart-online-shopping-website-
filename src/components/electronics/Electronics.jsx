@@ -112,10 +112,10 @@ const Electronics = () => {
   return (
     <div className="slider-container p-3">
       <Container className="mt-5">
-       <ElectronicsHeading />
+        <ElectronicsHeading />
 
         <Slider {...settings} className="mt-2">
-          {productDetails.map((list,index) => {
+          {productDetails.map((list, index) => {
             return (
               <div key={index}>
                 <SingleEleProduct productList={list} />

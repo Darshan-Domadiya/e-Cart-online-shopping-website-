@@ -69,7 +69,7 @@ const ProductListPage = () => {
           {/* Results section column */}
           <Col className="col-xl-9 col-lg-9 ">
             <Row>
-              <Col className="d-flex align-items-center justify-content-around gap-2 text-md-start text-lg-start text-xl-start col-12 col-sm-6 col-md-4 col-lg-6 col-xl-6 text-center ">
+              <Col className="d-flex align-items-center justify-content-around justify-content-md-start gap-2 text-md-start text-lg-start text-xl-start col-12 col-sm-6 col-md-4 col-lg-6 col-xl-6 text-center ">
                 <p className="fw-bold h2">Results</p>
                 <div className="d-flex align-items-center gap-2 d-md-none">
                   <Button onClick={handleShow} className="px-2 ">
