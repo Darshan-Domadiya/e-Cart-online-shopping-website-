@@ -1,4 +1,25 @@
 .polygonText{
-    top: 16px !important;
-    left: 11px !important;
+    top: 15px !important;
+    left:7px !important;
+ }
+
+ .discount-fontSize{
+    font-size: 13px;
+ }
+
+ .price-fontSize{
+    font-size: 15px;
+ }
+
+ .singleline-description{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+ }
+
+ .singleline-description:hover{
+   color:#0063FF;
+   cursor: pointer;
  }

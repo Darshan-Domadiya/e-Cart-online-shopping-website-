@@ -1,19 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import SingleBestDeal from "./SingleBestDeal";
 import { Container, Row, Col } from "react-bootstrap";
-import bestdeal1 from "/Images/bestdeal1.png";
-import bestdeal2 from "/Images/bestdeal2.png";
-import bestdeal3 from "/Images/bestdeal3.png";
-import bestdeal4 from "/Images/bestdeal4.png";
 import "./bestdeal.scss";
 import BestdealHeading from "./BestdealHeading";
-
+import axios from "axios";
+import Spinner from "react-bootstrap/Spinner";
 
 function Arrow(props) {
   const { className, style, onClick } = props;
+
   return (
     <div
       className={className}
@@ -26,48 +24,10 @@ function Arrow(props) {
   );
 }
 
-const bestDealDetails = [
-  {
-    img: bestdeal1,
-    bestDealDescription:
-      "Oismys Glow in Dark Tree Elves Fairy 20Pcs Luminous Ghost Micro Landscape Accessories Garden...",
-    review: "34,564",
-    price: "$34",
-    lessPrice: "$56",
-    discount: "-20",
-  },
-  {
-    img: bestdeal2,
-    bestDealDes:
-      "Oismys Glow in Dark Tree Elves Fairy 20Pcs Luminous Ghost Micro Landscape Accessories Garden...",
-    review: "34,564",
-    price: "$34",
-    lessPrice: "$56",
-    discount: "-12",
-  },
-  ,
-  {
-    img: bestdeal3,
-    bestDealDes:
-      "Oismys Glow in Dark Tree Elves Fairy 20Pcs Luminous Ghost Micro Landscape Accessories Garden...",
-    review: "34,564",
-    price: "$34",
-    lessPrice: "$56",
-    discount: "-12",
-  },
-  ,
-  {
-    img: bestdeal4,
-    bestDealDes:
-      "Oismys Glow in Dark Tree Elves Fairy 20Pcs Luminous Ghost Micro Landscape Accessories Garden...",
-    review: "34,564",
-    price: "$34",
-    lessPrice: "$56",
-    discount: "-15",
-  },
-];
-
 const BestDeals = () => {
+  const [productData, setProductData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   var settings = {
     infinite: true,
     speed: 500,
@@ -112,22 +72,51 @@ const BestDeals = () => {
       },
     ],
   };
-  return (
-    <div className="slider-container p-3 ">
-      <Container className="mt-5 ">
-        <BestdealHeading />
 
-        <Slider {...settings} className="mt-2  ">
-          {bestDealDetails.map((list,index) => {
-            return (
-              <div key={index}>
-                <SingleBestDeal bestDealList={list} />
-              </div>
-            );
-          })}
-        </Slider>
-      </Container>
-    </div>
+  const fetchProductData = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.post(
+        "https://bargainfox-dev.concettoprojects.com/api/product/list"
+      );
+
+      if (response.status === 200) {
+        // console.log("Product data before state", response.data.result.data);
+        setProductData(response.data.result.data);
+      } else {
+        console.log("error while fetching", error);
+      }
+    } catch (error) {
+      console.log("error");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProductData();
+  }, []);
+
+  return (
+    <>
+      {isLoading ? (
+        <div className="text-center mt-5">
+          <Spinner animation="border" variant="primary" />
+        </div>
+      ) : (
+        <div className="slider-container p-3 ">
+          <Container className="mt-5 ">
+            <BestdealHeading />
+
+            <Slider {...settings} className="mt-2">
+              {productData.map((data, index) => (
+                <SingleBestDeal key={index} dataList={data} />
+              ))}
+            </Slider>
+          </Container>
+        </div>
+      )}
+    </>
   );
 };
 

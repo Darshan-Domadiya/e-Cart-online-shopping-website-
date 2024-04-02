@@ -6,7 +6,6 @@ import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { userInfo } from "../../app/features/UserSlice";
 import UserContext from "../context/UserContext";
 
 const RegisterPopUp = ({ show, handleClose }) => {
@@ -41,16 +40,18 @@ const RegisterPopUp = ({ show, handleClose }) => {
           mobile: phoneNumber,
         }
       );
-      console.log(response.data);
-      if (response.status == 200) {
-        alert("Successfully Registered");
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.result.token);
+        // alert("Successfully Registered");
+
         setUser(response.data.result);
         console.log("first", response.data.result);
         setRegisterPopUpClose(false);
       }
     } catch (error) {
       if (error.response && error.response.status === 422) {
-        alert("Something went wrong while registration");
+        // alert("Something went wrong while registration");
+        console.log("Error while registration", error);
       }
     }
   };

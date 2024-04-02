@@ -6,32 +6,25 @@ import BestDealDescription from "./BestDealDescription";
 import BestDealReview from "./BestDealReview";
 import BestDealDiscount from "./BestDealDiscount";
 
-const SingleBestDeal = ({ bestDealList }) => {
-  const { img, bestDealDescription, review, price, lessPrice, discount } =
-    bestDealList;
-
+const SingleBestDeal = ({ dataList }) => {
   return (
     <>
       <Container className="border-danger mt-1 d-flex align-items-center justify-content-center">
         <Row>
           <Col>
             <div className="dealCard-border">
-              <BestDealImage imgUrl={img} />
+              <div className="d-flex align-items-center justify-content-center">
+                <BestDealImage dataList={dataList} />
+              </div>
 
               <div className="p-3">
-                <BestDealDescription
-                  bestDealDescription={bestDealDescription}
-                />
+                <BestDealDescription dataList={dataList} />
                 <div className="d-flex align-items-center gap-3 ">
-                  <BestDealReview review={review} />
+                  <BestDealReview />
                 </div>
 
-                <div className="mt-2 d-flex align-items-start justify-content-between mx-4">
-                  <BestDealDiscount
-                    price={price}
-                    lessPrice={lessPrice}
-                    discount={discount}
-                  />
+                <div className="mt-2">
+                  <BestDealDiscount dataList={dataList} />
                 </div>
               </div>
             </div>

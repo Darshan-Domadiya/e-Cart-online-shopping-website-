@@ -194,22 +194,10 @@ const AddDeliveryAddress = ({ show, handleClose }) => {
                     <span>Save this information for next time</span>
                   </div>
 
-                  {/* <Row className="d-flex align-items-center justify-content-between">
-                    <Col className="col-12  d-flex gap-2">
-                    
-                      <Form.Check aria-label="option 1" />{" "}
-                      <span>Text me with news and offers</span>
-                    </Col>
-                    <Col className="col-12 mx-3 d-flex align-items-center gap-2">
-                  <span className="greyText">  Make this default </span>
-                      <Form.Check // prettier-ignore
-                        type="switch"
-                        id="custom-switch"
-                      />
-                    </Col>
-                  </Row> */}
-
-                  <button className="register-button text-white w-100 p-2 border-0 mt-3">
+                  <button
+                    type="submit"
+                    className="register-button text-white w-100 p-2 border-0 mt-3"
+                  >
                     Continue
                   </button>
                 </Form.Group>

@@ -14,8 +14,8 @@ const ProductReview = ({ review }) => {
   return (
     <>
       <div className="d-flex gap-2 align-items-center">
-        {reviewStarList.map((value) => {
-          return <img src={value.star} className="img-fluid" />;
+        {reviewStarList.map((value, index) => {
+          return <img src={value.star} key={index} className="img-fluid" />;
         })}
         <span>{review}</span>
       </div>

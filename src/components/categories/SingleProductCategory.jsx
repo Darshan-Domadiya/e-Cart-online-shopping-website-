@@ -1,25 +1,44 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useState } from "react";
+import HoverMenu from "./HoverMenu";
 import "./singleproductcategory.scss";
+import { Link } from "react-router-dom";
 
-const SingleProductCategory = ({ imgUrl, textTitle }) => {
+const SingleProductCategory = ({ dataList }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  // console.log(dataList);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <>
-      <Container>
-        <Row className="gap-5">
-          <Col className="d-flex align-items-center justify-content-center">
-            <div className="d-flex flex-column align-items-center justify-content-center">
-              <img
-                src={imgUrl}
-                className="img-fluid"
-                height="100px"
-                width="100px"
-              />
-              <p className="text-center  fw-bold">{textTitle}</p>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+      <div className=" position-relative d-flex flex-column justify-content-center align-items-center">
+        <Link className="text-decoration-none text-dark" to={dataList.slug}>
+          <div
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="product-category d-flex flex-column align-items-center justify-content-center"
+          >
+            <img
+              src={dataList.image_url}
+              className="img-fluid"
+              height="100px"
+              width="100px"
+            />
+            <p className="fw-bold">{dataList.title}</p>
+            {isHovered && dataList.subcategory != "" && (
+              <HoverMenu menuList={dataList} />
+            )}
+          </div>
+
+          {isHovered && <div className="dot-div position-absolute"></div>}
+        </Link>
+      </div>
     </>
   );
 };

@@ -8,6 +8,8 @@ import "./checkout.scss";
 import { Row, Col, Container, Form } from "react-bootstrap";
 import AddDeliveryAddress from "../addDeliveryAddress/AddDeliveryAddress";
 
+const paymentImage = [paypal, visa, mastercard, american];
+
 const Checkout = () => {
   const [showPopup, setShowPopup] = useState(false);
 
@@ -19,7 +21,7 @@ const Checkout = () => {
     <>
       <Container className="mt-5 ">
         <Row className="d-flex align-items-center justify-content-center">
-          <Col className="col-12 col-xl-7 col-lg-7 col-sm-7  col-sm-12">
+          <Col className="col-12 col-xl-6 col-lg-7  col-sm-12">
             <Row className="d-flex align-items-center justify-content-between">
               <Col className="col-md-9 col-12  mx-sm-0 text-center text-sm-start">
                 <p className="fw-bold fs-3">Select Delivery address</p>
@@ -73,18 +75,11 @@ const Checkout = () => {
               <div>
                 <div className="fw-bold ">We accept :</div>
                 <div className="d-flex align-items-center justify-content-start gap-1 mt-1">
-                  <div>
-                    <img src={paypal} className="img-fluid" />
-                  </div>
-                  <div>
-                    <img src={visa} className="img-fluid" />
-                  </div>
-                  <div>
-                    <img src={mastercard} className="img-fluid" />
-                  </div>
-                  <div>
-                    <img src={american} className="img-fluid" />
-                  </div>
+                  {paymentImage.map((eachImg) => (
+                    <div>
+                      <img src={eachImg} className=" img-fluid" />
+                    </div>
+                  ))}
                 </div>
               </div>
             </Row>

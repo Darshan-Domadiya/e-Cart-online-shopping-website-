@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -10,6 +10,8 @@ import electronics4 from "/Images/electronics4.png";
 import SingleEleProduct from "./SingleEleProduct";
 import "./electronics.scss";
 import ElectronicsHeading from "./ElectronicsHeading";
+import axios from "axios";
+import Spinner from "react-bootstrap/Spinner";
 
 function Arrow(props) {
   const { className, style, onClick } = props;
@@ -65,6 +67,30 @@ const productDetails = [
 ];
 
 const Electronics = () => {
+  const [productData, setProductData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchProductDetails = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.post(
+        "https://bargainfox-dev.concettoprojects.com/api/product/list"
+      );
+      if (response.status === 200) {
+        setProductData(response.data.result.data);
+        // console.log("product details", response.data.result.data);
+      }
+    } catch (error) {
+      console.log("Error", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProductDetails();
+  }, []);
+
   var settings = {
     infinite: true,
     speed: 500,
@@ -110,21 +136,25 @@ const Electronics = () => {
     ],
   };
   return (
-    <div className="slider-container p-3">
-      <Container className="mt-5">
-        <ElectronicsHeading />
+    <>
+      {isLoading ? (
+        <div className="text-center mt-5">
+          <Spinner animation="border" variant="primary" />
+        </div>
+      ) : (
+        <div className="slider-container p-3">
+          <Container className="mt-5">
+            <ElectronicsHeading />
 
-        <Slider {...settings} className="mt-2">
-          {productDetails.map((list, index) => {
-            return (
-              <div key={index}>
-                <SingleEleProduct productList={list} />
-              </div>
-            );
-          })}
-        </Slider>
-      </Container>
-    </div>
+            <Slider {...settings} className="mt-2">
+              {productData.map((data, index) => {
+                return <SingleEleProduct key={index} productDataList={data} />;
+              })}
+            </Slider>
+          </Container>
+        </div>
+      )}
+    </>
   );
 };
 

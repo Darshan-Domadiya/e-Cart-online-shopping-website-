@@ -2,16 +2,27 @@ import React from "react";
 import polygon from "/Images/polygon.png";
 import "./electronicdiscount.scss";
 
-const ElectronicsDiscount = ({ price, lessPrice, discount }) => {
+const ElectronicsDiscount = ({ productDetails }) => {
   return (
     <>
-      <div className="d-flex align-items-start gap-2">
-        {price} <strike>{lessPrice}</strike>
-      </div>
-      <div className="position-relative mb-2">
-        <img src={polygon} className="img-fluid" />
-        <div className="position-absolute polygonText text-white fw-600 ">
-          {discount} <span>%</span>
+      <div className="d-flex justify-content-between">
+        <div className="d-flex align-items-center price-fontSize ">
+          <span className="fw-bold mb-2 fs-5">$</span>
+          <span className="fw-bold fs-4">{productDetails.sale_price}</span>
+          <strike className="mx-3 fw-bold">
+            <span>$</span>
+            <span>{productDetails.main_rrp}</span>
+          </strike>
+        </div>
+
+        <div>
+          <div className="position-relative mb-2">
+            <img src={polygon} className="img-fluid" />
+            <div className="position-absolute polygonShape text-white discount-fontSize">
+              {productDetails.discount_percentage}
+              <span>%</span>
+            </div>
+          </div>
         </div>
       </div>
     </>

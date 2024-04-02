@@ -8,13 +8,13 @@ import UserContext from "../context/UserContext";
 import { ToastContainer, toast } from "react-toastify";
 
 const VerificationPopUp = ({ show, handleClose }) => {
+  const userName = useSelector((state) => state.user.name);
+
   const [resendOtpButton, setResendOtpButton] = useState(false);
   const [seconds, setSeconds] = useState(5);
   const timeref = useRef(null);
 
-  const { user, setUser } = useContext(UserContext);
-
-  const userName = useSelector((state) => state.user.name);
+  const { setUser } = useContext(UserContext);
 
   useEffect(() => {
     timeref.current = setInterval(() => {
@@ -65,23 +65,25 @@ const VerificationPopUp = ({ show, handleClose }) => {
         );
 
         if (response.status === 200) {
+          localStorage.setItem("token", response.data.result.token);
           console.log("otp successful", response.data);
-          alert("OTP is valid");
+          // alert("OTP is valid");
           if (response.data.result.is_new_user == true) {
             setShowRegister(true);
             setVerificationVisible(false);
-            setUser(userName);
           } else if (response.data.result.is_new_user == false) {
             setVerificationVisible(false);
-            alert("User already exists");
+
             setUser(response.data.result);
+            // alert("User already exists");
           }
         } else {
           console.log("Something went wrong");
         }
       } catch (error) {
         if (error.response && error.response.status === 422) {
-          alert("Some error occured");
+          // alert("Some error occured");
+          console.log("Error", error);
         }
       }
     } else {
@@ -112,21 +114,34 @@ const VerificationPopUp = ({ show, handleClose }) => {
     setError(false);
   };
 
-  const handleResendCode = () => {
+  const handleResendCode = async () => {
+    try {
+      const response = await axios.post(
+        "https://bargainfox-dev.concettoprojects.com/api/send-otp",
+        {
+          email: userName,
+        }
+      );
 
-    const response = axios.post("",
-    otp
-    )
-
-    setResendOtpButton(false);
-    setError(true);
-    setSeconds(5);
-    timeref.current = setInterval(() => {
-      setSeconds((prevSeconds) => prevSeconds - 1);
-    }, 1000);
-    toast.success("OTP sent successfully !", {
-      position: "top-center",
-    });
+      if (response.status === 200) {
+        setResendOtpButton(false);
+        setError(true);
+        setSeconds(30);
+        timeref.current = setInterval(() => {
+          setSeconds((prevSeconds) => prevSeconds - 1);
+        }, 1000);
+        toast.success("OTP sent successfully !", {
+          position: "top-center",
+        });
+        console.log("otp resent successfully");
+      } else {
+        alert("something went wrong");
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 422) {
+        alert("Something went wrong while resending otp");
+      }
+    }
   };
 
   return (
@@ -169,6 +184,7 @@ const VerificationPopUp = ({ show, handleClose }) => {
                   {!resendOtpButton && <small>Expires in 00:{seconds}</small>}
                 </div>
                 <button
+                  type="button"
                   className="btn btn-primary text-primary resendCode-button"
                   onClick={handleResendCode}
                   disabled={!resendOtpButton}

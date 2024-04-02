@@ -1,11 +1,11 @@
 import React from "react";
+import "./singlebestdeal.scss";
 
-const BestDealDescription = ({bestDealDes}) => {
+const BestDealDescription = ({ dataList }) => {
   return (
     <>
-      <p>
-         {bestDealDes}
-      </p>
+      <p className="fw-bold product-name singleline-text">{dataList.name}</p>
+      <p className="singleline-text">{dataList.description}</p>
     </>
   );
 };

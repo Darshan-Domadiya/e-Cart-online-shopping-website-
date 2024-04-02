@@ -46,7 +46,7 @@ const ProductImages = () => {
           <Slider
             asNavFor={nav1}
             ref={(slider) => (sliderRef2 = slider)}
-            slidesToShow={3}
+            slidesToShow={5}
             swipeToSlide={true}
             focusOnSelect={true}
             arrows={false}

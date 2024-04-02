@@ -20,25 +20,63 @@ import {
   Button,
 } from "react-bootstrap";
 import LoginPopUp from "../loginPopUp/LoginPopUp";
-import UserContext from "../context/UserContext";
+import UserContext, { userResultDetails } from "../context/UserContext";
+import axios from "axios";
 
 const Header = () => {
   const { user, setUser } = useContext(UserContext);
-
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   //For loginPop when clicked on login/Register button.
   const [show, setShow] = useState(false);
 
+  //For hamburgermenu display in mobile screen size.
+  const [showHamburgerMenu, setShowHamburgermenu] = useState(false);
+  const hideClose = () => setShowHamburgermenu(false);
+  const handleShow = () => setShowHamburgermenu(true);
+
   const handleClose = () => {
     setShow(false);
   };
 
-  //For hamburgermenu display in mobile screen size.
-  const [showHamburgerMenu, setShowHamburgermenu] = useState(false);
+  const handleLogin = () => {
+    setShow(true);
+  };
 
-  const hideClose = () => setShowHamburgermenu(false);
-  const handleShow = () => setShowHamburgermenu(true);
+  const handleLogout = async () => {
+    try {
+      const response = await axios.get(
+        "https://bargainfox-dev.concettoprojects.com/api/logout",
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      );
+      if (response.status === 200) {
+        localStorage.removeItem("token");
+        setUser(userResultDetails);
+        console.log("logout");
+      }
+    } catch (error) {
+      console.log("some error while logging out");
+    }
+  };
+
+  const handleSearch = async (e) => {
+    try {
+      setSearch(e.target.value);
+      console.log("value of search", search);
+      const response = await axios.post(
+        "https://bargainfox-dev.concettoprojects.com/api/product/list",
+        { search: searchTerm }
+      );
+      if (response.status === 200) {
+        console.log("search result", response);
+      }
+    } catch (error) {
+      console.log("Error while searching", error);
+    }
+  };
 
   return (
     <>
@@ -110,7 +148,9 @@ const Header = () => {
                 <Form.Control
                   placeholder="Search Products"
                   className="custom-searchbar"
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 />
+
                 <Button className="p-2 ">
                   <img src={searchImage} className="img-fluid" />
                 </Button>
@@ -142,35 +182,42 @@ const Header = () => {
 
                   <div className="d-xl-flex  justify-content-center flex-column d-none">
                     <span>Hello there,</span>
-                    <span className="fw-bold ">SIGN UP/REGISTER</span>
+                    <span className="fw-bold ">
+                      {user.name == "" ? "SIGN IN/REGISTER" : user.name}
+                    </span>
                   </div>
+
                   <div className=" border-2  bg-white d-none d-md-flex">
                     <ul className="dropDownMenu text-center  list-unstyled text-black">
-                      <Button
-                        className="rounded-4 mt-2 border-0 text-white fw-bold"
-                        onClick={() => setShow(true)}
-                      >
-                        Login/Register
-                      </Button>
+                      {user.name == "" ? (
+                        <Button
+                          className="rounded-4 mt-2 border-0 text-white fw-bold"
+                          onClick={handleLogin}
+                        >
+                          Login/Register
+                        </Button>
+                      ) : (
+                        <Button
+                          className="rounded-4 mt-2 border-0 text-white fw-bold"
+                          onClick={handleLogout}
+                        >
+                          Logout
+                        </Button>
+                      )}
 
                       <li>
-                        <Link to="#">Your Profile</Link>
+                        <Link to="profile">Your Profile</Link>
                       </li>
 
-                      {/* <li>
-                        <Link to="#">Fastfox Subscription</Link>
-                      </li> */}
                       <li>
-                        <Link to="#">Your Orders</Link>
+                        <Link to="orders">Your Orders</Link>
                       </li>
                       <li>
-                        <Link to="#">Addresses</Link>
+                        <Link to="addresses">Addresses</Link>
                       </li>
-                      {/* <li>
-                        <Link to="#">Notifications</Link>
-                      </li> */}
+
                       <li>
-                        <Link to="#">Wishlists</Link>
+                        <Link to="wishlists">Wishlists</Link>
                       </li>
                     </ul>
                   </div>
