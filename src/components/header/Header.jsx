@@ -8,6 +8,7 @@ import shoppingCart from "/Images/shopping-cart.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useNavigate } from "react-router-dom";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import { AsyncTypeahead, Typeahead } from "react-bootstrap-typeahead";
 
 import {
   Container,
@@ -22,10 +23,11 @@ import {
 import LoginPopUp from "../loginPopUp/LoginPopUp";
 import UserContext, { userResultDetails } from "../context/UserContext";
 import axios from "axios";
+import Searchbar from "./Searchbar";
 
 const Header = () => {
   const { user, setUser } = useContext(UserContext);
-  const [searchTerm, setSearchTerm] = useState("");
+
   const navigate = useNavigate();
 
   //For loginPop when clicked on login/Register button.
@@ -59,22 +61,6 @@ const Header = () => {
       }
     } catch (error) {
       console.log("some error while logging out");
-    }
-  };
-
-  const handleSearch = async (e) => {
-    try {
-      setSearch(e.target.value);
-      console.log("value of search", search);
-      const response = await axios.post(
-        "https://bargainfox-dev.concettoprojects.com/api/product/list",
-        { search: searchTerm }
-      );
-      if (response.status === 200) {
-        console.log("search result", response);
-      }
-    } catch (error) {
-      console.log("Error while searching", error);
     }
   };
 
@@ -144,17 +130,7 @@ const Header = () => {
             </Col>
 
             <Col className="d-none d-md-flex">
-              <InputGroup>
-                <Form.Control
-                  placeholder="Search Products"
-                  className="custom-searchbar"
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-
-                <Button className="p-2 ">
-                  <img src={searchImage} className="img-fluid" />
-                </Button>
-              </InputGroup>
+              <Searchbar />
             </Col>
 
             <Col className="col-6 col-sm-6  col-md-4 d-flex justify-content-end mt-2 align-items-center">

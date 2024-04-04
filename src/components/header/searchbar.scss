@@ -1,0 +1,24 @@
+.rbt-loader {
+  position: absolute;
+  top: 12px;
+  right: 5px;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.rbt-input {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.searchbar-button {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+#async-example {
+  overflow-x: hidden !important;
+}

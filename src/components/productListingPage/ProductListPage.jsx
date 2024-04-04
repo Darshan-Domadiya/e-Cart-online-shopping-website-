@@ -9,15 +9,21 @@ import Button from "react-bootstrap/Button";
 import { Offcanvas } from "react-bootstrap";
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 const ProductListPage = () => {
+  const [pageResult, setPageResult] = useState({});
   const [show, setShow] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [productList, setProductList] = useState([]);
   const [sortBy, setSortBy] = useState(null);
   const navigate = useNavigate();
   const { category_id, sub_category_id, collection_id } = useParams();
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const pageValue = searchParams.get("page");
+  // console.log("page no..", pageValue);
 
   const handleSortBy = (e) => {
     const selectedSortBy = e.target.value;
@@ -34,10 +40,9 @@ const ProductListPage = () => {
       path += `/${collection_id}`;
     }
 
-    navigate(`${path}/?sort_by=${selectedSortBy}`);
-    console.log("value of sort by", selectedSortBy);
+    navigate(`${path}?sort_by=${selectedSortBy}`);
+    // console.log("value of sort by", selectedSortBy);
   };
-
   const getProductList = async () => {
     try {
       let data = {};
@@ -53,6 +58,9 @@ const ProductListPage = () => {
       if (sortBy) {
         data.sort_by = sortBy;
       }
+      if (pageValue) {
+        data.page = pageValue;
+      }
 
       setIsLoading(true);
       const response = await axios.post(
@@ -60,9 +68,9 @@ const ProductListPage = () => {
         data
       );
       if (response.status === 200) {
-        console.log("productlisting", response);
+        // console.log("productlisting", response);
         setProductList(response.data.result.data);
-        // console.log("state variable", productList);
+        setPageResult(response.data.result);
       }
     } catch (error) {
       console.log("Error", error);
@@ -73,7 +81,7 @@ const ProductListPage = () => {
 
   useEffect(() => {
     getProductList();
-  }, [category_id, collection_id, sub_category_id, sortBy]);
+  }, [category_id, collection_id, sub_category_id, sortBy, pageValue]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -121,7 +129,7 @@ const ProductListPage = () => {
                 </Col>
 
                 <Col className="mt-3 mt-sm-0 col-12 col-sm-6 col-md-7 col-lg-6 col-xl-6 justify-content-sm-end col-md-8 d-flex align-items-center justify-content-center">
-                  <div className="text-md-end  filter-div filter-border rounded-5 p-2 input-div d-flex justify-content-center align-items-center gap-2">
+                  <div className="text-md-end filter-div filter-border rounded-5 p-2 input-div d-flex justify-content-center align-items-center gap-2">
                     <label>
                       Sort By <span>:</span>
                     </label>
@@ -129,7 +137,7 @@ const ProductListPage = () => {
                     <select
                       name="options"
                       className="custom-select px-2 border-0"
-                      // onClick={(e) => handleSortBy(e)}
+                      value={sortBy || "default"}
                       onChange={(e) => {
                         if (e.target.value !== "default") {
                           handleSortBy(e);
@@ -149,23 +157,18 @@ const ProductListPage = () => {
                   </div>
                 </Col>
               </Row>
+
               {/* Columns of product listing */}
-              {productList.length === 0 && category_id && collection_id ? (
-                <div className="noData-div d-flex align-items-baseline justify-content-center mt-5">
-                  <p className="fw-bolder fs-1">Nothing to show</p>
-                </div>
-              ) : (
-                <Row className="mt-5 mt-sm-5 mt-md-5 d-flex align-items-center justify-content-center justify-content-sm-start">
-                  {productList.map((listData, index) => {
-                    return (
-                      <SingleProduct productListData={listData} key={index} />
-                    );
-                  })}
-                </Row>
-              )}
+              <Row className="mt-5 mt-sm-5 mt-md-5 d-flex align-items-center justify-content-center justify-content-sm-start">
+                {productList.map((listData, index) => {
+                  return (
+                    <SingleProduct productListData={listData} key={index} />
+                  );
+                })}
+              </Row>
 
               <Row>
-                <Paging className="position-fixed" />
+                <Paging lastpage={pageResult.last_page} />
               </Row>
             </Col>
           </Row>

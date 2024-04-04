@@ -15,8 +15,11 @@ const SingleCard = ({ list }) => {
         className=" mt-1 d-flex align-items-center justify-content-center"
       >
         <Row>
-          <Col onClick={() => navigate("/productlisting")}>
-            <div className="border-class ">
+          <Col>
+            <div
+              className="border-class"
+              onClick={() => navigate("/productlisting")}
+            >
               <div>
                 <img src={imgUrl} className="img-fluid" />
               </div>

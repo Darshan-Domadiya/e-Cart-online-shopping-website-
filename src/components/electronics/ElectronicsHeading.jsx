@@ -1,8 +1,11 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import rArrow from "/Images/cArrow.png";
+import { useNavigate } from "react-router-dom";
+import "./electronicheading.scss";
 
 const ElectronicsHeading = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Row className="d-flex">
@@ -12,7 +15,10 @@ const ElectronicsHeading = () => {
           </div>
         </Col>
         <Col className="d-flex justify-content-end align-items-center ">
-          <div>
+          <div
+            className="electronic-heading"
+            onClick={() => navigate("/productlist")}
+          >
             <span className="fontsize-deal">View All Deals</span>
             <img src={rArrow} className="mx-2" />
           </div>

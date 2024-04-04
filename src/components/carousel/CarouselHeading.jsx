@@ -1,8 +1,11 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import rArrow from "/Images/cArrow.png";
+import { useNavigate } from "react-router-dom";
+import "./carouselheading.scss";
 
 const CarouselHeading = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Row className="d-flex align-items-center ">
@@ -12,7 +15,10 @@ const CarouselHeading = () => {
           </div>
         </Col>
         <Col className="d-flex justify-content-end  align-items-center mb-2 mb-sm-0">
-          <div>
+          <div
+            onClick={() => navigate("/productlist")}
+            className="carousel-heading"
+          >
             <span className="fontsize-viewDeals">View All Deals</span>
             <img src={rArrow} className="mx-2 img-fluid" />
           </div>
