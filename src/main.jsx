@@ -20,27 +20,27 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "",
+        path: "/",
         element: <Home />,
       },
       {
-        path: "productlisting",
+        path: "/productlisting",
         element: <ProductListPage />,
       },
       {
-        path: "productdetails",
+        path: "/productdetails/:productId",
         element: <ProductDetails />,
       },
       {
-        path: "shoppingcart",
+        path: "/shoppingcart",
         element: <ShoppingCart />,
       },
       {
-        path: "checkout",
+        path: "/checkout",
         element: <Checkout />,
       },
       {
-        path: "/:category_id?/:sub_category_id?/:collection_id",
+        path: "/:category_id?/:sub_category_id?/:collection_id?",
         element: <ProductListPage />,
       },
     ],

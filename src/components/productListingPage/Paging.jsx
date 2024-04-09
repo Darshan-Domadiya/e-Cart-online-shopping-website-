@@ -5,27 +5,20 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Paging = ({ lastpage }) => {
   const [activePage, setActivePage] = useState(1);
 
-  console.log("activepage", activePage);
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handlePageItem = () => {
+  const handlePageItem = (pageId) => {
     const queryParams = new URLSearchParams(location.search);
     const pageParams = queryParams.get("page");
-    const page = pageParams ? parseInt(pageParams) : 1;
-    console.log("pageparams", pageParams);
+    const page = pageId
+      ? parseInt(pageId)
+      : pageParams
+      ? parseInt(pageParams)
+      : 1;
     setActivePage(page);
     navigate(`?page=${page}`);
   };
-
-  useEffect(() => {
-    handlePageItem();
-  }, [location.search]);
-
-  // const handlePageItem = (page) => {
-  //   console.log("pagevalue", page);
-  //   setActivePage(page);
-  // };
 
   const handlePrev = () => {
     const prevPage = activePage - 1;

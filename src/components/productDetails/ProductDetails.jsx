@@ -10,8 +10,13 @@ import ProductDescription from "./ProductDescription";
 import CustomerComments from "./CustomerComments";
 import ProductImages from "./ProductImages";
 import ProductTitle from "./ProductTitle";
+import { useParams } from "react-router-dom";
 
-const ProductDetails = () => {
+const ProductDetails = ({ productListData }) => {
+  const { productId } = useParams();
+
+  console.log("productId", productId);
+
   return (
     <>
       <Container className="mt-5">

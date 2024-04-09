@@ -3,6 +3,8 @@ import polygon from "/Images/polygon.png";
 import "./bestdealdiscount.scss";
 
 const BestDealDiscount = ({ dataList }) => {
+  const discountPercentage = dataList.discount_percentage;
+  const integerDiscount = Math.floor(discountPercentage);
   return (
     <>
       <div className="d-flex justify-content-between">
@@ -19,7 +21,7 @@ const BestDealDiscount = ({ dataList }) => {
           <div className="position-relative mb-2">
             <img src={polygon} className="img-fluid" />
             <div className="position-absolute polygonShape text-white  discount-fontSize">
-              {dataList.discount_percentage}
+              {integerDiscount}
               <span>%</span>
             </div>
           </div>

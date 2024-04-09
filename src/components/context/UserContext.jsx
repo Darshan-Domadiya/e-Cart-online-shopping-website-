@@ -58,7 +58,6 @@ export const UserContextProvider = ({ children }) => {
         }
       );
       if (response.status === 200) {
-        console.log("response");
         setUser(response.data.result);
       } else {
         alert("User not exists");

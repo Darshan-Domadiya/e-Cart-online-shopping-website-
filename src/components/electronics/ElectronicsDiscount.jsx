@@ -3,6 +3,8 @@ import polygon from "/Images/polygon.png";
 import "./electronicdiscount.scss";
 
 const ElectronicsDiscount = ({ productDetails }) => {
+  const discountPercentage = productDetails.discount_percentage;
+  const integerPercentage = Math.floor(discountPercentage);
   return (
     <>
       <div className="d-flex justify-content-between">
@@ -19,7 +21,7 @@ const ElectronicsDiscount = ({ productDetails }) => {
           <div className="position-relative mb-2">
             <img src={polygon} className="img-fluid" />
             <div className="position-absolute polygonShape text-white discount-fontSize">
-              {productDetails.discount_percentage}
+              {integerPercentage}
               <span>%</span>
             </div>
           </div>

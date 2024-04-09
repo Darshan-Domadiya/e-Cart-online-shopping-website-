@@ -3,6 +3,8 @@ import polygon from "/Images/polygon.png";
 import "./productprice.scss";
 
 const ProductPrice = ({ productPrice }) => {
+  const discountPercentage = productPrice.discount_percentage;
+  const integerPercentage = Math.floor(discountPercentage);
   return (
     <>
       <div className="d-flex align-items-center justify-content-between">
@@ -15,9 +17,9 @@ const ProductPrice = ({ productPrice }) => {
           </strike>
         </div>
         <div className="position-relative mb-2">
-          <img src={polygon} className="img-fluid" />
+          <img src={polygon} />
           <div className="position-absolute polygonShape text-white discount-fontSize">
-            {productPrice.discount_percentage}
+            {integerPercentage}
             <span>%</span>
           </div>
         </div>
