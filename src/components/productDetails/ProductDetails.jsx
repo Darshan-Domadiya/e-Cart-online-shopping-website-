@@ -10,24 +10,28 @@ import ProductDescription from "./ProductDescription";
 import CustomerComments from "./CustomerComments";
 import ProductImages from "./ProductImages";
 import ProductTitle from "./ProductTitle";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
-const ProductDetails = ({ productListData }) => {
-  const { productId } = useParams();
+const ProductDetails = () => {
+  // const { productId } = useParams();
+  const { state } = useLocation();
 
-  console.log("productId", productId);
+  const singleProductData = state && state.singleProductData;
+  
+  // console.log("singleProductData", singleProductData);
+    // console.log("productId", productId);
 
   return (
     <>
       <Container className="mt-5">
         <Row>
           <Col className="col-12  col-md-6 col-lg-6 col-xl-6 ">
-            <ProductImages />
+            <ProductImages productData={singleProductData} />
           </Col>
 
           <Col className=" col-12 col-sm-7 col-md-6 col-lg-6 col-xl-6 ">
-            <ProductTitle />
-            <ProductPrice price="12" discount="65" />
+            <ProductTitle productData={singleProductData} />
+            <ProductPrice productData={singleProductData} />
             <ProductColorSize />
             <ProductDelivery />
             <CartSection />
@@ -42,7 +46,7 @@ const ProductDetails = ({ productListData }) => {
             </Container>
           </Col>
           <Col className="col-12 col-md-6">
-            <ProductDescription />
+            <ProductDescription productData={singleProductData} />
           </Col>
         </Row>
       </Container>

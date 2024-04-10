@@ -76,7 +76,7 @@ const ProductListPage = () => {
   const [show, setShow] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [productList, setProductList] = useState([]);
-  const [sortBy, setSortBy] = useState();
+
   const navigate = useNavigate();
 
   const { category_id, sub_category_id, collection_id } = useParams();
@@ -84,14 +84,15 @@ const ProductListPage = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const pageValue = searchParams.get("page");
-
   const minPrice = searchParams.get("min_price");
   const maxPrice = searchParams.get("max_price");
   const priceRange = searchParams.get("price_range");
   const discountValue = searchParams.get("discount");
+  const sortByValue = searchParams.get("sort_by");
 
   const [selectedPrice, setSelectedPrice] = useState(priceRange);
   const [selectedDiscount, setSelectedDiscount] = useState(discountValue);
+  const [sortBy, setSortBy] = useState(sortByValue);
 
   const handlePriceChange = (e) => {
     const priceChangeValue = e.target.value;
@@ -131,7 +132,7 @@ const ProductListPage = () => {
 
       navigate(`?page=1${path}`);
     }
-    if (!selectedDiscount && !selectedPrice) {
+    if (!selectedDiscount && !selectedPrice && !sortBy) {
       path = path.replace(/&?discount=[^&]*/g, "");
       navigate(`${path}`);
     }
@@ -173,7 +174,7 @@ const ProductListPage = () => {
 
     if (selectedSortBy !== "default") {
       path = path.replace(/&?sort_by=[^&]*/g, "");
-      path += `&sort_by=${selectedSortBy}`;
+      path += `?sort_by=${selectedSortBy}`;
     }
 
     navigate(`${path}`);
@@ -307,7 +308,7 @@ const ProductListPage = () => {
             <Row>
               <Col className="d-flex align-items-center justify-content-around justify-content-md-start gap-2 text-md-start text-lg-start text-xl-start col-12 col-sm-6 col-md-4 col-lg-6 col-xl-6 text-center ">
                 <p className="greyText fs-5 mt-2">
-                  Showing 1 - {productList.length} of {productList.length}
+                  Showing 1 - {productList.length} of {productList.length}{" "}
                   results for{" "}
                   <span className="fw-bold category-Name">"{category_id}"</span>
                 </p>
@@ -372,9 +373,12 @@ const ProductListPage = () => {
             ) : (
               <>
                 <Row className="mt-5 mt-sm-5 mt-md-5 d-flex align-items-center justify-content-center justify-content-sm-start">
-                  {productList.map((listData, index) => {
+                  {productList.map((listData) => {
                     return (
-                      <SingleProduct productListData={listData} key={index} />
+                      <SingleProduct
+                        productListData={listData}
+                        key={listData.id}
+                      />
                     );
                   })}
                 </Row>

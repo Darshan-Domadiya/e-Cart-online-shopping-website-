@@ -16,10 +16,10 @@ const productDetailImage = [
 const CustomerPhotos = () => {
   return (
     <>
-     <p>Customer Photos(5)</p>
+      <p>Customer Photos(5)</p>
       <div className="mb-3">
-        {productDetailImage.map((imgUrl) => {
-          return <img src={imgUrl} />;
+        {productDetailImage.map((imgUrl, index) => {
+          return <img src={imgUrl} key={index} />;
         })}
       </div>
     </>

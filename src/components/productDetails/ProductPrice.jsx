@@ -2,7 +2,10 @@ import React from "react";
 import "./productprice.scss";
 import { Col, Container, Row } from "react-bootstrap";
 
-const ProductPrice = ({ price, discount }) => {
+const ProductPrice = ({ productData }) => {
+  const discountPercentage = productData.discount_percentage;
+  const integerPercentage = Math.floor(discountPercentage);
+
   return (
     <>
       <Container>
@@ -10,14 +13,14 @@ const ProductPrice = ({ price, discount }) => {
           <Col className="d-flex align-items-center  gap-3 col-12 col-sm-12 col-lg-6">
             <div className="h1 fw-bold">
               <sup>$</sup>
-              <span>{price}</span>
+              <span>{productData.sale_price}</span>
             </div>
             <div>
-              <strike>$38.98</strike>
+              <strike>${productData.main_rrp}</strike>
             </div>
             <div className="discountBackground text-center">
               <p className="text-white">
-                <span>{discount}</span>% off
+                <span>{integerPercentage}</span>% off
               </p>
             </div>
           </Col>

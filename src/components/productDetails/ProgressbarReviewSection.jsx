@@ -5,9 +5,9 @@ import { ProgressBar } from "react-bootstrap";
 const ProgressbarReviewSection = ({ list }) => {
   return (
     <>
-      {list.map((value) => {
+      {list.map((value, index) => {
         return (
-          <div className="d-flex align-items-center gap-2">
+          <div className="d-flex align-items-center gap-2" key={index}>
             <span>{value.number}</span>
             <img src={customerReviewStar} />
             <ProgressBar className="w-50" now={value.now} />

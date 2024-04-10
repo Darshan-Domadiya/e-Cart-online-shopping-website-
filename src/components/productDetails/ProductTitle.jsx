@@ -12,15 +12,13 @@ const reviewStars = [
   { imgUrl: normalPolygon },
 ];
 
-const ProductTitle = () => {
+const ProductTitle = ({ productData }) => {
   return (
     <>
       <Container>
         <Row className="mt-3 mt-sm-0">
           <Col className="d-flex gap-4 ">
-            <p className="fw-bold h5">
-              Women's Blouse Solid Simple Long Sleeve V Neck Button Blouse
-            </p>
+            <p className="fw-bold h5">{productData.name}</p>
             <div>
               <img src={shareImage} />
             </div>
@@ -29,8 +27,8 @@ const ProductTitle = () => {
           <Row className="d-flex justify-content-between">
             <Col className="d-flex gap-2 col-12 col-sm-7 col-lg-6  ">
               <div>
-                {reviewStars.map((item) => {
-                  return <img src={item.imgUrl} />;
+                {reviewStars.map((item, index) => {
+                  return <img src={item.imgUrl} key={index} />;
                 })}
               </div>
               <div>

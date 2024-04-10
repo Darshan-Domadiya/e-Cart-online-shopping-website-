@@ -10,8 +10,10 @@ const SingleProduct = ({ productListData }) => {
   const navigate = useNavigate();
 
   const handleProductClick = (productId) => {
-    navigate(`/productDetails/${productId}`);
-    console.log("productId", productId);
+    navigate(`/productDetails/${productId}`, {
+      state: { singleProductData: productListData },
+    });
+    // console.log("productId", productId);
   };
 
   return (
@@ -19,9 +21,7 @@ const SingleProduct = ({ productListData }) => {
       <Col className="col-9 d-flex align-items-center justify-content-center col-xl-3 col-lg-4 col-md-6  mt-4 ">
         <div
           className="dealCard-border mt-3 mt-sm-3  mt-lg-3 mt-xl-0"
-          onClick={() =>
-            handleProductClick(productListData.id)
-          }
+          onClick={() => handleProductClick(productListData.id)}
         >
           <ProductImage productImage={productListData} />
 

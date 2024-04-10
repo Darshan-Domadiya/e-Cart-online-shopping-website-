@@ -28,7 +28,7 @@ const productDetailImage2 = [
   mainImage,
 ];
 
-const ProductImages = () => {
+const ProductImages = ({ productData }) => {
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
   let sliderRef1 = useRef(null);
@@ -46,140 +46,55 @@ const ProductImages = () => {
           <Slider
             asNavFor={nav1}
             ref={(slider) => (sliderRef2 = slider)}
-            slidesToShow={5}
+            slidesToShow={
+              productData.product_images.length > 4
+                ? 4
+                : productData.product_images.length
+            }
             swipeToSlide={true}
             focusOnSelect={true}
             arrows={false}
             vertical={true}
           >
-            <div>
-              <img
-                src={miniImage1}
-                className="img-fluid"
-                height="73px"
-                width="73px"
-              />
-            </div>
-            <div>
-              <img
-                src={miniImage2}
-                className="img-fluid"
-                height="73px"
-                width="73px"
-              />
-            </div>
-            <div>
-              <img
-                src={miniImage3}
-                className="img-fluid"
-                height="73px"
-                width="73px"
-              />
-            </div>
-            <div>
-              <img
-                src={miniImage4}
-                className="img-fluid"
-                height="73px"
-                width="73px"
-              />
-            </div>
-            <div>
-              <img
-                src={miniImage5}
-                className="img-fluid"
-                height="73px"
-                width="73px"
-              />
-            </div>
-            <div>
-              <img
-                src={mainImage}
-                className="img-fluid"
-                height="73px"
-                width="73px"
-              />
-            </div>
+            {productData.product_images.map((smallImg, index) => {
+              return (
+                <div key={index}>
+                  <img
+                    src={smallImg.product_image_url}
+                    className="img-fluid"
+                    height="73px"
+                    width="73px"
+                  />
+                </div>
+              );
+            })}
           </Slider>
         </div>
-        <div className="bigImagediv">
+
+        <div className="bigImagediv ">
           <Slider
             asNavFor={nav2}
             arrows={false}
             ref={(slider) => (sliderRef1 = slider)}
+            // slidesToShow={1}
+            vertical={true}
+            
           >
-            <div>
-              <img
-                src={miniImage1}
-                className="img-fluid"
-                height="600px"
-                width="500px"
-              />
-            </div>
-            <div>
-              <img
-                src={miniImage2}
-                className="img-fluid"
-                height="600px"
-                width="500px"
-              />
-            </div>
-            <div>
-              <img
-                src={miniImage3}
-                className="img-fluid"
-                height="600px"
-                width="500px"
-              />
-            </div>
-            <div>
-              <img
-                src={miniImage4}
-                className="img-fluid"
-                height="600px"
-                width="500px"
-              />
-            </div>
-            <div>
-              <img
-                src={miniImage5}
-                className="img-fluid"
-                height="600px"
-                width="500px"
-              />
-            </div>
-            <div>
-              <img
-                src={mainImage}
-                className="img-fluid"
-                height="600px"
-                width="500px"
-              />
-            </div>
+            {productData.product_images.map((bigImg, index) => {
+              return (
+                <div key={index}>
+                  <img
+                    src={bigImg.product_image_url}
+                    className="img-fluid"
+                    height="600px"
+                    width="500px"
+                  />
+                </div>
+              );
+            })}
           </Slider>
         </div>
       </div>
-
-      {/* <div className="d-flex gap-3">
-        <div className="d-flex flex-column">
-          {productDetailImage.map((imgUrl) => {
-            return (
-              <div>
-                {" "}
-                <img
-                  src={imgUrl}
-                  className="img-fluid "
-                  height="73px"
-                  width="73px"
-                />{" "}
-              </div>
-            );
-          })}
-        </div>
-        <div>
-          <img src={mainImage} className=" img-fluid " />
-        </div>
-      </div> */}
     </>
   );
 };

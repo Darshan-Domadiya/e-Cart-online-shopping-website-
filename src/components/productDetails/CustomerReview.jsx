@@ -64,8 +64,8 @@ const CustomerReview = () => {
               <div className="text-center">
                 <div className="h1 fw-bolder">4</div>
                 <div>
-                  {reviewStars.map((item) => {
-                    return <img src={item.imgUrl} />;
+                  {reviewStars.map((item, index) => {
+                    return <img src={item.imgUrl} key={index} />;
                   })}
                 </div>
                 <p>46,546 Gloabal ratings</p>
@@ -80,8 +80,8 @@ const CustomerReview = () => {
         <Row className="text-center">
           <Col className="text-md-center col-12 col-md-12 col-lg-8 col-xl-6  ">
             <div>
-              {bigStars.map((star) => {
-                return <img src={star.imgUrl} />;
+              {bigStars.map((star, index) => {
+                return <img src={star.imgUrl} key={index} />;
               })}
             </div>
           </Col>

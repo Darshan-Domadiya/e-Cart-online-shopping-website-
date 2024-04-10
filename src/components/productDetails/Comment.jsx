@@ -43,8 +43,8 @@ const Comment = ({ list }) => {
         <Row className="d-flex align-items-center justify-content-between">
           <Col className="d-flex align-items-center gap-1 col-12 col-lg-6">
             {" "}
-            {reviewStarsList.map((star) => {
-              return <img src={star.imgUrl} />;
+            {reviewStarsList.map((star, index) => {
+              return <img src={star.imgUrl} key={index} />;
             })}
             <small>{date}</small>
           </Col>
