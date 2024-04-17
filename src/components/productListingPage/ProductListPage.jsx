@@ -309,9 +309,16 @@ const ProductListPage = () => {
               <Col className="d-flex align-items-center justify-content-around justify-content-md-start gap-2 text-md-start text-lg-start text-xl-start col-12 col-sm-6 col-md-4 col-lg-6 col-xl-6 text-center ">
                 <p className="greyText fs-5 mt-2">
                   Showing 1 - {productList.length} of {productList.length}{" "}
-                  results for{" "}
-                  <span className="fw-bold category-Name">"{category_id}"</span>
+                  {category_id && (
+                    <>
+                      <span>results for </span>
+                      <span className="fw-bold category-Name">
+                        "{category_id}"
+                      </span>
+                    </>
+                  )}
                 </p>
+
                 <div className="d-flex align-items-center gap-2 d-md-none">
                   <Button onClick={handleShow} className="px-2">
                     <div className="d-flex align-items-center gap-2 d-md-none">
@@ -372,7 +379,7 @@ const ProductListPage = () => {
               </div>
             ) : (
               <>
-                <Row className="mt-5 mt-sm-5 mt-md-5 d-flex align-items-center justify-content-center justify-content-sm-start">
+                <Row className="mt-5 mt-sm-5 mt-md-3 d-flex align-items-center justify-content-center justify-content-sm-start">
                   {productList.map((listData) => {
                     return (
                       <SingleProduct

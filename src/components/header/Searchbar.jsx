@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { AsyncTypeahead } from "react-bootstrap-typeahead";
 import searchImage from "/Images/search-normal.png";
@@ -7,11 +7,12 @@ import "./searchbar.scss";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Searchbar = () => {
-  const { productId } = useParams();
-  console.log("product in the search bar components", productId);
+  // const { productId } = useParams();
+  // console.log("product in the search bar components", productId);
   const navigate = useNavigate();
   const [searchResult, setSearchResult] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [query, setQuery] = useState("");
 
   const handleSearch = async (query) => {
     if (query.length > 0) {
@@ -33,11 +34,13 @@ const Searchbar = () => {
     }
   };
 
-  const handleProductClick = (clickedProductId) => {
-    navigate(`/productdetails/${clickedProductId}`);
-  };
-
   const filterBy = () => true;
+  const handleProductClick = (productListData) => {
+    navigate(
+      `/productDetails/${productListData.slug}/${productListData.unique_id}/${productListData.sku}`
+    ),
+      setQuery("");
+  };
 
   return (
     <>
@@ -48,6 +51,7 @@ const Searchbar = () => {
         isLoading={isLoading}
         labelKey="name"
         minLength={1}
+        onChange={() => setQuery([])}
         onSearch={handleSearch}
         options={searchResult}
         placeholder="Search Products..."
@@ -55,7 +59,7 @@ const Searchbar = () => {
           <>
             <div
               className="d-flex align-items-center"
-              onClick={() => handleProductClick(item.id)}
+              onClick={() => handleProductClick(item)}
             >
               <img
                 src={item.product_images[0].product_image_url}
@@ -69,6 +73,7 @@ const Searchbar = () => {
             </div>
           </>
         )}
+        selected={query}
       />
 
       <Button className="p-2 searchbar-button" onClick={handleSearch}>

@@ -11,7 +11,7 @@ const DescriptionDetails = ({ productDescription }) => {
           <img src={orangeCircle} />
         </div>
         <div>
-          <p>{productDescription.description}</p>
+          <p>{productDescription}</p>
         </div>
       </div>
       {/* );

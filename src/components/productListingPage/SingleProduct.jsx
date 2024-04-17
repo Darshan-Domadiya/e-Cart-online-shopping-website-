@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProductImage from "./ProductImage";
 import { Col } from "react-bootstrap";
 import ProductTitle from "./ProductTitle";
@@ -9,12 +9,13 @@ import { useNavigate } from "react-router-dom";
 const SingleProduct = ({ productListData }) => {
   const navigate = useNavigate();
 
-  const handleProductClick = (productId) => {
-    navigate(`/productDetails/${productId}`, {
-      state: { singleProductData: productListData },
-    });
-    // console.log("productId", productId);
+  const handleProductClick = () => {
+    navigate(
+      `/productDetails/${productListData.slug}/${productListData.unique_id}/${productListData.sku}`
+    );
   };
+
+  // console.log("product List data in single product", productListData);
 
   return (
     <>

@@ -11,7 +11,7 @@
 }
 
 .custom-button {
-  background: #0063FF  0% 0% no-repeat padding-box;
+  background: #0063ff 0% 0% no-repeat padding-box;
   border-radius: 25px;
   border: none;
 
@@ -24,7 +24,7 @@
 }
 
 .custom-button:active {
-  --bs-btn-active-bg: #0063FF ;
+  --bs-btn-active-bg: #0063ff;
 }
 
 .custom-input {
@@ -32,4 +32,16 @@
   border-radius: 10px;
   text-align: center;
   border: 1px solid grey;
+}
+
+.counter-button {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 0;
+}
+
+.counter-button:hover {
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 0;
 }

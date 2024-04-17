@@ -136,8 +136,8 @@ const Header = () => {
             <Col className="col-6 col-sm-6  col-md-4 d-flex justify-content-end mt-2 align-items-center">
               <Nav.Link className="position-relative">
                 <img src={wishList} className="img-fluid" />
-                <span className="circle position-absolute d-flex align-items-center justify-content-center">
-                  5
+                <span className="text-white circle position-absolute d-flex align-items-center justify-content-center">
+                  12
                 </span>
               </Nav.Link>
 
@@ -147,8 +147,8 @@ const Header = () => {
               >
                 <img src={shoppingCart} className="img-fluid" />
 
-                <span className="circle position-absolute d-flex align-items-center justify-content-center">
-                  3
+                <span className="text-white circle position-absolute d-flex align-items-center justify-content-center">
+                  23
                 </span>
               </Nav.Link>
 

@@ -77,7 +77,11 @@ const BestDeals = () => {
     try {
       setIsLoading(true);
       const response = await axios.post(
-        "https://bargainfox-dev.concettoprojects.com/api/product/list"
+        "https://bargainfox-dev.concettoprojects.com/api/product/list",
+        {
+          category_id: "sports-leisure",
+          sub_category_id: "garden-diy",
+        }
       );
 
       if (response.status === 200) {

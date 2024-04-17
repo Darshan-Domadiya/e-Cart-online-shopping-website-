@@ -5,10 +5,10 @@ const ProductTitle = ({ productDescription }) => {
   return (
     <>
       <p className="singleline-description fw-bold">
-        {productDescription.name}
+        {productDescription?.name}
       </p>
       <p className="singleline-description greyText">
-        {productDescription.description}{" "}
+        {productDescription?.description}{" "}
       </p>
     </>
   );

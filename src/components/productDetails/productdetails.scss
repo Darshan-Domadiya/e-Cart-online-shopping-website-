@@ -1,4 +1,96 @@
-.mainImgBackground{
-    background: #F2F2F8 0% 0% no-repeat padding-box;
-    opacity: 1;
+.mainImgBackground {
+  background: #f2f2f8 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+// Color box
+.boxColor {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.selectedColorBox-border {
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.borderColorBox {
+  border-color: black;
+}
+
+// Size box
+.sizeGuideBackground {
+  background: #f2f2f8 0% 0% no-repeat padding-box;
+  height: 30px;
+  width: 34px;
+  cursor: pointer;
+}
+
+.selectedSizeBox-border {
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.borderSizeBox {
+  border-color: black;
+}
+
+.inputBorder {
+  border: 2px solid #f5f5fc;
+  border-radius: 56px;
+}
+
+.count-button {
+  background: none;
+  border: 1px solid black;
+}
+
+.count-button:hover {
+  background: #f2f2f8;
+  border: 1px solid black;
+}
+
+// Button css for cart and Buy now.
+.cartBackground {
+  background: #0063ff 0% 0% no-repeat padding-box;
+  border-radius: 25px;
+}
+
+.cartBackground:hover {
+  background: #1562de 0% 0% no-repeat padding-box;
+  border-radius: 25px;
+}
+
+.goToCartBackground{
+  background: #56ae57 0% 0% no-repeat padding-box;
+  border-radius: 25px;
+}
+
+
+.buyBackground {
+  background: #0063ff 0% 0% no-repeat padding-box;
+  border: 1px solid #0063ff;
+  border-radius: 25px;
+}
+
+.buyBackground:hover {
+  background: #1562de 0% 0% no-repeat padding-box;
+  border: 1px solid #0063ff;
+  border-radius: 25px;
+}
+
+
+.quantity-button {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 0;
+}
+
+.quantity-button:hover {
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 0;
 }

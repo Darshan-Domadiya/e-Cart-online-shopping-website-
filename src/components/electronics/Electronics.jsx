@@ -74,7 +74,10 @@ const Electronics = () => {
     try {
       setIsLoading(true);
       const response = await axios.post(
-        "https://bargainfox-dev.concettoprojects.com/api/product/list"
+        "https://bargainfox-dev.concettoprojects.com/api/product/list",
+        {
+          category_id: "electronics",
+        }
       );
       if (response.status === 200) {
         setProductData(response.data.result.data);
