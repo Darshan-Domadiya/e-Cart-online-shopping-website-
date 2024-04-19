@@ -6,6 +6,7 @@ import RegisterPopUp from "../registerpopup/RegisterPopUp";
 import { useSelector } from "react-redux";
 import UserContext from "../context/UserContext";
 import { ToastContainer, toast } from "react-toastify";
+import { sendOtpApi, verifyOtpApi } from "../../api/Constant";
 
 const VerificationPopUp = ({ show, handleClose }) => {
   const userName = useSelector((state) => state.user.name);
@@ -59,10 +60,10 @@ const VerificationPopUp = ({ show, handleClose }) => {
     if (enteredOTP == "000000") {
       setError(false);
       try {
-        const response = await axios.post(
-          "https://bargainfox-dev.concettoprojects.com/api/verify-otp",
-          { otp: enteredOTP, email: userName }
-        );
+        const response = await axios.post(verifyOtpApi, {
+          otp: enteredOTP,
+          email: userName,
+        });
 
         if (response.status === 200) {
           localStorage.setItem("token", response.data.result.token);
@@ -116,12 +117,9 @@ const VerificationPopUp = ({ show, handleClose }) => {
 
   const handleResendCode = async () => {
     try {
-      const response = await axios.post(
-        "https://bargainfox-dev.concettoprojects.com/api/send-otp",
-        {
-          email: userName,
-        }
-      );
+      const response = await axios.post(sendOtpApi, {
+        email: userName,
+      });
 
       if (response.status === 200) {
         setResendOtpButton(false);

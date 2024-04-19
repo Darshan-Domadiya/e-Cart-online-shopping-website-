@@ -12,6 +12,7 @@ import "./electronics.scss";
 import ElectronicsHeading from "./ElectronicsHeading";
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
+import { productListApi } from "../../api/Constant";
 
 function Arrow(props) {
   const { className, style, onClick } = props;
@@ -73,12 +74,9 @@ const Electronics = () => {
   const fetchProductDetails = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.post(
-        "https://bargainfox-dev.concettoprojects.com/api/product/list",
-        {
-          category_id: "electronics",
-        }
-      );
+      const response = await axios.post(productListApi, {
+        category_id: "electronics",
+      });
       if (response.status === 200) {
         setProductData(response.data.result.data);
         // console.log("product details", response.data.result.data);

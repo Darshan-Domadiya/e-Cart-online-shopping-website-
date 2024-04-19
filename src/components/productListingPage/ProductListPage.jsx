@@ -11,6 +11,7 @@ import Spinner from "react-bootstrap/Spinner";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Checkbox } from "pretty-checkbox-react";
 import "@djthoms/pretty-checkbox";
+import { productListApi } from "../../api/Constant";
 
 const ProductListPage = () => {
   const filterData = [
@@ -214,10 +215,7 @@ const ProductListPage = () => {
       }
 
       setIsLoading(true);
-      const response = await axios.post(
-        "https://bargainfox-dev.concettoprojects.com/api/product/list",
-        data
-      );
+      const response = await axios.post(productListApi, data);
       if (response.status === 200) {
         setProductList(response.data.result.data);
         setPageResult(response.data.result);

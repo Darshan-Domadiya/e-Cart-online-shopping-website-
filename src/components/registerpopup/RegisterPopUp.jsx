@@ -7,6 +7,7 @@ import { Formik, ErrorMessage } from "formik";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import UserContext from "../context/UserContext";
+import { registerApi } from "../../api/Constant";
 
 const RegisterPopUp = ({ show, handleClose }) => {
   const { setUser } = useContext(UserContext);
@@ -32,14 +33,11 @@ const RegisterPopUp = ({ show, handleClose }) => {
     const { name, email, phoneNumber } = values;
 
     try {
-      const response = await axios.post(
-        "https://bargainfox-dev.concettoprojects.com/api/register",
-        {
-          name,
-          email,
-          mobile: phoneNumber,
-        }
-      );
+      const response = await axios.post(registerApi, {
+        name,
+        email,
+        mobile: phoneNumber,
+      });
       if (response.status === 200) {
         localStorage.setItem("token", response.data.result.token);
         // alert("Successfully Registered");

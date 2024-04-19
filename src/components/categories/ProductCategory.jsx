@@ -5,6 +5,7 @@ import "./productCategory.scss";
 import SingleProductCategory from "./SingleProductCategory";
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
+import { categoryListApi } from "../../api/Constant";
 
 const ProductCategory = () => {
   const [productCategoryData, setProductCategoryData] = useState([]);
@@ -13,9 +14,7 @@ const ProductCategory = () => {
   const fetchProductCategory = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get(
-        "https://bargainfox-dev.concettoprojects.com/api/category-list"
-      );
+      const response = await axios.get(categoryListApi);
       if (response.status === 200) {
         // console.log("product category data", response.data.result);
         setProductCategoryData(response.data.result);

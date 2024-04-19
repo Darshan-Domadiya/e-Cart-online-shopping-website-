@@ -19,6 +19,9 @@ import "slick-carousel/slick/slick-theme.css";
 import peopleImage from "/Images/people.png";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { addToCartApi, productDetailsApi } from "../../api/Constant";
+import { useDispatch } from "react-redux";
+import { cartProductCount } from "../../app/features/CartCountSlice";
 
 const ProductDetails = () => {
   const initialState = {
@@ -78,6 +81,7 @@ const ProductDetails = () => {
   };
 
   const [productDetail, setProductDetail] = useState(initialState);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -94,7 +98,7 @@ const ProductDetails = () => {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        `https://bargainfox-dev.concettoprojects.com/api/product/detail/${slug}/${uniqueId}?/${sku}`
+        `${productDetailsApi}/${slug}/${uniqueId}?/${sku}`
       );
       if (response.status === 200) {
         setProductDetail(response.data.result);
@@ -270,7 +274,7 @@ const ProductDetails = () => {
         productDetail.size.length === 0
       ) {
         const response = await axios.post(
-          "https://bargainfox-dev.concettoprojects.com/api/add-to-cart",
+          addToCartApi,
 
           {
             quantity: quantityCount,
@@ -284,7 +288,8 @@ const ProductDetails = () => {
           }
         );
         if (response.status === 200) {
-          console.log("cart api call successfull", response.data.result);
+          // console.log("cart api call successfull", response.data.result);
+          dispatch(cartProductCount(response.data.result.quantity));
           toast.success("Product is Added to Cart!", {
             position: "top-center",
           });
@@ -300,7 +305,7 @@ const ProductDetails = () => {
         selectedSizeBox != null
       ) {
         const response = await axios.post(
-          "https://bargainfox-dev.concettoprojects.com/api/add-to-cart",
+          addToCartApi,
 
           {
             quantity: quantityCount,
@@ -315,6 +320,7 @@ const ProductDetails = () => {
         );
         if (response.status === 200) {
           console.log("cart api call successfull", response.data.result);
+          dispatch(cartProductCount(response.data.result.quantity));
           toast.success("Product is Added to Cart!", {
             position: "top-center",
           });

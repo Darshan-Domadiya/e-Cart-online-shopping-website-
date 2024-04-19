@@ -1,10 +1,15 @@
-.addNew-button{
-    background: none;
+.addNew-button {
+  background: none;
 }
 
-.payment-border{
-    // border: 2px solid grey;
-    border-radius: 10px;
-    margin-right: 55px;
+.payment-border {
+  // border: 2px solid grey;
+  border-radius: 10px;
+  margin-right: 55px;
+  height: 200px;
+}
 
+.editAddress-button {
+  border: none;
+  background-color: white;
 }

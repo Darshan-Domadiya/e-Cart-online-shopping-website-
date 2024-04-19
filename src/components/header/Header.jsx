@@ -8,8 +8,12 @@ import shoppingCart from "/Images/shopping-cart.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useNavigate } from "react-router-dom";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { AsyncTypeahead, Typeahead } from "react-bootstrap-typeahead";
-
+import LoginPopUp from "../loginPopUp/LoginPopUp";
+import UserContext, { userResultDetails } from "../context/UserContext";
+import axios from "axios";
+import Searchbar from "./Searchbar";
+import { cartItemCountApi } from "../../api/Constant";
+import { useSelector } from "react-redux";
 import {
   Container,
   InputGroup,
@@ -20,13 +24,12 @@ import {
   Form,
   Button,
 } from "react-bootstrap";
-import LoginPopUp from "../loginPopUp/LoginPopUp";
-import UserContext, { userResultDetails } from "../context/UserContext";
-import axios from "axios";
-import Searchbar from "./Searchbar";
 
 const Header = () => {
   const { user, setUser } = useContext(UserContext);
+  const [cartProductCount, setCartProductCount] = useState("");
+  const cartProductValue = useSelector((state) => state.cartCount.count);
+  // console.log("cart Product Value", cartProductValue);
 
   const navigate = useNavigate();
 
@@ -63,6 +66,24 @@ const Header = () => {
       console.log("some error while logging out");
     }
   };
+
+  const cartItemCount = async () => {
+    try {
+      const response = await axios.get(cartItemCountApi, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      if (response.status === 200) {
+        // console.log("cart items", response.data.result.cart_item_count);
+        setCartProductCount(response.data.result);
+      }
+    } catch (error) {
+      console.log("Error while counting cart products", error);
+    }
+  };
+
+  useEffect(() => {
+    cartItemCount();
+  }, [cartProductValue]);
 
   return (
     <>
@@ -148,7 +169,7 @@ const Header = () => {
                 <img src={shoppingCart} className="img-fluid" />
 
                 <span className="text-white circle position-absolute d-flex align-items-center justify-content-center">
-                  23
+                  {cartProductCount.cart_item_count}
                 </span>
               </Nav.Link>
 

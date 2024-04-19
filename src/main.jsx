@@ -13,6 +13,7 @@ import Checkout from "./components/checkout/Checkout.jsx";
 import { UserContextProvider } from "./components/context/UserContext.jsx";
 import { Provider } from "react-redux";
 import store from "./app/store.js";
+import Payment from "./components/payment/Payment.jsx";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/:category_id?/:sub_category_id?/:collection_id?",
         element: <ProductListPage />,
+      },
+      {
+        path: "/payment",
+        element: <Payment />,
       },
     ],
   },

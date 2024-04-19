@@ -5,6 +5,7 @@ import searchImage from "/Images/search-normal.png";
 import axios from "axios";
 import "./searchbar.scss";
 import { useNavigate, useParams } from "react-router-dom";
+import { productListApi } from "../../api/Constant";
 
 const Searchbar = () => {
   // const { productId } = useParams();
@@ -20,10 +21,7 @@ const Searchbar = () => {
     }
 
     try {
-      const response = await axios.post(
-        "https://bargainfox-dev.concettoprojects.com/api/product/list",
-        { search: query }
-      );
+      const response = await axios.post(productListApi, { search: query });
       if (response.status === 200) {
         setSearchResult(response.data.result.data);
         setIsLoading(false);

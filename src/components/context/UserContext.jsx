@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { userDetailApi } from "../../api/Constant";
 
 const UserContext = createContext();
 
@@ -51,12 +52,9 @@ export const UserContextProvider = ({ children }) => {
 
   const getCurrentUser = async () => {
     try {
-      const response = await axios.get(
-        "https://bargainfox-dev.concettoprojects.com/api/user-detail",
-        {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        }
-      );
+      const response = await axios.get(userDetailApi, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
       if (response.status === 200) {
         setUser(response.data.result);
       } else {

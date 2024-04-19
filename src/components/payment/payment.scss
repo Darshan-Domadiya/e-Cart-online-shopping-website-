@@ -1,0 +1,42 @@
+.vertical-line::before {
+  height: 200px;
+  border-left: 1px solid black;
+}
+
+.deliverAddress-div{
+    border: 1px solid #F2F2F8;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.changeAddress{
+    cursor: pointer;
+    color: #0063ff;
+}
+
+.fontweight{
+    font-weight: 600;
+}
+
+.quantity-box{
+    border: 1px solid #F2F2F8;
+    border-radius: 10px;
+    
+}
+
+.debitcard{
+    border: 1px solid #F2F2F8;
+    border-radius: 15px;
+    height: 300px;
+    width: 500px;
+    padding: 22px;
+}
+
+
+.different-address{
+    border: 1px solid #F2F2F8;
+    border-radius: 15px;
+    height: 400px;
+    width: 550px;
+    padding: 22px;
+}

@@ -8,6 +8,7 @@ import "./bestdeal.scss";
 import BestdealHeading from "./BestdealHeading";
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
+import { productListApi } from "../../api/Constant";
 
 function Arrow(props) {
   const { className, style, onClick } = props;
@@ -76,13 +77,10 @@ const BestDeals = () => {
   const fetchProductData = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.post(
-        "https://bargainfox-dev.concettoprojects.com/api/product/list",
-        {
-          category_id: "sports-leisure",
-          sub_category_id: "garden-diy",
-        }
-      );
+      const response = await axios.post(productListApi, {
+        category_id: "sports-leisure",
+        sub_category_id: "garden-diy",
+      });
 
       if (response.status === 200) {
         // console.log("Product data before state", response.data.result.data);
