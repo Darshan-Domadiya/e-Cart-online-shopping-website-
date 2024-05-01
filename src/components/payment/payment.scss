@@ -1,42 +1,79 @@
+body {
+  margin-bottom: 100px;
+}
+
 .vertical-line::before {
   height: 200px;
   border-left: 1px solid black;
 }
 
-.deliverAddress-div{
-    border: 1px solid #F2F2F8;
-    border-radius: 10px;
-    padding: 10px;
+.deliverAddress-div {
+  border: 1px solid #f2f2f8;
+  border-radius: 10px;
+  padding: 10px;
 }
 
-.changeAddress{
-    cursor: pointer;
-    color: #0063ff;
+.changeAddress {
+  cursor: pointer;
+  color: #0063ff;
 }
 
-.fontweight{
-    font-weight: 600;
+.fontweight {
+  font-weight: 600;
 }
 
-.quantity-box{
-    border: 1px solid #F2F2F8;
-    border-radius: 10px;
-    
+.quantity-box {
+  border: 1px solid #f2f2f8;
+  border-radius: 10px;
 }
 
-.debitcard{
-    border: 1px solid #F2F2F8;
-    border-radius: 15px;
-    height: 300px;
-    width: 500px;
-    padding: 22px;
+.debitcard {
+  border: 1px solid #f2f2f8;
+  border-radius: 15px;
+  height: 300px;
+  width: 500px;
+  padding: 22px;
+}
+
+.different-address {
+  border: 1px solid #f2f2f8;
+  border-radius: 15px;
+  height: 400px;
+  width: 550px;
+  padding: 22px;
+}
+
+.cardBackground-payment {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 2px solid #f2f2f8;
+  border-radius: 20px;
+  position: sticky;
+  top: 40px;
+}
+
+.selectInput-payment {
+  outline: none;
+  appearance: none;
+  background-image: url("/Images/downArrow.png");
+  border-radius: 20px;
+  background-position: top right center;
+}
+
+.selectInput-payment:focus {
+  box-shadow: none;
+}
+
+.paymentPage-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #f5f5fc;
+  border-radius: 20px;
+}
+
+.paymentPageImage-div {
+  height: 150px;
+  width: 150px;
 }
 
 
-.different-address{
-    border: 1px solid #F2F2F8;
-    border-radius: 15px;
-    height: 400px;
-    width: 550px;
-    padding: 22px;
-}

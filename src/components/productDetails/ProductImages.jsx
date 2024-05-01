@@ -9,24 +9,7 @@ import miniImage4 from "/Images/productDetailImage4.png";
 import miniImage5 from "/Images/productDetailImage5.png";
 import mainImage from "/Images/mainProductDetailImage.png";
 import "./productImage.scss";
-
-const productDetailImage = [
-  miniImage1,
-  miniImage2,
-  miniImage3,
-  miniImage4,
-  miniImage5,
-  mainImage,
-];
-
-const productDetailImage2 = [
-  miniImage1,
-  miniImage2,
-  miniImage3,
-  miniImage4,
-  miniImage5,
-  mainImage,
-];
+import ReactImageMagnify from "react-image-magnify";
 
 const ProductImages = ({ productImage }) => {
   const [nav1, setNav1] = useState(null);
@@ -42,8 +25,8 @@ const ProductImages = ({ productImage }) => {
   return (
     <>
       {productImage && (
-        <div className="slider-container d-flex ">
-          <div className="smallImagediv">
+        <div className="slider-container d-flex sliderImage-div col-12">
+          <div className="smallImagediv ">
             <Slider
               asNavFor={nav1}
               ref={(slider) => (sliderRef2 = slider)}
@@ -71,7 +54,7 @@ const ProductImages = ({ productImage }) => {
             </Slider>
           </div>
 
-          <div className="bigImagediv ">
+          <div className="bigImageDiv">
             <Slider
               asNavFor={nav2}
               arrows={false}
@@ -83,11 +66,23 @@ const ProductImages = ({ productImage }) => {
                 productImage.map((bigImg, index) => {
                   return (
                     <div key={index}>
-                      <img
-                        src={bigImg.product_image_url}
-                        className="img-fluid"
-                        height="600px"
-                        width="500px"
+                      <ReactImageMagnify
+                        {...{
+                          smallImage: {
+                            alt: "Wristwatch by Ted Baker London",
+                            isFluidWidth: true,
+                            src: bigImg.product_image_url,
+                          },
+                          largeImage: {
+                            src: bigImg.product_image_url,
+                            width: 1000,
+                            height: 800,
+                          },
+                          enlargedImageContainerDimensions: {
+                            width: "50%", // Width as percentage of small image
+                            height: "40%", // Height in pixels
+                          },
+                        }}
                       />
                     </div>
                   );

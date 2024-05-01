@@ -1,12 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ProductImage from "./ProductImage";
+import wishList from "/Images/wishlist.png";
 import { Col } from "react-bootstrap";
 import ProductTitle from "./ProductTitle";
 import ProductReview from "./ProductReview";
 import ProductPrice from "./ProductPrice";
 import { useNavigate } from "react-router-dom";
+import "./singleproduct.scss";
+import axios from "axios";
+import { manageWishlistApi } from "../../api/Constant";
+import { ToastContainer, toast } from "react-toastify";
+import LoginPopUp from "../loginPopUp/LoginPopUp";
+import VerificationPopUp from "../loginPopUp/VerificationPopUp";
 
 const SingleProduct = ({ productListData }) => {
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
   const navigate = useNavigate();
 
   const handleProductClick = () => {
@@ -15,15 +23,55 @@ const SingleProduct = ({ productListData }) => {
     );
   };
 
+  const isUserLoggedIn = localStorage.getItem("token");
+
+  const handleWishlistClick = async (wishListId, variationWishlistId) => {
+    if (!isUserLoggedIn) {
+      setShowLoginPopup(true);
+
+      return;
+    }
+    try {
+      const requestWishlistData = {
+        product_id: wishListId,
+        action: "add",
+      };
+
+      if (variationWishlistId) {
+        requestWishlistData.product_variation_id = variationWishlistId;
+      }
+
+      const response = await axios.post(
+        manageWishlistApi,
+        requestWishlistData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      if (response.status === 200) {
+        // console.log("Successfull wishlist", response);
+        window.location.reload();
+        toast.success("Product is added to wishlist", {
+          position: "top-right",
+        });
+      }
+    } catch (error) {
+      console.log("Error while adding wishlist", error);
+    }
+  };
+
   // console.log("product List data in single product", productListData);
 
   return (
     <>
-      <Col className="col-9 d-flex align-items-center justify-content-center col-xl-3 col-lg-4 col-md-6  mt-4 ">
+      <Col className="wishlist-col col-9 d-flex align-items-center justify-content-center col-xl-3 col-lg-4 col-md-6  mt-4 ">
         <div
           className="dealCard-border mt-3 mt-sm-3  mt-lg-3 mt-xl-0"
-          onClick={() => handleProductClick(productListData.id)}
+          onClick={() => handleProductClick()}
         >
+          <ToastContainer />
           <ProductImage productImage={productListData} />
 
           <div className="p-2">
@@ -37,7 +85,32 @@ const SingleProduct = ({ productListData }) => {
             </div>
           </div>
         </div>
+        <div
+          className="wishList-logo d-flex align-items-center justify-content-center"
+          onClick={() =>
+            handleWishlistClick(
+              productListData.id,
+              productListData.product_variation_detail &&
+                productListData.product_variation_detail.length > 0
+                ? productListData.product_variation_detail[0].product_id
+                : null
+            )
+          }
+        >
+          <img
+            src={wishList}
+            className="img--fluid"
+            height="20px"
+            width="20px"
+          />
+        </div>
       </Col>
+      {showLoginPopup && (
+        <LoginPopUp
+          show={showLoginPopup}
+          handleClose={() => setShowLoginPopup(false)}
+        />
+      )}
     </>
   );
 };

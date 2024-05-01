@@ -12,6 +12,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Checkbox } from "pretty-checkbox-react";
 import "@djthoms/pretty-checkbox";
 import { productListApi } from "../../api/Constant";
+import noWishlistProduct from "/Images/noproduct.svg";
 
 const ProductListPage = () => {
   const filterData = [
@@ -371,23 +372,38 @@ const ProductListPage = () => {
               <div className="text-center mt-5 mb-5">
                 <Spinner animation="border" variant="primary" />
               </div>
-            ) : productList.length === 0 ? (
-              <div className="h-75 d-flex align-items-center justify-content-center">
-                <p className="fs-2 fw-bold"> No Product Available</p>
-              </div>
             ) : (
-              <>
-                <Row className="mt-5 mt-sm-5 mt-md-3 d-flex align-items-center justify-content-center justify-content-sm-start">
-                  {productList.map((listData) => {
+              <Row className="mt-5 mt-sm-5 mt-md-3 d-flex align-items-center justify-content-center justify-content-sm-start">
+                {productList && productList.length > 0 ? (
+                  productList.map((listData) => {
                     return (
                       <SingleProduct
                         productListData={listData}
                         key={listData.id}
                       />
                     );
-                  })}
-                </Row>
-              </>
+                  })
+                ) : (
+                  <Container className="mt-4">
+                    <div className="d-flex align-items-center justify-content-center">
+                      <div className="d-flex flex-column">
+                        <div className="text-center">
+                          <img
+                            src={noWishlistProduct}
+                            height="60%"
+                            width="60%"
+                          />
+                        </div>
+                        <div className="text-center mt-3">
+                          <span className="fs-3 fw-bold">
+                            Oopss! No Products Available
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </Container>
+                )}
+              </Row>
             )}
             <Row>
               <Paging lastpage={pageResult.last_page} />

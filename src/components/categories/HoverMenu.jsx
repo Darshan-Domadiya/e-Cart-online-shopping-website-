@@ -9,8 +9,8 @@ const HoverMenu = ({ menuList }) => {
   const handleMouseEnter = (id) => {
     setShowCollection(id);
   };
-
   //   console.log("subcategory", subcategoryData);
+  
   return (
     <div className="position-absolute  eachCategory-div">
       <div className="d-flex justify-content-between gap-5">

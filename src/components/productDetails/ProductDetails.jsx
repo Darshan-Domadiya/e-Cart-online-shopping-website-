@@ -352,7 +352,7 @@ const ProductDetails = () => {
         <Container className="mt-5">
           <Row>
             {productDetail && productDetail.product_images && (
-              <Col className="col-12  col-md-6 col-lg-6 col-xl-6 ">
+              <Col className="col-12 col-md-6">
                 <ProductImages productImage={productDetail.product_images} />
               </Col>
             )}

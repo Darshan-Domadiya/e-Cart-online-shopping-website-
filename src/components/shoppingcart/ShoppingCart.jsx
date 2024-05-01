@@ -8,6 +8,7 @@ import { addToCartApi, myCartApi, removeFromCartApi } from "../../api/Constant";
 import { useDispatch } from "react-redux";
 import { cartProductCount } from "../../app/features/CartCountSlice";
 import { ToastContainer, toast } from "react-toastify";
+import noCartProduct from "/Images/noproduct.svg";
 
 const ShoppingCart = () => {
   const [cartItem, setCartItem] = useState();
@@ -15,6 +16,8 @@ const ShoppingCart = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [cartItemQuantity, setCartItemQuantity] = useState([]);
   const dispatch = useDispatch();
+
+  const isUserLoggedIn = localStorage.getItem("token");
 
   const cartItemApi = async () => {
     try {
@@ -39,7 +42,9 @@ const ShoppingCart = () => {
   // console.log("cart Item", cartItem);
 
   useEffect(() => {
-    cartItemApi();
+    if (isUserLoggedIn) {
+      cartItemApi();
+    }
   }, [testState]);
 
   useEffect(() => {
@@ -141,15 +146,19 @@ const ShoppingCart = () => {
               {/* For heading */}
               <Row>
                 <Col className="col-12 col-sm-6 col-sm-6 d-flex align-items-center gap-2">
-                  <p className="h2 fw-bold">Shopping Cart</p>
-                  (3 Items)
+                  <p className="h2 fw-bold">Shopping Cart</p>(
+                  {cartItem &&
+                    cartItemQuantity &&
+                    cartItem.user_cart &&
+                    cartItem.user_cart.length}{" "}
+                  Items)
                 </Col>
               </Row>
 
               {cartItem &&
-                cartItemQuantity &&
-                cartItem.user_cart &&
-                cartItem.user_cart.length > 0 &&
+              cartItemQuantity &&
+              cartItem.user_cart &&
+              cartItem.user_cart.length > 0 ? (
                 cartItem.user_cart.map((cartItem, index) => {
                   return (
                     cartItem && (
@@ -266,7 +275,23 @@ const ShoppingCart = () => {
                       </Row>
                     )
                   );
-                })}
+                })
+              ) : (
+                <Container className="mt-4">
+                  <div className="d-flex align-items-center justify-content-center">
+                    <div className="d-flex flex-column">
+                      <div className="text-center">
+                        <img src={noCartProduct} height="75%" width="75%" />
+                      </div>
+                      <div className="text-center mt-3">
+                        <span className="fs-3 fw-bold">
+                          No Products in the Cart
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Container>
+              )}
             </Col>
 
             <Col className="col-md-12   mt-5 mt-md-5 col-lg-4 col-xl-4">

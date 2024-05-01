@@ -1,0 +1,65 @@
+.profileHeading {
+  border-bottom: 1px solid black;
+}
+
+.profileImage-div {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.profileImage {
+  border-radius: 78px;
+}
+
+.editIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  width: 30px;
+  height: 30px;
+  border-radius: 36px;
+  cursor: pointer;
+}
+
+.profile-input :focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.profile-input {
+  background: #f2f2f8 0% 0% no-repeat padding-box;
+  border-radius: 27px;
+  padding: 10px;
+}
+
+.profile-button {
+  background-color: #0063ff;
+  color: white;
+  border-radius: 25px;
+  padding: 10px;
+}
+
+.profile-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.profile-button:active {
+  background-color: #0063ff;
+  color: white;
+}
+
+.manage-address {
+  color: #0063ff;
+  cursor: pointer;
+}
+
+.deleteAccount-button {
+  cursor: pointer;
+}

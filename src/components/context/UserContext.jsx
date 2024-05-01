@@ -43,13 +43,6 @@ export const userResultDetails = {
 export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(userResultDetails);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      getCurrentUser();
-    }
-  }, []);
-
   const getCurrentUser = async () => {
     try {
       const response = await axios.get(userDetailApi, {
@@ -57,13 +50,18 @@ export const UserContextProvider = ({ children }) => {
       });
       if (response.status === 200) {
         setUser(response.data.result);
-      } else {
-        alert("User not exists");
       }
     } catch (error) {
-      console.log("Error", error);
+      console.log("Error while getting user details", error);
     }
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      getCurrentUser();
+    }
+  }, []);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

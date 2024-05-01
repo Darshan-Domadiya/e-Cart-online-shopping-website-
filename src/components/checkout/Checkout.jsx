@@ -15,6 +15,8 @@ import {
 import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import Spinner from "react-bootstrap/Spinner";
 
 const paymentImage = [paypal, visa, mastercard, american];
 
@@ -23,11 +25,12 @@ const Checkout = () => {
   const [deliveryAddress, setDeliverAddress] = useState("");
   const [showEditAddress, setShowEditAddress] = useState("");
   const [selectedAddress, setSelectedAddress] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSelectedAddress = (addressId) => {
     setSelectedAddress(addressId);
-    console.log(addressId);
+    // console.log(addressId);
   };
 
   const handleClose = () => {
@@ -133,12 +136,14 @@ const Checkout = () => {
 
   const getDeliveryAddress = async () => {
     try {
+      setIsLoading(true);
       const response = await axios.get(getDeliveryAddressApi, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       if (response.status === 200) {
         setDeliverAddress(response.data.result);
-        console.log("Successfull retrieved api call", response.data.result);
+        // console.log("Successfull retrieved api call", response.data.result);
+        setIsLoading(false);
       }
     } catch (error) {
       console.log("Some error while getting Address", error);
@@ -170,100 +175,117 @@ const Checkout = () => {
     setShowEditAddress();
   };
 
+  const handlePaymentButton = () => {
+    if (selectedAddress === null) {
+      toast.warn("Please select Delivery Address", {
+        position: "top-center",
+      });
+    } else {
+      navigate("/payment", { state: { selectedAddress } });
+    }
+  };
+
   return (
     <>
-      <Container className="mt-5 ">
-        <Row className="d-flex  ">
-          <Col className="col-12 col-xl-6 col-lg-7  col-sm-12">
-            <Row className="d-flex align-items-center justify-content-between">
-              <Col className="col-md-9 col-12  mx-sm-0 text-center text-sm-start">
-                <p className="fw-bold fs-3">Select Delivery address</p>
-              </Col>
-              <Col className="col-md-3">
-                <div className="d-flex align-items-center justify-content-end gap-2">
-                  <button
-                    className="border-0 addNew-button"
-                    onClick={handleNewAddress}
-                  >
-                    <img src={add} className="img-fluid" /> <span>Add new</span>
-                  </button>
-                </div>
-              </Col>
-            </Row>
-            <hr className="mt-3 mt-sm-0" />
-            {deliveryAddress &&
-              deliveryAddress.map((addressItem) => {
-                return (
-                  <Row key={addressItem.id}>
-                    <span className="fw-bold text-warning d-flex d-sm-none align-items-center justify-content-end">
-                      Edit Address
-                    </span>
-
-                    <Col className=" col-12 col-md-8 mt-2 mb-2 d-flex align-items-center gap-3">
-                      <div>
-                        <Form.Check
-                          type="radio"
-                          onChange={() => handleSelectedAddress(addressItem.id)}
-                          checked={selectedAddress === addressItem.id}
-                          aria-label="radio 1"
-                        />
-                      </div>
-
-                      <span>
-                        <span className="fw-bold h5">
-                          {addressItem.full_name}
-                        </span>{" "}
-                        <br />
-                        {addressItem.address} {addressItem.address2},{" "}
-                        {addressItem.city}, {addressItem.state},{" "}
-                        {addressItem.country}, {addressItem.postcode} <br />
-                        Phone number: {addressItem.mobile}
+      {isLoading ? (
+        <div className="d-flex align-items-center justify-content-center mt-5 mb-5">
+          <Spinner animation="border" variant="primary" />
+        </div>
+      ) : (
+        <Container className="mt-5 ">
+          <Row className="d-flex  ">
+            <Col className="col-12 col-xl-6 col-lg-7  col-sm-12">
+              <Row className="d-flex align-items-center justify-content-between">
+                <Col className="col-md-9 col-12  mx-sm-0 text-center text-sm-start">
+                  <p className="fw-bold fs-3">Select Delivery address</p>
+                </Col>
+                <Col className="col-md-3">
+                  <div className="d-flex align-items-center justify-content-end gap-2">
+                    <button
+                      className="border-0 addNew-button"
+                      onClick={handleNewAddress}
+                    >
+                      <img src={add} className="img-fluid" />{" "}
+                      <span>Add new</span>
+                    </button>
+                  </div>
+                </Col>
+              </Row>
+              <hr className="mt-3 mt-sm-0" />
+              {deliveryAddress &&
+                deliveryAddress.map((addressItem) => {
+                  return (
+                    <Row key={addressItem.id}>
+                      <span className="fw-bold text-warning d-flex d-sm-none align-items-center justify-content-end">
+                        Edit Address
                       </span>
-                    </Col>
-                    <Col className="d-md-flex align-items-baseline d-none  justify-content-end ">
-                      <button
-                        onClick={() => handleEditAddress(addressItem)}
-                        className="editAddress-button text-warning fw-bold d-flex align-items-center justify-content-end"
-                      >
-                        Edit address
-                      </button>
-                    </Col>
-                    <hr />
-                  </Row>
-                );
-              })}
-          </Col>
 
-          {/* Column for payment section  */}
+                      <Col className=" col-12 col-md-8 mt-2 mb-2 d-flex align-items-center gap-3">
+                        <div>
+                          <Form.Check
+                            type="radio"
+                            onChange={() =>
+                              handleSelectedAddress(addressItem.id)
+                            }
+                            checked={selectedAddress === addressItem.id}
+                            aria-label="radio 1"
+                          />
+                        </div>
 
-          <Col className="mt-3 mt-sm-1 offset-2 justify-content-end border col-lg-4 p-md-3 mx-lg-4 col-xl-4  col-sm-7  col-10  payment-border mx-xl-5 ">
-            <Row className="border-bottom p-3 d-flex align-items-center justify-content-center">
-              <button
-                onClick={() => {
-                  navigate("/payment", {
-                    state: { selectedAddress },
-                  });
-                }}
-                className="continue-button btn btn-primary w-100 "
-              >
-                Continue To Payment
-              </button>
-            </Row>
-            <Row className="py-3">
-              <div>
-                <div className="fw-bold ">We accept :</div>
-                <div className="d-flex align-items-center justify-content-start gap-1 mt-1">
-                  {paymentImage.map((eachImg, index) => (
-                    <div key={index}>
-                      <img src={eachImg} className=" img-fluid" />
-                    </div>
-                  ))}
+                        <span>
+                          <span className="fw-bold h5">
+                            {addressItem.full_name}
+                          </span>{" "}
+                          <br />
+                          {addressItem.address} {addressItem.address2},{" "}
+                          {addressItem.city}, {addressItem.state},{" "}
+                          {addressItem.country}, {addressItem.postcode} <br />
+                          Phone number: {addressItem.mobile}
+                        </span>
+                      </Col>
+                      <Col className="d-md-flex align-items-baseline d-none  justify-content-end ">
+                        <button
+                          onClick={() => handleEditAddress(addressItem)}
+                          className="editAddress-button text-warning fw-bold d-flex align-items-center justify-content-end"
+                        >
+                          Edit address
+                        </button>
+                      </Col>
+                      <hr />
+                    </Row>
+                  );
+                })}
+            </Col>
+
+            {/* Column for payment section  */}
+
+            <Col className="mt-3 mt-sm-1 offset-2 justify-content-end border col-lg-4 p-md-3 mx-lg-4 col-xl-4  col-sm-7  col-10  payment-border mx-xl-5 ">
+              <ToastContainer />
+              <Row className="border-bottom p-3 d-flex align-items-center justify-content-center">
+                <button
+                  onClick={() => handlePaymentButton()}
+                  className="continue-button btn btn-primary w-100 "
+                >
+                  Continue To Payment
+                </button>
+              </Row>
+              <Row className="py-3">
+                <div>
+                  <div className="fw-bold ">We accept :</div>
+                  <div className="d-flex align-items-center justify-content-start gap-1 mt-1">
+                    {paymentImage.map((eachImg, index) => (
+                      <div key={index}>
+                        <img src={eachImg} className=" img-fluid" />
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </Row>
-          </Col>
-        </Row>
-      </Container>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      )}
+
       {showPopup && (
         <Modal
           show={showPopup}
@@ -311,9 +333,9 @@ const Checkout = () => {
                         <option className="text-dark">
                           Country/Region <sup className="text-danger">*</sup>
                         </option>
-                        <option value="india">India</option>
-                        <option value="uk">UK</option>
-                        <option value="usa">USA</option>
+                        <option value="India">India</option>
+                        <option value="Uk">UK</option>
+                        <option value="USA">USA</option>
                       </Form.Select>
                       <small className="mx-2 text-danger">
                         <ErrorMessage name="selectField" />

@@ -12,7 +12,7 @@ import LoginPopUp from "../loginPopUp/LoginPopUp";
 import UserContext, { userResultDetails } from "../context/UserContext";
 import axios from "axios";
 import Searchbar from "./Searchbar";
-import { cartItemCountApi } from "../../api/Constant";
+import { cartItemCountApi, wishlistCountApi } from "../../api/Constant";
 import { useSelector } from "react-redux";
 import {
   Container,
@@ -28,6 +28,7 @@ import {
 const Header = () => {
   const { user, setUser } = useContext(UserContext);
   const [cartProductCount, setCartProductCount] = useState("");
+  const [wishlistProductCount, setWishlistProductCount] = useState("");
   const cartProductValue = useSelector((state) => state.cartCount.count);
   // console.log("cart Product Value", cartProductValue);
 
@@ -60,12 +61,16 @@ const Header = () => {
       if (response.status === 200) {
         localStorage.removeItem("token");
         setUser(userResultDetails);
-        console.log("logout");
+        // console.log("logout");
       }
     } catch (error) {
       console.log("some error while logging out");
     }
   };
+
+  // Token if user is loggedIn
+  const isUserLoggedIn = localStorage.getItem("token");
+  // console.log("user is logged in", isUserLoggedIn);
 
   const cartItemCount = async () => {
     try {
@@ -81,8 +86,41 @@ const Header = () => {
     }
   };
 
+  const wishlistCount = async () => {
+    try {
+      const response = await axios.get(wishlistCountApi, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      if (response.status === 200) {
+        // console.log("Wishlist counts", response.data.result.wishlistcount);
+        setWishlistProductCount(response.data.result);
+      }
+    } catch (error) {
+      console.log("Error in wishlist count", error);
+    }
+  };
+
+  const handleShoppingCartClick = () => {
+    if (isUserLoggedIn) {
+      navigate("/shoppingcart");
+    } else {
+      setShow(true);
+    }
+  };
+
+  const handleWishlistClick = () => {
+    if (isUserLoggedIn) {
+      navigate("/wishlist");
+    } else {
+      setShow(true);
+    }
+  };
+
   useEffect(() => {
-    cartItemCount();
+    if (isUserLoggedIn) {
+      cartItemCount();
+      wishlistCount();
+    }
   }, [cartProductValue]);
 
   return (
@@ -117,23 +155,18 @@ const Header = () => {
                         </Button>
 
                         <li>
-                          <Link to="#">Your Profile</Link>
+                          <Link to="profile">Your Profile</Link>
                         </li>
 
-                        {/* <li>
-                          <Link to="#">Fastfox Subscription</Link>
-                        </li> */}
                         <li>
-                          <Link to="#">Your Orders</Link>
+                          <Link to="orders">Your Orders</Link>
                         </li>
                         <li>
-                          <Link to="#">Addresses</Link>
+                          <Link to="">Addresses</Link>
                         </li>
-                        {/* <li>
-                          <Link to="#">Notifications</Link>
-                        </li> */}
+
                         <li>
-                          <Link to="#">Wishlists</Link>
+                          <Link to="wishlist">Wishlists</Link>
                         </li>
                       </ul>
                     </div>
@@ -155,21 +188,26 @@ const Header = () => {
             </Col>
 
             <Col className="col-6 col-sm-6  col-md-4 d-flex justify-content-end mt-2 align-items-center">
-              <Nav.Link className="position-relative">
+              <Nav.Link
+                className="position-relative"
+                onClick={handleWishlistClick}
+              >
                 <img src={wishList} className="img-fluid" />
                 <span className="text-white circle position-absolute d-flex align-items-center justify-content-center">
-                  12
+                  {wishlistProductCount
+                    ? wishlistProductCount.wishlistcount
+                    : 0}
                 </span>
               </Nav.Link>
 
               <Nav.Link
                 className="mx-4 position-relative"
-                onClick={() => navigate("/shoppingcart")}
+                onClick={handleShoppingCartClick}
               >
                 <img src={shoppingCart} className="img-fluid" />
 
                 <span className="text-white circle position-absolute d-flex align-items-center justify-content-center">
-                  {cartProductCount.cart_item_count}
+                  {cartProductCount ? cartProductCount.cart_item_count : 0}
                 </span>
               </Nav.Link>
 
@@ -203,18 +241,33 @@ const Header = () => {
                       )}
 
                       <li>
-                        <Link to="profile">Your Profile</Link>
+                        <Link
+                          to={isUserLoggedIn ? "profile" : ""}
+                          onClick={() => !isUserLoggedIn && setShow(true)}
+                        >
+                          Your Profile
+                        </Link>
                       </li>
 
                       <li>
-                        <Link to="orders">Your Orders</Link>
+                        <Link
+                          to={isUserLoggedIn ? "orders" : ""}
+                          onClick={() => !isUserLoggedIn && setShow(true)}
+                        >
+                          Your Orders
+                        </Link>
                       </li>
                       <li>
-                        <Link to="addresses">Addresses</Link>
+                        <Link to="">Addresses</Link>
                       </li>
 
                       <li>
-                        <Link to="wishlists">Wishlists</Link>
+                        <Link
+                          to={isUserLoggedIn ? "wishlist" : ""}
+                          onClick={() => !isUserLoggedIn && setShow(true)}
+                        >
+                          Wishlist
+                        </Link>
                       </li>
                     </ul>
                   </div>

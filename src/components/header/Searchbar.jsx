@@ -33,11 +33,19 @@ const Searchbar = () => {
   };
 
   const filterBy = () => true;
+
   const handleProductClick = (productListData) => {
     navigate(
       `/productDetails/${productListData.slug}/${productListData.unique_id}/${productListData.sku}`
     ),
       setQuery("");
+  };
+
+  const handleEnterClick = (e) => {
+    if (e.key === "Enter") {
+      // console.log("Enter is clicked");
+      navigate(`searchText?=query`);
+    }
   };
 
   return (
@@ -50,6 +58,7 @@ const Searchbar = () => {
         labelKey="name"
         minLength={1}
         onChange={() => setQuery([])}
+        onKeyDown={(e) => handleEnterClick(e)}
         onSearch={handleSearch}
         options={searchResult}
         placeholder="Search Products..."

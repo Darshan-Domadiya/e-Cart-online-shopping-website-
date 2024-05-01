@@ -14,6 +14,9 @@ import { UserContextProvider } from "./components/context/UserContext.jsx";
 import { Provider } from "react-redux";
 import store from "./app/store.js";
 import Payment from "./components/payment/Payment.jsx";
+import Orders from "./components/orders/Orders.jsx";
+import Profile from "./components/profile/Profile.jsx";
+import Wishlist from "./components/wishlist/Wishlist.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +30,14 @@ const router = createBrowserRouter([
       {
         path: "/productlisting",
         element: <ProductListPage />,
+      },
+      {
+        path: "/orders",
+        element: <Orders />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
       {
         path: "/productdetails/:slug/:uniqueId/:sku",
@@ -45,14 +56,19 @@ const router = createBrowserRouter([
         element: <Checkout />,
       },
       {
+        path: "/wishlist",
+        element: <Wishlist />,
+      },
+
+      {
         path: "/:category_id?/:sub_category_id?/:collection_id?",
         element: <ProductListPage />,
       },
-      {
-        path: "/payment",
-        element: <Payment />,
-      },
     ],
+  },
+  {
+    path: "/payment",
+    element: <Payment />,
   },
 ]);
 

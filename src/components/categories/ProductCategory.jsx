@@ -41,16 +41,17 @@ const ProductCategory = () => {
       ) : (
         <Container className="mt-5 mb-3">
           <Row className=" d-flex align-items-center justify-content-center">
-            {productCategoryData.map((eachData, index) => {
-              return (
-                <Col
-                  key={index}
-                  className="productCategory-width col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2"
-                >
-                  <SingleProductCategory dataList={eachData} />
-                </Col>
-              );
-            })}
+            {productCategoryData &&
+              productCategoryData.map((eachData, index) => {
+                return (
+                  <Col
+                    key={index}
+                    className="productCategory-width col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2"
+                  >
+                    <SingleProductCategory dataList={eachData} />
+                  </Col>
+                );
+              })}
           </Row>
         </Container>
       )}

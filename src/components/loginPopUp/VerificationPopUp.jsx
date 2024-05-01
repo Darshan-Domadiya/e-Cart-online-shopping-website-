@@ -67,7 +67,7 @@ const VerificationPopUp = ({ show, handleClose }) => {
 
         if (response.status === 200) {
           localStorage.setItem("token", response.data.result.token);
-          console.log("otp successful", response.data);
+          // console.log("otp successful", response.data);
           // alert("OTP is valid");
           if (response.data.result.is_new_user == true) {
             setShowRegister(true);
@@ -78,14 +78,10 @@ const VerificationPopUp = ({ show, handleClose }) => {
             setUser(response.data.result);
             // alert("User already exists");
           }
-        } else {
-          console.log("Something went wrong");
         }
       } catch (error) {
-        if (error.response && error.response.status === 422) {
-          // alert("Some error occured");
-          console.log("Error", error);
-        }
+        // alert("Some error occured");
+        console.log("Error", error);
       }
     } else {
       setError(true);
@@ -131,7 +127,7 @@ const VerificationPopUp = ({ show, handleClose }) => {
         toast.success("OTP sent successfully !", {
           position: "top-center",
         });
-        console.log("otp resent successfully");
+        // console.log("otp resent successfully");
       } else {
         alert("something went wrong");
       }
