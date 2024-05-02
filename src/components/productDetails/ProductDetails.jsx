@@ -357,7 +357,7 @@ const ProductDetails = () => {
               </Col>
             )}
 
-            <Col className=" col-12 col-sm-7 col-md-6 col-lg-6 col-xl-6 ">
+            <Col className="col-12 col-sm-7 col-md-6 col-lg-6 col-xl-6">
               <ToastContainer autoClose={2000} />
               <ProductTitle productData={productDetail} />
               <ProductPrice productData={productDetail} />

@@ -1,13 +1,16 @@
 .bigImageDiv {
   width: 1200px;
-  height: 600px;
+  // height: 600px;
+  position: relative;
 }
 
 .smallImagediv {
   width: 100px;
 }
 
-.image-magnify {
-  width: 100px;
-  height: 100px;
+#enlargedImage-div {
+  position: absolute;
+  left: 595px;
+  top: 0px;
+  z-index: 999;
 }
