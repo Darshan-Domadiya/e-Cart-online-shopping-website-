@@ -24,11 +24,13 @@ import {
   Form,
   Button,
 } from "react-bootstrap";
+import WishlistContext from "../context/WishlistContext";
 
 const Header = () => {
   const { user, setUser } = useContext(UserContext);
+  const { wishlistItemCount, setWishlistItemCount } = useContext(WishlistContext);
   const [cartProductCount, setCartProductCount] = useState("");
-  const [wishlistProductCount, setWishlistProductCount] = useState("");
+  // const [wishlistProductCount, setWishlistProductCount] = useState("");
   const cartProductValue = useSelector((state) => state.cartCount.count);
   // console.log("cart Product Value", cartProductValue);
 
@@ -86,19 +88,19 @@ const Header = () => {
     }
   };
 
-  const wishlistCount = async () => {
-    try {
-      const response = await axios.get(wishlistCountApi, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
-      if (response.status === 200) {
-        // console.log("Wishlist counts", response.data.result.wishlistcount);
-        setWishlistProductCount(response.data.result);
-      }
-    } catch (error) {
-      console.log("Error in wishlist count", error);
-    }
-  };
+  // const wishlistCount = async () => {
+  //   try {
+  //     const response = await axios.get(wishlistCountApi, {
+  //       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  //     });
+  //     if (response.status === 200) {
+  //       // console.log("Wishlist counts", response.data.result.wishlistcount);
+  //       setWishlistProductCount(response.data.result);
+  //     }
+  //   } catch (error) {
+  //     console.log("Error in wishlist count", error);
+  //   }
+  // };
 
   const handleShoppingCartClick = () => {
     if (isUserLoggedIn) {
@@ -119,7 +121,7 @@ const Header = () => {
   useEffect(() => {
     if (isUserLoggedIn) {
       cartItemCount();
-      wishlistCount();
+      // wishlistCount();
     }
   }, [cartProductValue]);
 
@@ -129,10 +131,11 @@ const Header = () => {
         <Container fluid className="mt-2 mb-3 p-3">
           <Row className="d-flex align-items-center  justify-content-between px-1">
             <Col className="col-6 col-sm-6 col-md-4">
-              <Navbar className="gap-1">
+              <header className="gap-1">
                 <div onClick={handleShow}>
                   <GiHamburgerMenu className=" d-flex d-sm-none" />
                 </div>
+
                 <Offcanvas
                   show={showHamburgerMenu}
                   onHide={hideClose}
@@ -161,6 +164,7 @@ const Header = () => {
                         <li>
                           <Link to="orders">Your Orders</Link>
                         </li>
+
                         <li>
                           <Link to="">Addresses</Link>
                         </li>
@@ -172,6 +176,7 @@ const Header = () => {
                     </div>
                   </Offcanvas.Body>
                 </Offcanvas>
+
                 <Link to="/">
                   <div style={{ width: "110px" }}>
                     <img
@@ -180,7 +185,7 @@ const Header = () => {
                     />
                   </div>
                 </Link>
-              </Navbar>
+              </header>
             </Col>
 
             <Col className="d-none d-md-flex">
@@ -194,9 +199,10 @@ const Header = () => {
               >
                 <img src={wishList} className="img-fluid" />
                 <span className="text-white circle position-absolute d-flex align-items-center justify-content-center">
-                  {wishlistProductCount
+                  {/* {wishlistProductCount
                     ? wishlistProductCount.wishlistcount
-                    : 0}
+                    : 0}   */}
+                  {wishlistItemCount && wishlistItemCount ? wishlistItemCount : 0}
                 </span>
               </Nav.Link>
 
@@ -211,7 +217,7 @@ const Header = () => {
                 </span>
               </Nav.Link>
 
-              <Nav.Link className="loginMenu">
+              <div className="loginMenu">
                 <div className=" d-flex gap-2 align-items-center">
                   <img src={userImage} className="img-fluid" />
 
@@ -272,7 +278,7 @@ const Header = () => {
                     </ul>
                   </div>
                 </div>
-              </Nav.Link>
+              </div>
             </Col>
 
             {/* SearchBar for small screen */}

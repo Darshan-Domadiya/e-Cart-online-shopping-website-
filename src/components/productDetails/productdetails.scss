@@ -64,11 +64,10 @@
   border-radius: 25px;
 }
 
-.goToCartBackground{
+.goToCartBackground {
   background: #56ae57 0% 0% no-repeat padding-box;
   border-radius: 25px;
 }
-
 
 .buyBackground {
   background: #0063ff 0% 0% no-repeat padding-box;
@@ -82,7 +81,6 @@
   border-radius: 25px;
 }
 
-
 .quantity-button {
   background-color: white;
   border: 1px solid black;
@@ -93,4 +91,18 @@
   background-color: whitesmoke;
   border: 1px solid black;
   border-radius: 0;
+}
+
+.wishlist-mainDiv {
+  position: relative;
+}
+
+.productDetail-wishlistLogo {
+  position: absolute;
+  top: 11px;
+  right: 24px;
+  background-color: #f5f5fc;
+  border-radius: 36px;
+  padding: 8px;
+  cursor: pointer;
 }

@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "react-bootstrap";
-import { AsyncTypeahead } from "react-bootstrap-typeahead";
+import { AsyncTypeahead, Typeahead } from "react-bootstrap-typeahead";
 import searchImage from "/Images/search-normal.png";
 import axios from "axios";
 import "./searchbar.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import { productListApi } from "../../api/Constant";
+import { ref } from "yup";
 
 const Searchbar = () => {
   // const { productId } = useParams();
@@ -13,14 +14,16 @@ const Searchbar = () => {
   const navigate = useNavigate();
   const [searchResult, setSearchResult] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState([]);
+  const searchInputRef = useRef(null);
 
   const handleSearch = async (query) => {
-    if (query.length > 0) {
-      setIsLoading(true);
-    }
+    // if (query.length > 0) {
+    //   setIsLoading(true);
+    // }
 
     try {
+      setIsLoading(true);
       const response = await axios.post(productListApi, { search: query });
       if (response.status === 200) {
         setSearchResult(response.data.result.data);
@@ -34,31 +37,47 @@ const Searchbar = () => {
 
   const filterBy = () => true;
 
+  const handleInputChange = (query) => {
+    if (!query) {
+      setSearchResult([]);
+    }
+  };
+
   const handleProductClick = (productListData) => {
     navigate(
       `/productDetails/${productListData.slug}/${productListData.unique_id}/${productListData.sku}`
-    ),
-      setQuery("");
+    );
+    setQuery([]);
   };
 
-  const handleEnterClick = (e) => {
-    if (e.key === "Enter") {
-      // console.log("Enter is clicked");
-      navigate(`searchText?=query`);
+  const handleSearchButton = () => {
+    const searchQuery = searchInputRef.current.inputNode.value;
+    const searchUrl = `/search-results?searchText=${searchQuery}`;
+    // console.log(searchQuery, searchUrl);
+    if (searchQuery) {
+      navigate(searchUrl);
+    }
+  };
+
+  const handleEnterPress = (e) => {
+    if (e.key == "Enter") {
+      handleSearchButton();
     }
   };
 
   return (
     <>
       <AsyncTypeahead
+        ref={searchInputRef}
         filterBy={filterBy}
         id="async-example"
         className="w-100 "
         isLoading={isLoading}
         labelKey="name"
-        minLength={1}
+        minLength={2}
         onChange={() => setQuery([])}
-        onKeyDown={(e) => handleEnterClick(e)}
+        onKeyDown={handleEnterPress}
+        onInputChange={handleInputChange}
         onSearch={handleSearch}
         options={searchResult}
         placeholder="Search Products..."
@@ -83,7 +102,7 @@ const Searchbar = () => {
         selected={query}
       />
 
-      <Button className="p-2 searchbar-button" onClick={handleSearch}>
+      <Button className="p-2 searchbar-button" onClick={handleSearchButton}>
         <img src={searchImage} />
       </Button>
     </>

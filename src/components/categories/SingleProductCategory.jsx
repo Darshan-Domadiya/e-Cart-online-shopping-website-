@@ -18,11 +18,14 @@ const SingleProductCategory = ({ dataList }) => {
   return (
     <>
       <div className=" position-relative d-flex flex-column justify-content-center align-items-center">
-        <Link className="text-decoration-none text-dark" to={dataList.slug}>
-          <div
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="product-category d-flex flex-column align-items-center justify-content-center"
+        <div
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className="product-category d-flex flex-column align-items-center justify-content-center"
+        >
+          <Link
+            className="text-decoration-none text-dark d-flex flex-column align-items-center justify-content-center "
+            to={dataList.slug}
           >
             <img
               src={dataList.image_url}
@@ -30,14 +33,14 @@ const SingleProductCategory = ({ dataList }) => {
               height="100px"
               width="100px"
             />
-            <p className="fw-bold">{dataList.title}</p>
-            {isHovered && dataList.subcategory != "" && (
-              <HoverMenu menuList={dataList} />
-            )}
-          </div>
+            <p className="fw-bold mt-2">{dataList.title}</p>
+          </Link>
+          {isHovered && dataList.subcategory != "" && (
+            <HoverMenu menuList={dataList} />
+          )}
+        </div>
 
-          {isHovered && <div className="dot-div position-absolute"></div>}
-        </Link>
+        {isHovered && <div className="dot-div position-absolute"></div>}
       </div>
     </>
   );

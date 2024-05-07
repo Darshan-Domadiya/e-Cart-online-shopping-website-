@@ -186,7 +186,7 @@ const VerificationPopUp = ({ show, handleClose }) => {
                   Resend Code
                 </button>
               </div>
-              <ToastContainer />
+              
 
               <Modal.Footer className="text-center greyText border-top-0">
                 <button

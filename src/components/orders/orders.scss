@@ -5,6 +5,7 @@
 .orderImage-div {
   height: 125px;
   width: 150px;
+  cursor: pointer;
 }
 
 .orderImage {
@@ -48,4 +49,8 @@
   cursor: pointer;
   border-radius: 20px;
   padding: 8px;
+}
+
+.yourOrder-name {
+  cursor: pointer;
 }

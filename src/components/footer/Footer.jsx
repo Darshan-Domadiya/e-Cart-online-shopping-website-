@@ -48,12 +48,12 @@ const accountList = [
   {
     id: "your-account",
     title: "Your Account",
-    url: "/your-account",
+    url: "/profile",
   },
   {
     id: "your-order",
     title: "Your Orders",
-    url: "/your-orders",
+    url: "/orders",
   },
   {
     id: "checkout",

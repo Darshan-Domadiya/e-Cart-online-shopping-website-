@@ -91,6 +91,8 @@ const ProductListPage = () => {
   const priceRange = searchParams.get("price_range");
   const discountValue = searchParams.get("discount");
   const sortByValue = searchParams.get("sort_by");
+  const searchQueryValue = searchParams.get("searchText");
+  // console.log("search query result in product listing page", searchQueryValue);F
 
   const [selectedPrice, setSelectedPrice] = useState(priceRange);
   const [selectedDiscount, setSelectedDiscount] = useState(discountValue);
@@ -115,9 +117,63 @@ const ProductListPage = () => {
     }
   };
 
+  // useEffect(() => {
+  //   let path = "";
+  //   if (selectedDiscount || selectedPrice) {
+  //     if (selectedDiscount) {
+  //       path += `&discount=${selectedDiscount}`;
+  //     }
+  //     if (selectedPrice) {
+  //       const test = PricingFilters.find((o) => o.range === selectedPrice);
+  //       if (test.min >= 0) {
+  //         path += `&min_price=${test.min}`;
+  //       }
+  //       if (test.max >= 0) {
+  //         path += `&max_price=${test.max}`;
+  //       }
+  //       path += `&price_range=${selectedPrice}`;
+  //     }
+  //     navigate(`?page=1?${path}`);
+  //   }
+
+  //   if (!selectedDiscount && !selectedPrice && !sortBy) {
+  //     path = path.replace(/&?discount=[^&]*/g, "");
+  //     navigate(`${path}`);
+  //   }
+
+  //   // if (minPrice) {
+  //   //   path = path.replace(/&?min_price=[^&]*/g, "");
+  //   //   path += `&min_price=${minPrice}`;
+  //   // }
+  //   // if (maxPrice) {
+  //   //   path = path.replace(/&?max_price=[^&]*/g, "");
+  //   //   path += `&max_price=${maxPrice}`;
+  //   // }
+
+  //   // if (priceRange) {
+  //   //   path = path.replace(/&?price_range=[^&]*/g, "");
+  //   //   path += `&price_range=${priceRange}`;
+  //   // }
+
+  //   // if (searchQueryValue) {
+  //   //   path = path.replace(/&?searchText=[^&]*/g, "");
+  //   //   path += `?searchText=${searchQueryValue}`;
+  //   // }
+  //   // console.log("Calling Navigate");
+
+  //   navigate(`${path}`);
+  // }, [
+  //   selectedDiscount,
+  //   selectedPrice,
+  //   minPrice,
+  //   maxPrice,
+  //   priceRange,
+  //   discountValue,
+  // ]);
+
   useEffect(() => {
     let path = "";
-    if (selectedDiscount || selectedPrice) {
+    if (selectedDiscount || selectedPrice || sortBy || searchQueryValue) {
       if (selectedDiscount) {
         path += `&discount=${selectedDiscount}`;
       }
@@ -131,35 +187,19 @@ const ProductListPage = () => {
         }
         path += `&price_range=${selectedPrice}`;
       }
+      if (sortBy) {
+        path += `&sort_by=${sortBy}`;
+      }
+
+      if (searchQueryValue) {
+        path += `&searchText=${searchQueryValue}`;
+      }
 
       navigate(`?page=1${path}`);
-    }
-    if (!selectedDiscount && !selectedPrice && !sortBy) {
-      path = path.replace(/&?discount=[^&]*/g, "");
+    } else {
       navigate(`${path}`);
     }
-
-    if (minPrice) {
-      path = path.replace(/&?min_price=[^&]*/g, "");
-      path += `&min_price=${minPrice}`;
-    }
-    if (maxPrice) {
-      path = path.replace(/&?max_price=[^&]*/g, "");
-      path += `&max_price=${maxPrice}`;
-    }
-
-    if (priceRange) {
-      path = path.replace(/&?price_range=[^&]*/g, "");
-      path += `&price_range=${priceRange}`;
-    }
-  }, [
-    selectedDiscount,
-    selectedPrice,
-    minPrice,
-    maxPrice,
-    priceRange,
-    discountValue,
-  ]);
+  }, [selectedDiscount, selectedPrice, sortBy]);
 
   const handleSortBy = (e) => {
     const selectedSortBy = e.target.value;
@@ -175,7 +215,7 @@ const ProductListPage = () => {
     if (collection_id) path += `/${collection_id}`;
 
     if (selectedSortBy !== "default") {
-      path = path.replace(/&?sort_by=[^&]*/g, "");
+      // path = path.replace(/&?sort_by=[^&]*/g, "");
       path += `?sort_by=${selectedSortBy}`;
     }
 
@@ -185,7 +225,7 @@ const ProductListPage = () => {
   const getProductList = async () => {
     try {
       let data = {};
-      const pageNum = 12;
+      data.per_page = 12;
       if (category_id) {
         data.category_id = category_id;
       }
@@ -201,6 +241,11 @@ const ProductListPage = () => {
       if (pageValue) {
         data.page = pageValue;
       }
+
+      if (searchQueryValue) {
+        data.search = searchQueryValue;
+      }
+
       if (selectedDiscount) {
         data.discount = selectedDiscount;
       }
@@ -210,9 +255,6 @@ const ProductListPage = () => {
         );
         data.min_price = priceFilter.min;
         data.max_price = priceFilter.max;
-      }
-      if (pageNum) {
-        data.per_page = pageNum;
       }
 
       setIsLoading(true);

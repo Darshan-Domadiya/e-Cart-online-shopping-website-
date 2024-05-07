@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductImage from "./ProductImage";
 import wishList from "/Images/wishlist.png";
 import { Col } from "react-bootstrap";
@@ -11,10 +11,12 @@ import axios from "axios";
 import { manageWishlistApi } from "../../api/Constant";
 import { ToastContainer, toast } from "react-toastify";
 import LoginPopUp from "../loginPopUp/LoginPopUp";
-import VerificationPopUp from "../loginPopUp/VerificationPopUp";
+import WishlistContext from "../context/WishlistContext";
 
 const SingleProduct = ({ productListData }) => {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
+  const { wishlistItemCount, setWishlistItemCount } =
+    useContext(WishlistContext);
   const navigate = useNavigate();
 
   const handleProductClick = () => {
@@ -28,7 +30,6 @@ const SingleProduct = ({ productListData }) => {
   const handleWishlistClick = async (wishListId, variationWishlistId) => {
     if (!isUserLoggedIn) {
       setShowLoginPopup(true);
-
       return;
     }
     try {
@@ -51,13 +52,13 @@ const SingleProduct = ({ productListData }) => {
         }
       );
       if (response.status === 200) {
-        // console.log("Successfull wishlist", response);
-        window.location.reload();
+        setWishlistItemCount(wishlistItemCount + 1);
         toast.success("Product is added to wishlist", {
           position: "top-right",
         });
       }
     } catch (error) {
+      toast.warn("Something went wrong");
       console.log("Error while adding wishlist", error);
     }
   };
@@ -71,7 +72,6 @@ const SingleProduct = ({ productListData }) => {
           className="dealCard-border mt-3 mt-sm-3  mt-lg-3 mt-xl-0"
           onClick={() => handleProductClick()}
         >
-          <ToastContainer />
           <ProductImage productImage={productListData} />
 
           <div className="p-2">

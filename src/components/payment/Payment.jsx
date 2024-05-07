@@ -222,7 +222,7 @@ const Payment = () => {
         <Container fluid className="mt-2 mb-3 p-3">
           <Row className="d-flex align-items-center text-center  justify-content-between px-1">
             <Col className="col-6 col-sm-6 col-md-4">
-              <Navbar className="gap-1">
+              <header className="gap-1">
                 <Link to="/">
                   <div style={{ width: "110px" }}>
                     <img
@@ -231,12 +231,12 @@ const Payment = () => {
                     />
                   </div>
                 </Link>
-              </Navbar>
+              </header>
             </Col>
 
             <Col className="d-none d-md-flex justify-content-center">
               <span className="fs-2">Checkout</span>
-              <ToastContainer />
+              
             </Col>
 
             <Col className="d-none d-md-flex justify-content-between">

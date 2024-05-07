@@ -119,7 +119,7 @@ const ShoppingCart = () => {
         setCartItem(response.data.result);
         setTestState(!testState);
         toast.success("Product is deleted successfully!", {
-          position: "top-center",
+          position: "top-right",
         });
         dispatch(cartProductCount(response.data.result.user_cart.length));
         // console.log("cart product deleted successfully", response.data.result);
@@ -134,7 +134,7 @@ const ShoppingCart = () => {
 
   return (
     <>
-      <ToastContainer autoClose={2000} />
+      
       {isLoading ? (
         <div className="text-center mt-5 mb-5">
           <Spinner animation="border" variant="primary" />

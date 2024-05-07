@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import orangePolygon from "/Images/orangePolygon.png";
 import normalPolygon from "/Images/normalPolygon.png";
 import bigStar from "/Images/bigStar.png";
-
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import ProgressbarReviewSection from "./ProgressbarReviewSection";
+import { toast } from "react-toastify";
+import "./customerreview.scss";
+import ratingImage from "/Images/ratingImage.png";
 
 const reviewStars = [
   { imgUrl: orangePolygon },
@@ -50,7 +52,24 @@ const progressBarValues = [
   },
 ];
 
-const CustomerReview = () => {
+const CustomerReview = ({ productId }) => {
+  const [showRating, setShowRating] = useState(false);
+
+  const handleClose = () => {
+    setShowRating(false);
+  };
+
+  const handleRatingClick = () => {
+    if (productId) {
+      setShowRating(!showRating);
+      console.log("RATE THIS PRODUCT");
+    } else {
+      toast.error(
+        "You can not rate this product because you haven't purchased it"
+      );
+    }
+  };
+
   return (
     <>
       <hr />
@@ -86,7 +105,7 @@ const CustomerReview = () => {
             </div>
           </Col>
           <Col className="mt-3 mt-lg-0 text-md-center col-12 col-md-12 col-lg-4 col-xl-6">
-            <div>
+            <div onClick={handleRatingClick} className="rating-div">
               <p className=" fw-bold h4">Rate This Product</p>
             </div>
           </Col>
@@ -94,6 +113,31 @@ const CustomerReview = () => {
       </Container>
 
       <hr />
+      {showRating && (
+        <Modal
+          show={showRating}
+          onHide={handleClose}
+          animation={true}
+          dialogClassName="custom-modal-width"
+        >
+          <Modal.Header className="custom-modal-header" closeButton>
+            <Modal.Title className="d-flex align-items-center justify-content-center w-100 fw-bold fs-3">
+              Add Review
+            </Modal.Title>
+          </Modal.Header>
+          <div className="d-flex align-items-center justify-content-center gap-3">
+            <div className="ratingImage-div">
+              <img src={ratingImage} className="ratingImage" />
+            </div>
+            <div>
+              <span>
+                BONTEC Mobile Workstation Compact Stand-up Computer Presentation
+                Cart Ergonomic with 4 Rolling Castors Moveable &
+              </span>
+            </div>
+          </div>
+        </Modal>
+      )}
     </>
   );
 };

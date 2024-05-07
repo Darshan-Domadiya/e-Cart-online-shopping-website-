@@ -17,6 +17,9 @@ import Payment from "./components/payment/Payment.jsx";
 import Orders from "./components/orders/Orders.jsx";
 import Profile from "./components/profile/Profile.jsx";
 import Wishlist from "./components/wishlist/Wishlist.jsx";
+import { WishlistContextProvider } from "./components/context/WishlistContext.jsx";
+import { ToastContainer } from "react-toastify";
+import OrderDetail from "./components/orderDetails/OrderDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,13 +30,26 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
+      // {
+      //   path: "/productlisting",
+      //   element: <ProductListPage />,
+      // },
       {
-        path: "/productlisting",
+        path: ":category_id?/:sub_category_id?/:collection_id?",
         element: <ProductListPage />,
       },
       {
+        path: "search-results",
+        element: <ProductListPage />,
+      },
+
+      {
         path: "/orders",
         element: <Orders />,
+      },
+      {
+        path: "/orders/:sub_order_number/:order_number",
+        element: <OrderDetail />,
       },
       {
         path: "/profile",
@@ -41,6 +57,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/productdetails/:slug/:uniqueId/:sku",
+        element: <ProductDetails />,
+      },
+      {
+        path: "/productdetails/:slug/:uniqueId/:sku/:productId",
         element: <ProductDetails />,
       },
       {
@@ -59,11 +79,6 @@ const router = createBrowserRouter([
         path: "/wishlist",
         element: <Wishlist />,
       },
-
-      {
-        path: "/:category_id?/:sub_category_id?/:collection_id?",
-        element: <ProductListPage />,
-      },
     ],
   },
   {
@@ -74,10 +89,17 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <UserContextProvider>
-      <RouterProvider router={router}>
-        <App />
-      </RouterProvider>
-    </UserContextProvider>
+    <ToastContainer
+      position="top-right"
+      style={{ zIndex: "99999" }}
+      autoClose={2000}
+    />
+    <WishlistContextProvider>
+      <UserContextProvider>
+        <RouterProvider router={router}>
+          <App />
+        </RouterProvider>
+      </UserContextProvider>
+    </WishlistContextProvider>
   </Provider>
 );

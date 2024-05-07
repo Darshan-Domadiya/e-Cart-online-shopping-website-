@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import "./productdetails.scss";
 import { Col, Container, Row, Spinner } from "react-bootstrap";
 import ProductPrice from "./ProductPrice";
@@ -10,20 +10,27 @@ import ProductDescription from "./ProductDescription";
 import CustomerComments from "./CustomerComments";
 import ProductImages from "./ProductImages";
 import ProductTitle from "./ProductTitle";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-import ruler from "/Images/ruler.png";
-import { Image } from "react-bootstrap";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import peopleImage from "/Images/people.png";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import { addToCartApi, productDetailsApi } from "../../api/Constant";
+import {
+  addToCartApi,
+  manageWishlistApi,
+  productDetailsApi,
+} from "../../api/Constant";
 import { useDispatch } from "react-redux";
 import { cartProductCount } from "../../app/features/CartCountSlice";
+import wishlistLogo from "/Images/wishlist.png";
+import WishlistContext from "../context/WishlistContext";
 
 const ProductDetails = () => {
+  const { wishlistItemCount, setWishlistItemCount } =
+    useContext(WishlistContext);
+
   const initialState = {
     id: null,
     parent_id: null,
@@ -81,6 +88,7 @@ const ProductDetails = () => {
   };
 
   const [productDetail, setProductDetail] = useState(initialState);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -89,10 +97,11 @@ const ProductDetails = () => {
   const [selectedColorBox, setSelectedColorBox] = useState(null);
   const [selectedSizeBox, setSelectedSizeBox] = useState(null);
   const [addedToCart, setAddedToCart] = useState(false);
-  const { slug, uniqueId, sku } = useParams();
+  const { slug, uniqueId, sku, productId } = useParams();
   // console.log("test slug", slug);
   // console.log("test id", uniqueId);
   // console.log("test sku", sku);
+  console.log("productId", productId);
 
   const productDetailApi = async () => {
     try {
@@ -263,8 +272,7 @@ const ProductDetails = () => {
     }
   };
 
-  // console.log("product detail", productDetail);
-  // console.log("token in product detail", localStorage.getItem("token"));
+  // console.log("product details for quantity", productDetail);
 
   const handleAddToCart = async () => {
     try {
@@ -288,7 +296,6 @@ const ProductDetails = () => {
           }
         );
         if (response.status === 200) {
-          // console.log("cart api call successfull", response.data.result);
           dispatch(cartProductCount(response.data.result.quantity));
           toast.success("Product is Added to Cart!", {
             position: "top-center",
@@ -338,8 +345,34 @@ const ProductDetails = () => {
     }
   };
 
+  // console.log(productDetail);
+
   const handleGoToCart = () => {
     navigate("/shoppingcart");
+  };
+
+  const handleAddToWishlist = async (productId, productVariationId) => {
+    try {
+      const response = await axios.post(
+        manageWishlistApi,
+        {
+          product_id: productId,
+          product_variation_id: productVariationId,
+          action: "add",
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      );
+      if (response.status === 200) {
+        setWishlistItemCount(wishlistItemCount + 1);
+        toast.success("Product is added to wishlist", {
+          position: "top-right",
+        });
+      }
+    } catch (error) {
+      console.log("Error while adding product to wishlist", error);
+    }
   };
 
   return isLoading ? (
@@ -352,13 +385,29 @@ const ProductDetails = () => {
         <Container className="mt-5">
           <Row>
             {productDetail && productDetail.product_images && (
-              <Col className="col-12 col-md-6">
+              <Col className="col-12 col-md-6 wishlist-mainDiv">
                 <ProductImages productImage={productDetail.product_images} />
+                <div
+                  className="productDetail-wishlistLogo"
+                  onClick={() =>
+                    handleAddToWishlist(
+                      productDetail.id,
+                      productDetail.product_variation_id
+                        ? productDetail.product_variation_id
+                        : ""
+                    )
+                  }
+                >
+                  <img
+                    src={wishlistLogo}
+                    className="img-fluid"
+                    height="25px"
+                    width="25px"
+                  />
+                </div>
               </Col>
             )}
-
             <Col className="col-12 col-sm-7 col-md-6 col-lg-6 col-xl-6">
-              <ToastContainer autoClose={2000} />
               <ProductTitle productData={productDetail} />
               <ProductPrice productData={productDetail} />
 
@@ -555,7 +604,7 @@ const ProductDetails = () => {
           <Row>
             <Col className="col-12 col-md-6">
               <Container>
-                <CustomerReview />
+                <CustomerReview productId={productId}/>
                 <CustomerComments />
               </Container>
             </Col>

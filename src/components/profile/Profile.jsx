@@ -64,7 +64,7 @@ const Profile = () => {
         profileDetail && (
           <>
             <Container className="mt-3 ">
-              <ToastContainer />
+              
               <div className=" d-flex align-items-center justify-content-center">
                 <span className="fs-1 fw-medium ">Your Profile</span>
               </div>

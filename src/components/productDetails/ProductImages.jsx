@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./productImage.scss";
 import ReactImageMagnify from "react-image-magnify";
-import { SideBySideMagnifier } from "react-image-magnifiers";
 
 const ProductImages = ({ productImage }) => {
   const [nav1, setNav1] = useState(null);
@@ -66,7 +65,6 @@ const ProductImages = ({ productImage }) => {
                         <ReactImageMagnify
                           {...{
                             smallImage: {
-                              alt: "Wristwatch by Ted Baker London",
                               isFluidWidth: true,
                               src: bigImg.product_image_url,
                             },
@@ -76,16 +74,20 @@ const ProductImages = ({ productImage }) => {
                               height: 1200,
                             },
 
+                            enlargedImageContainerStyle: {
+                              border: "2px solid grey",
+                            },
+                            enlargedImagePortalId: "enlargedImage-div",
+
+                            // lensStyle: {
+                            //   height: 200,
+                            //   width: 200,
+                            // },
                             // Controls the lens' height and width with the largeImageContainerDimensions
                             // enlargedImageContainerDimensions: {
                             //   width: 300,
                             //   height: 300,
                             // },
-
-                            enlargedImageContainerStyle: {
-                              border: "2px solid grey",
-                            },
-                            enlargedImagePortalId: "enlargedImage-div",
                           }}
                         />
                       </div>

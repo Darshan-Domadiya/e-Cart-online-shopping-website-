@@ -16,6 +16,7 @@ import * as yup from "yup";
 import { Formik, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Spinner from "react-bootstrap/Spinner";
 
 const paymentImage = [paypal, visa, mastercard, american];
@@ -260,7 +261,7 @@ const Checkout = () => {
             {/* Column for payment section  */}
 
             <Col className="mt-3 mt-sm-1 offset-2 justify-content-end border col-lg-4 p-md-3 mx-lg-4 col-xl-4  col-sm-7  col-10  payment-border mx-xl-5 ">
-              <ToastContainer />
+              
               <Row className="border-bottom p-3 d-flex align-items-center justify-content-center">
                 <button
                   onClick={() => handlePaymentButton()}

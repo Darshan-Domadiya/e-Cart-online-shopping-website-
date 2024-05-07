@@ -1,0 +1,28 @@
+.rating-div {
+  cursor: pointer;
+}
+
+.rating-div:hover {
+  color: #0063ff;
+  transition: 0.5s ease-in;
+}
+
+.ratingImage-div {
+  width: 100px;
+  height: 100px;
+}
+
+.ratingImage {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.custom-modal-header {
+  border-bottom: 0px;
+}
+
+.custom-modal-width .modal-content {
+  width: 125%;
+  border-radius: 25px;
+}
