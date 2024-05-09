@@ -21,6 +21,7 @@ import {
   addToCartApi,
   manageWishlistApi,
   productDetailsApi,
+  reviewListApi,
 } from "../../api/Constant";
 import { useDispatch } from "react-redux";
 import { cartProductCount } from "../../app/features/CartCountSlice";
@@ -97,11 +98,11 @@ const ProductDetails = () => {
   const [selectedColorBox, setSelectedColorBox] = useState(null);
   const [selectedSizeBox, setSelectedSizeBox] = useState(null);
   const [addedToCart, setAddedToCart] = useState(false);
-  const { slug, uniqueId, sku, productId } = useParams();
+  const { slug, uniqueId, sku, orderId } = useParams();
   // console.log("test slug", slug);
   // console.log("test id", uniqueId);
   // console.log("test sku", sku);
-  console.log("productId", productId);
+  // console.log("orderId", orderId);
 
   const productDetailApi = async () => {
     try {
@@ -272,7 +273,7 @@ const ProductDetails = () => {
     }
   };
 
-  // console.log("product details for quantity", productDetail);
+  // console.log("product details ", productDetail);
 
   const handleAddToCart = async () => {
     try {
@@ -345,7 +346,7 @@ const ProductDetails = () => {
     }
   };
 
-  // console.log(productDetail);
+  // console.log("product details", productDetail.product_images[0].product_id);
 
   const handleGoToCart = () => {
     navigate("/shoppingcart");
@@ -604,8 +605,7 @@ const ProductDetails = () => {
           <Row>
             <Col className="col-12 col-md-6">
               <Container>
-                <CustomerReview productId={productId}/>
-                <CustomerComments />
+                <CustomerReview orderId={orderId} productData={productDetail} />
               </Container>
             </Col>
             <Col className="col-12 col-md-6">

@@ -9,7 +9,6 @@ import confirmOrder from "/Images/orderConfirm.svg";
 import deliveredOrder from "/Images/orderDelivered.svg";
 import orderDelivery from "/Images/orderOutForDelivery.svg";
 import orderShipped from "/Images/orderShipped.svg";
-import orderImage from "/Images/orderImage.png";
 import axios from "axios";
 import { myOrderListApi } from "../../api/Constant";
 import { useNavigate, useParams } from "react-router-dom";
@@ -45,14 +44,14 @@ const OrderDetail = () => {
     }
   };
 
-  //   console.log("data", displayData);
+  // console.log("data", displayData);
 
   useEffect(() => {
     displayDeliveryAddress();
   }, []);
 
-  const handleOrderDetailClick = (slug, uniqueId, sku, productId) => {
-    navigate(`/productdetails/${slug}/${uniqueId}/${sku}/${productId}`);
+  const handleOrderDetailClick = (slug, uniqueId, sku, orderId) => {
+    navigate(`/productdetails/${slug}/${uniqueId}/${sku}/${orderId}`);
     // console.log("go to this product detail", slug, uniqueId, sku);
   };
 
@@ -60,7 +59,6 @@ const OrderDetail = () => {
     <>
       {isLoading ? (
         <div className="w-100 h-100 d-flex align-items-center justify-content-center mt-5 mb-5">
-          {" "}
           <Spinner animation="border" variant="primary" />
         </div>
       ) : (
@@ -78,7 +76,6 @@ const OrderDetail = () => {
           <hr className="hr-line" />
           <Row className="">
             <Col>
-              {" "}
               <span className="greyText fw-bolder  fs-5">Delivery Address</span>
               <div className=" mt-3">
                 <span>
@@ -102,11 +99,6 @@ const OrderDetail = () => {
           </Row>
           <hr className="hr-line" />
           <Row className="mt-4">
-            {/* {displayData.map((eachOrderData)=>{
-            return (
-                
-            )
-          })} */}
             <div>
               {/* main div */}
               <div className="d-flex align-items-center gap-4">
@@ -117,7 +109,7 @@ const OrderDetail = () => {
                       displayData[0].product_info.slug,
                       displayData[0].product_info.unique_id,
                       displayData[0].product_info.sku,
-                      displayData[0].product_id
+                      displayData[0].order_id
                     )
                   }
                 >
@@ -137,7 +129,7 @@ const OrderDetail = () => {
                         displayData[0].product_info.slug,
                         displayData[0].product_info.unique_id,
                         displayData[0].product_info.sku,
-                        displayData[0].product_id
+                        displayData[0].order_id
                       )
                     }
                   >

@@ -12,17 +12,17 @@ const menuList = [
   {
     id: "delivery",
     title: "Delivery",
-    url: "/delivery",
+    url: "",
   },
   {
     id: "returns",
     title: "Returns",
-    url: "/returns",
+    url: "",
   },
   {
     id: "help-center",
     title: "Help Center",
-    url: "/help-center",
+    url: "",
   },
 ];
 
@@ -30,17 +30,17 @@ const aboutList = [
   {
     id: "aboutus",
     title: "Abous Us",
-    url: "/about-us",
+    url: "",
   },
   {
     id: "ourblogs",
     title: "Our Blogs",
-    url: "/our-blogs",
+    url: "",
   },
   {
     id: "contactus",
     title: "Contact Us",
-    url: "/contact-us",
+    url: "",
   },
 ];
 
@@ -63,12 +63,12 @@ const accountList = [
   {
     id: "download-the-app",
     title: "Download The App",
-    url: "/download-the-app",
+    url: "",
   },
   {
     id: "fastfox-subscription",
     title: "FastFox Subscription",
-    url: "/fastfox-subscription",
+    url: "",
   },
 ];
 
@@ -105,7 +105,7 @@ const Footer = () => {
 
         <hr className="hrLine" />
 
-        <Row className="mt-4">
+        <Row className="p-3">
           <Col className=" col-12 col-xl-4 col-lg-12  col-md-12 d-flex align-items-center justify-content-center">
             <SocialLogo logoList={socialImage} />
           </Col>

@@ -236,7 +236,6 @@ const Payment = () => {
 
             <Col className="d-none d-md-flex justify-content-center">
               <span className="fs-2">Checkout</span>
-              
             </Col>
 
             <Col className="d-none d-md-flex justify-content-between">
@@ -247,7 +246,7 @@ const Payment = () => {
       </header>
 
       {/* Body container  */}
-      <Container className="mt-5">
+      <Container className="mt-5 mb-5">
         <Row>
           <Col className="col-12 col-md-8">
             <p className="fw-bold fs-1">Payment</p>

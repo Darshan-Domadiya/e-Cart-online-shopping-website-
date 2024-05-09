@@ -19,3 +19,5 @@ export const myOrderListApi = `${Base_url}/my-order-list`;
 export const manageWishlistApi = `${Base_url}/manage-wishlist`;
 export const wishlistApi = `${Base_url}/wishlist`;
 export const wishlistCountApi = `${Base_url}/wishlist-count`;
+export const reviewListApi = `${Base_url}/review-list`;
+export const addReviewListApi = `${Base_url}/add-reviews`;

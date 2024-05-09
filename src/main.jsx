@@ -60,7 +60,7 @@ const router = createBrowserRouter([
         element: <ProductDetails />,
       },
       {
-        path: "/productdetails/:slug/:uniqueId/:sku/:productId",
+        path: "/productdetails/:slug/:uniqueId/:sku/:orderId",
         element: <ProductDetails />,
       },
       {

@@ -178,7 +178,7 @@ const Checkout = () => {
 
   const handlePaymentButton = () => {
     if (selectedAddress === null) {
-      toast.warn("Please select Delivery Address", {
+      toast.error("Please select Delivery Address", {
         position: "top-center",
       });
     } else {
@@ -261,7 +261,6 @@ const Checkout = () => {
             {/* Column for payment section  */}
 
             <Col className="mt-3 mt-sm-1 offset-2 justify-content-end border col-lg-4 p-md-3 mx-lg-4 col-xl-4  col-sm-7  col-10  payment-border mx-xl-5 ">
-              
               <Row className="border-bottom p-3 d-flex align-items-center justify-content-center">
                 <button
                   onClick={() => handlePaymentButton()}

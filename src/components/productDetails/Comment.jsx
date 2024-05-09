@@ -32,7 +32,6 @@ const Comment = ({ list }) => {
             <img src={customerImage} />
           </div>
           <div>
-            {" "}
             <p className="fw-bold h6">{name}</p>
           </div>
         </Row>
@@ -42,7 +41,6 @@ const Comment = ({ list }) => {
         </Row>
         <Row className="d-flex align-items-center justify-content-between">
           <Col className="d-flex align-items-center gap-1 col-12 col-lg-6">
-            {" "}
             {reviewStarsList.map((star, index) => {
               return <img src={star.imgUrl} key={index} />;
             })}

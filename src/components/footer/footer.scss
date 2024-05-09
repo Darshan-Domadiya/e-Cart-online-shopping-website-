@@ -1,9 +1,14 @@
 .social-background {
-  background: #0063FF 0% 0% no-repeat padding-box;
+  background: #0063ff 0% 0% no-repeat padding-box;
   box-shadow: 0px 2px 10px #0000001a;
   border-radius: 60%;
   height: 40px;
   width: 40px;
+  cursor: pointer;
+}
+
+.social-background:hover {
+  background: #1a73ff 0% 0% no-repeat padding-box;
 }
 
 .hrLine {
