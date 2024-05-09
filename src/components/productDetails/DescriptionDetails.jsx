@@ -8,6 +8,7 @@ const DescriptionDetails = ({ productDescription }) => {
         return ( */}
       <div className="d-flex gap-2  ">
         <div>
+        
           <img src={orangeCircle} />
         </div>
         <div>
