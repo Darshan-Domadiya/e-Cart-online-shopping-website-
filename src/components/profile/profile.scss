@@ -4,8 +4,8 @@
 
 .profileImage-div {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
 }
 
 .profileImage {
@@ -35,14 +35,14 @@
 .profile-input {
   background: #f2f2f8 0% 0% no-repeat padding-box;
   border-radius: 27px;
-  padding: 10px;
+  padding: 6px;
 }
 
 .profile-button {
   background-color: #0063ff;
   color: white;
-  border-radius: 25px;
-  padding: 10px;
+  border-radius: 27px;
+  padding: 6px;
 }
 
 .profile-button:hover {
@@ -62,4 +62,36 @@
 
 .deleteAccount-button {
   cursor: pointer;
+}
+
+// Media queries
+
+@media screen and (min-width: 320px) {
+  .profile-row {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .profile-row {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .profile-row {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .profile-row {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .profile-row {
+    width: 50%;
+  }
 }

@@ -10,11 +10,18 @@ const SingleTrendingProduct = ({ list }) => {
   return (
     <>
       <Col className="trendingCard-width col-6 col-sm-3 col-md-3 col-lg-2 d-flex  flex-column align-items-center justify-content-center">
-        <TrendingImage imgUrl={imgUrl} />
+        <div className="imgBackground p-2 ">
+          <img
+            src={imgUrl}
+            className="img-fluid "
+            height="110px"
+            width="110px"
+          />
+        </div>
 
-        <TrendingDiscount discount={discount} />
+        <p className="discountBackGround text-white px-3 py-1 ">{discount}</p>
 
-        <TrendingTitle title={title} />
+        <p className="fw-bold">{title}</p>
       </Col>
     </>
   );

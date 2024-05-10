@@ -30,10 +30,6 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-      // {
-      //   path: "/productlisting",
-      //   element: <ProductListPage />,
-      // },
       {
         path: ":category_id?/:sub_category_id?/:collection_id?",
         element: <ProductListPage />,
@@ -61,10 +57,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/productdetails/:slug/:uniqueId/:sku/:orderId",
-        element: <ProductDetails />,
-      },
-      {
-        path: "/productdetails",
         element: <ProductDetails />,
       },
       {

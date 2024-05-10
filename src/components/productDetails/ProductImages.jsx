@@ -62,7 +62,7 @@ const ProductImages = ({ productImage }) => {
                   return (
                     <div key={index}>
                       <div>
-                        <ReactImageMagnify
+                        <ReactImageMagnify className=""
                           {...{
                             smallImage: {
                               isFluidWidth: true,

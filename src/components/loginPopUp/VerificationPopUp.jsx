@@ -187,7 +187,6 @@ const VerificationPopUp = ({ show, handleClose }) => {
                 </button>
               </div>
               
-
               <Modal.Footer className="text-center greyText border-top-0">
                 <button
                   onClick={handleSubmit}

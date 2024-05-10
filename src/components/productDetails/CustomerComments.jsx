@@ -1,8 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import CustomerPhotos from "./CustomerPhotos";
-import Comment from "./Comment";
-import customer from "/Images/customer.png";
 import like from "/Images/like.png";
 import orangePolygon from "/Images/orangePolygon.png";
 import normalPolygon from "/Images/normalPolygon.png";

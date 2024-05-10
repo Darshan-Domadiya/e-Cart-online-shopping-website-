@@ -65,11 +65,6 @@ const accountList = [
     title: "Download The App",
     url: "",
   },
-  {
-    id: "fastfox-subscription",
-    title: "FastFox Subscription",
-    url: "",
-  },
 ];
 
 const socialImage = [
@@ -91,14 +86,14 @@ const Footer = () => {
   return (
     <>
       <Container fluid className="mt-5  pt-5 bg-dark">
-        <Row className="mx-4">
-          <Col className="col-12 helpList-margin  col-md-4 d-flex  flex-column align-items-center justify-content-center">
+        <Row>
+          <Col className="col-12 col-md-4 d-flex align-items-center justify-content-center menuList-col">
             <FooterMenu title="Help" list={menuList} />
           </Col>
-          <Col className="col-12 col-md-4 d-flex  flex-column align-items-center justify-content-center">
+          <Col className="col-12 col-md-4 d-flex align-items-center justify-content-center aboutList-col">
             <FooterMenu title="About us" list={aboutList} />
           </Col>
-          <Col className=" accountList-margin col-12  pt-md-5 col-md-4 d-flex flex-column align-items-center justify-content-center">
+          <Col className=" col-12  col-md-4 pt-md-3 d-flex align-items-center justify-content-center accountList-col">
             <FooterMenu title="Your Account" list={accountList} />
           </Col>
         </Row>

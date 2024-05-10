@@ -1,7 +1,9 @@
 import React from "react";
 import highlight from "/Images/highlight.png";
 import { Image } from "react-bootstrap";
-import DescriptionDetails from "./DescriptionDetails";
+
+import orangeCircle from "/Images/desCircle.png";
+
 
 const ProductDescription = ({ productData }) => {
   return (
@@ -22,7 +24,14 @@ const ProductDescription = ({ productData }) => {
         <hr />
         <div>
           <p className="fw-bold h3 mb-4">Product Description</p>
-          <DescriptionDetails productDescription={productData} />
+          <div className="d-flex gap-2  ">
+        <div>
+          <img src={orangeCircle} />
+        </div>
+        <div>
+          <p>{productData}</p>
+        </div>
+      </div>
         </div>
       </div>
     </>

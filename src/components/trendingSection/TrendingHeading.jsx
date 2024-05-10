@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import "./trendingheading.scss";
 
 const TrendingHeading = () => {
-  const navigate = useNavigate();
   return (
     <>
       <Row>
@@ -18,10 +17,7 @@ const TrendingHeading = () => {
         </Col>
 
         <Col className="d-flex justify-content-end align-items-center">
-          <div
-            className="trending-heading"
-            onClick={() => navigate("/productlist")}
-          >
+          <div className="trending-heading">
             <span className="fontsize-allDeals"> View All Deals</span>
             <img src={rArrow} className="mx-1" />
           </div>

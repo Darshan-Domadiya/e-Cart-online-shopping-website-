@@ -87,7 +87,6 @@ const OrderDetail = () => {
                 </span>
               </div>
             </Col>
-            {/* <span className="vertical-line"></span> */}
 
             <Col className="leftBorder  ">
               <div className="greyText fw-bolder fs-5 mx-5">Actions</div>
@@ -144,13 +143,13 @@ const OrderDetail = () => {
                     </div>
                     <div>
                       <span>
-                        <span className="greyText"> Condition:</span>{" "}
+                        <span className="greyText"> Condition:</span>
                         <span className="fw-bold">Brand New</span>
                       </span>
                     </div>
                     <div>
                       <span>
-                        <span className="greyText"> Quantity:</span>{" "}
+                        <span className="greyText"> Quantity:</span>
                         <span className="fw-bold">
                           {displayData[0]?.quantity}
                         </span>

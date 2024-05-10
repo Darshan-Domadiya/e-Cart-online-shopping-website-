@@ -21,7 +21,7 @@ const SingleEleProduct = ({ productDataList }) => {
     <>
       <Container className="border-danger mt-1 d-flex align-items-center justify-content-center">
         <Row>
-          <Col onClick={handleElectronicProductClick}>
+          <Col onClick={handleElectronicProductClick} className="col-12">
             <div className="product-border">
               <div className="d-flex align-items-center justify-content-center">
                 <ElectronicImage productDetails={productDataList} />

@@ -64,14 +64,13 @@ const Profile = () => {
         profileDetail && (
           <>
             <Container className="mt-3 ">
-              
               <div className=" d-flex align-items-center justify-content-center">
                 <span className="fs-1 fw-medium ">Your Profile</span>
               </div>
               <hr className="horizontal-line" />
             </Container>
             <Container className="d-flex align-items-center justify-content-center">
-              <Row className="w-50">
+              <Row className="profile-row">
                 <div className="d-flex align-items-center justify-content-center mt-2">
                   <div className="profileImage-div ">
                     <img
@@ -90,7 +89,7 @@ const Profile = () => {
                         Full Name<sup className="text-danger mx-1">*</sup>
                       </Form.Label>
                       <Form.Control
-                        className="profile-input"
+                        className="profile-input px-3"
                         type="text"
                         name="fullName"
                         value={profileDetail.name}
@@ -107,7 +106,7 @@ const Profile = () => {
                         Phone<sup className="text-danger mx-1">*</sup>
                       </Form.Label>
                       <Form.Control
-                        className="profile-input"
+                        className="profile-input px-3"
                         type="text"
                         name="phone"
                         value={profileDetail.mobile}
@@ -118,7 +117,7 @@ const Profile = () => {
                         Email<sup className="text-danger mx-1">*</sup>
                       </Form.Label>
                       <Form.Control
-                        className="profile-input "
+                        className="profile-input px-3"
                         type="text"
                         name="email"
                         value={profileDetail.email}

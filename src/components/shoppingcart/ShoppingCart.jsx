@@ -7,7 +7,7 @@ import Spinner from "react-bootstrap/Spinner";
 import { addToCartApi, myCartApi, removeFromCartApi } from "../../api/Constant";
 import { useDispatch } from "react-redux";
 import { cartProductCount } from "../../app/features/CartCountSlice";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import noCartProduct from "/Images/noproduct.svg";
 
 const ShoppingCart = () => {

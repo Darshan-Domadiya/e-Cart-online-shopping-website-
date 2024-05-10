@@ -6,17 +6,7 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Container } from "react-bootstrap";
 
 const App = () => {
-  return (
-    <>
-      <Container className="bg-dark text-white">
-        <Breadcrumb>
-          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-          <Breadcrumb.Item href="/profile">profile</Breadcrumb.Item>
-          <Breadcrumb.Item href="/orders">Orders</Breadcrumb.Item>
-        </Breadcrumb>
-      </Container>
-    </>
-  );
+  return <></>;
 };
 
 export default App;

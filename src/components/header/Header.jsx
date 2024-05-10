@@ -28,7 +28,8 @@ import WishlistContext from "../context/WishlistContext";
 
 const Header = () => {
   const { user, setUser } = useContext(UserContext);
-  const { wishlistItemCount, setWishlistItemCount } = useContext(WishlistContext);
+  const { wishlistItemCount, setWishlistItemCount } =
+    useContext(WishlistContext);
   const [cartProductCount, setCartProductCount] = useState("");
   // const [wishlistProductCount, setWishlistProductCount] = useState("");
   const cartProductValue = useSelector((state) => state.cartCount.count);
@@ -131,7 +132,7 @@ const Header = () => {
         <Container fluid className="mt-2 mb-3 p-3">
           <Row className="d-flex align-items-center  justify-content-between px-1">
             <Col className="col-6 col-sm-6 col-md-4">
-              <header className="gap-1">
+              <header className="d-flex align-items-center gap-1 gap-sm-0">
                 <div onClick={handleShow}>
                   <GiHamburgerMenu className=" d-flex d-sm-none" />
                 </div>
@@ -199,10 +200,9 @@ const Header = () => {
               >
                 <img src={wishList} className="img-fluid" />
                 <span className="text-white circle position-absolute d-flex align-items-center justify-content-center">
-                  {/* {wishlistProductCount
-                    ? wishlistProductCount.wishlistcount
-                    : 0}   */}
-                  {wishlistItemCount && wishlistItemCount ? wishlistItemCount : 0}
+                  {wishlistItemCount && wishlistItemCount
+                    ? wishlistItemCount
+                    : 0}
                 </span>
               </Nav.Link>
 
@@ -229,17 +229,17 @@ const Header = () => {
                   </div>
 
                   <div className=" border-2  bg-white d-none d-md-flex">
-                    <ul className="dropDownMenu text-center  list-unstyled text-black">
+                    <ul className="dropDownMenu text-center list-unstyled text-black">
                       {user.name == "" ? (
                         <Button
-                          className="rounded-4 mt-2 border-0 text-white fw-bold"
+                          className="login-button rounded-4 mt-2 border-0 text-white fw-bold"
                           onClick={handleLogin}
                         >
                           Login/Register
                         </Button>
                       ) : (
                         <Button
-                          className="rounded-4 mt-2 border-0 text-white fw-bold"
+                          className="logout-button rounded-4 mt-2 border-0 text-white fw-bold"
                           onClick={handleLogout}
                         >
                           Logout

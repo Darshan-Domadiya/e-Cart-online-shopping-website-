@@ -255,7 +255,7 @@ const Payment = () => {
             {/* Row for delivery address  */}
             <Row className="">
               <Col>
-                {" "}
+                
                 <span className="greyText fontweight  fs-4">
                   Delivery Address
                 </span>
@@ -270,14 +270,14 @@ const Payment = () => {
                   </span>
                 </div>
                 <span className="changeAddress fw-bold  d-flex justify-content-end mt-2">
-                  {" "}
+                  
                   Change Address
                 </span>
               </Col>
               {/* <span className="vertical-line"></span> */}
 
               <Col className="">
-                {" "}
+                
                 <span className="greyText fontweight fs-4">
                   Delivery Method
                 </span>

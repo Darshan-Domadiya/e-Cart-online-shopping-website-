@@ -135,9 +135,6 @@ const LoginPopUp = ({ show, handleClose }) => {
           </Modal.Body>
         </Modal>
       )}
-      {/* {showRegister && (
-        <RegisterPopUp show={showRegister} handleClose={handleClose} />
-      )} */}
       {verification && (
         <VerificationPopUp show={verification} handleClose={handleClose} />
       )}

@@ -40,8 +40,6 @@ const RegisterPopUp = ({ show, handleClose }) => {
       });
       if (response.status === 200) {
         localStorage.setItem("token", response.data.result.token);
-        // alert("Successfully Registered");
-
         setUser(response.data.result);
         console.log("first", response.data.result);
         setRegisterPopUpClose(false);

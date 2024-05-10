@@ -3,8 +3,6 @@ import "./productprice.scss";
 import { Col, Container, Row } from "react-bootstrap";
 
 const ProductPrice = ({ productData }) => {
-  // const discountPercentage = productData?.percentage_discount;
-  const integerPercentage = Math.floor(productData.percentage_discount);
   // console.log("product data", productData);
 
   return (
@@ -29,7 +27,8 @@ const ProductPrice = ({ productData }) => {
 
               <div className="discountBackground text-center">
                 <p className="text-white">
-                  <span>{integerPercentage}</span>% off
+                  <span>{Math.floor(productData.percentage_discount)}</span>%
+                  off
                 </p>
               </div>
             </Col>

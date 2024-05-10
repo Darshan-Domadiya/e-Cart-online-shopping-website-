@@ -65,7 +65,6 @@ const Wishlist = () => {
         }
       );
       if (response.status === 200) {
-        // console.log("Deleted successfully", response);
         toast.success("Product deleted from wishlist successfully");
         setWishlistItemCount(wishlistItemCount - 1);
         const filteredWishlistData = wishlistProduct.filter(
@@ -112,7 +111,7 @@ const Wishlist = () => {
               return (
                 <Col
                   key={data.id}
-                  className="wishlistProduct-col d-flex align-items-center justify-content-center col-xl-3 col-lg-4 col-md-6  mt-4"
+                  className="wishlistProduct-col d-flex align-items-center justify-content-center col-7  col-sm-6 col-xl-3 col-lg-4 col-md-6  mt-4"
                 >
                   <div
                     className=" dealCard-border mt-3 mt-sm-3  mt-lg-3 mt-xl-0"

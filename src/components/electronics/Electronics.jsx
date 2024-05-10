@@ -28,45 +28,6 @@ function Arrow(props) {
   );
 }
 
-const productDetails = [
-  {
-    imgUrl: electronics1,
-    prodDes:
-      "Apple iPad (9th Generation): with A13 Bionic chip, 10.2-inch Retina Display, 256GB, Wi-Fi, 12MP",
-    review: "23,443",
-    price: "$34",
-    lessPrice: "$56",
-    discount: "25",
-  },
-  {
-    imgUrl: electronics2,
-    prodDes:
-      "Eilik - an Electronic Robot Pets Toys with Intelligent and Interactive | Abundant Emotions, Idle...",
-    review: "34,443",
-    price: "$67",
-    lessPrice: "$95",
-    discount: "15",
-  },
-  {
-    imgUrl: electronics3,
-    prodDes:
-      "LOBKIN Wireless Bluetooth Headphones, Over-Ear Headphones with Built-in HD Mic ",
-    review: "45,443",
-    price: "$50",
-    lessPrice: "$150",
-    discount: "75",
-  },
-  {
-    imgUrl: electronics4,
-    prodDes:
-      "SAMSUNG Galaxy Watch 5 40mm Bluetooth Smartwatch w/ Body, Health, Fitness and Sleep Tracker..",
-    review: "13,322",
-    price: "$64",
-    lessPrice: "$76",
-    discount: "10",
-  },
-];
-
 const Electronics = () => {
   const [productData, setProductData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -107,7 +68,7 @@ const Electronics = () => {
           slidesToShow: 4,
           slidesToScroll: 3,
           infinite: true,
-          dots: true,
+          // dots: true,
         },
       },
       {
@@ -116,7 +77,7 @@ const Electronics = () => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true,
+          // dots: true,
         },
       },
       {

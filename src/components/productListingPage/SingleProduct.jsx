@@ -67,7 +67,7 @@ const SingleProduct = ({ productListData }) => {
 
   return (
     <>
-      <Col className="wishlist-col col-9 d-flex align-items-center justify-content-center col-xl-3 col-lg-4 col-md-6  mt-4 ">
+      <Col className="wishlist-col d-flex align-items-center justify-content-center col-9 col-xl-3 col-lg-4 col-md-6  mt-4 ">
         <div
           className="dealCard-border mt-3 mt-sm-3  mt-lg-3 mt-xl-0"
           onClick={() => handleProductClick()}

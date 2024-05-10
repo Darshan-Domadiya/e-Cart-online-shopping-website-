@@ -13,3 +13,16 @@
   border: none;
   background-color: white;
 }
+
+// Add delivery address arrow and input.
+.select-input {
+  outline: none;
+  appearance: none;
+  background-image: url("/Images/downArrow.png");
+  border-radius: 20px;
+  background-position: top right center;
+}
+
+.select-input:focus {
+  box-shadow: none;
+}

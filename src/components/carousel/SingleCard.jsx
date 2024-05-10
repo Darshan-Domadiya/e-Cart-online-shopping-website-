@@ -6,8 +6,6 @@ import { useNavigate } from "react-router-dom";
 const SingleCard = ({ list }) => {
   const { imgUrl, discount, title } = list;
 
-  const navigate = useNavigate();
-
   return (
     <>
       <Container
@@ -16,10 +14,7 @@ const SingleCard = ({ list }) => {
       >
         <Row>
           <Col>
-            <div
-              className="border-class"
-              onClick={() => navigate("/productlisting")}
-            >
+            <div className="border-class">
               <div>
                 <img src={imgUrl} className="img-fluid" />
               </div>

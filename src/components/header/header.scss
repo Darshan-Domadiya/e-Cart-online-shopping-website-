@@ -69,8 +69,6 @@
   text-decoration: none;
 }
 
-
-
 // displaying button and li > a in style.
 .dropDownMenu li:hover {
   background-color: black;
@@ -90,8 +88,6 @@
 .dropDownMenu > li:hover ul {
   pointer-events: all;
 }
-
-
 
 //Login/Register Menu on hovering for small size devices .
 .secondLoginMenu {
@@ -163,4 +159,14 @@
   background-color: #0063ff;
   width: 200px;
   text-align: center;
+}
+
+.login-button {
+  margin-bottom: 6px;
+  margin-top: 10px;
+}
+
+.logout-button {
+  margin-bottom: 6px;
+  margin-top: 10px;
 }

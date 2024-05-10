@@ -556,7 +556,8 @@ const ProductDetails = () => {
                     <p>HURRY, THERE ARE ONLY 6 ITEM(S) LEFT!</p>
                   </div>
                   <div>
-                    <img src={peopleImage} className="img-fluid mx-1" />8
+                    <img src={peopleImage} className="img-fluid mx-1" />
+                    {productDetail.product_view}
                     <span className="mx-1">People looking at this product</span>
                   </div>
                 </div>
@@ -580,7 +581,6 @@ const ProductDetails = () => {
                       Add to cart
                     </button>
                   )}
-                  {/* {addedToCart ? "Go to Cart" : "Add to Cart"} */}
 
                   <button className="text-white w-75 p-2 buyBackground d-flex align-items-center justify-content-center">
                     Buy Now

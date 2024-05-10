@@ -62,7 +62,7 @@ const Orders = () => {
 
   const handleOrderClick = (subOrderNumber, orderNumber) => {
     navigate(`/orders/${subOrderNumber}/${orderNumber}`);
-    // console.log("go to product detail", orderNumber, subOrderNumber);
+    
   };
 
   return (
