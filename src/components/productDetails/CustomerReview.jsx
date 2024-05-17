@@ -172,7 +172,6 @@ const CustomerReview = ({ orderId, productData }) => {
       }
 
       if (!productId) {
-        // console.log("No product Id found");
         return;
       }
 

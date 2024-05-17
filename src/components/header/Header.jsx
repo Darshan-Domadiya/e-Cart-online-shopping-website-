@@ -89,20 +89,6 @@ const Header = () => {
     }
   };
 
-  // const wishlistCount = async () => {
-  //   try {
-  //     const response = await axios.get(wishlistCountApi, {
-  //       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-  //     });
-  //     if (response.status === 200) {
-  //       // console.log("Wishlist counts", response.data.result.wishlistcount);
-  //       setWishlistProductCount(response.data.result);
-  //     }
-  //   } catch (error) {
-  //     console.log("Error in wishlist count", error);
-  //   }
-  // };
-
   const handleShoppingCartClick = () => {
     if (isUserLoggedIn) {
       navigate("/shoppingcart");
@@ -122,7 +108,6 @@ const Header = () => {
   useEffect(() => {
     if (isUserLoggedIn) {
       cartItemCount();
-      // wishlistCount();
     }
   }, [cartProductValue]);
 

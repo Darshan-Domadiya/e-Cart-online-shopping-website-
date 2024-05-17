@@ -5,21 +5,21 @@ import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Layout from "./components/layout/Layout.jsx";
-import Home from "./components/home/Home.jsx";
-import ProductListPage from "./components/productListingPage/ProductListPage.jsx";
-import ProductDetails from "./components/productDetails/ProductDetails.jsx";
-import ShoppingCart from "./components/shoppingcart/ShoppingCart.jsx";
-import Checkout from "./components/checkout/Checkout.jsx";
+import Home from "./view/homepage/Home.jsx";
+import ProductListPage from "./view/productListPage/ProductListPage.jsx";
+import ProductDetails from "./view/productDetails/ProductDetails.jsx";
+import ShoppingCart from "./view/cart/ShoppingCart.jsx";
+import Checkout from "./view/checkout/Checkout.jsx";
 import { UserContextProvider } from "./components/context/UserContext.jsx";
 import { Provider } from "react-redux";
 import store from "./app/store.js";
-import Payment from "./components/payment/Payment.jsx";
-import Orders from "./components/orders/Orders.jsx";
-import Profile from "./components/profile/Profile.jsx";
-import Wishlist from "./components/wishlist/Wishlist.jsx";
+import Payment from "./view/payment/Payment.jsx";
+import Orders from "./view/orders/Orders.jsx";
+import Profile from "./view/profile/Profile.jsx";
+import Wishlist from "./view/wishlistpage/Wishlist.jsx";
 import { WishlistContextProvider } from "./components/context/WishlistContext.jsx";
 import { ToastContainer } from "react-toastify";
-import OrderDetail from "./components/orderDetails/OrderDetail.jsx";
+import OrderDetail from "./view/orderDetail/OrderDetail.jsx";
 
 const router = createBrowserRouter([
   {

@@ -20,7 +20,7 @@ const ProductImages = ({ productImage }) => {
   return (
     <>
       {productImage && (
-        <div className="slider-container d-flex gap-3 sliderImage-div col-12">
+        <div className="slider-container d-flex gap-sm-3 sliderImage-div col-12">
           <div className="smallImagediv ">
             <Slider
               asNavFor={nav1}
@@ -60,9 +60,22 @@ const ProductImages = ({ productImage }) => {
               {productImage.length > 0 &&
                 productImage.map((bigImg, index) => {
                   return (
-                    <div key={index}>
-                      <div>
-                        <ReactImageMagnify className=""
+                    <div
+                      key={index}
+                      className="d-flex align-items-center justify-content-center"
+                    >
+                      {/*Slick slider for medium to small screen size - bigImageDiv  */}
+                      <div className="bigImageDiv d-flex align-items-center justify-content-center d-xl-none">
+                        <img
+                          src={bigImg.product_image_url}
+                          className="img-fluid bigImageDiv-image"
+                        />
+                      </div>
+
+                      {/* Div for React Image Magnify - bigImageDiv for large screen */}
+                      <div className="d-none d-xl-flex">
+                        <ReactImageMagnify
+                          className=""
                           {...{
                             smallImage: {
                               isFluidWidth: true,

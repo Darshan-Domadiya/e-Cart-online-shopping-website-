@@ -1,0 +1,113 @@
+.horizontal-line {
+  color: #cacac4;
+}
+
+.singlelineOrder-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.orderImage-div {
+  height: 125px;
+  width: 150px;
+  cursor: pointer;
+}
+
+// Media queries for OrderImage-div
+@media screen and (max-width: 1025px) {
+  .orderImage-div {
+    height: 125px;
+    width: 190px;
+  }
+}
+@media screen and (max-width: 769px) {
+  .orderImage-div {
+    height: 125px;
+    width: 290px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .orderImage-div {
+    height: 125px;
+    width: 390px;
+  }
+}
+.orderImage {
+  object-fit: cover;
+  border: 1px solid #e6e6f7;
+  border-radius: 15px;
+}
+
+.cancelOrder-border {
+  padding: 3px;
+  border: 1px solid #e6e6f7;
+  border-radius: 15px;
+  width: 160px;
+  cursor: pointer;
+}
+
+.orders-select {
+  border-radius: 25px;
+  padding-left: 22px;
+  border: 1px solid #e6e6f7;
+}
+
+.orders-select:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: none;
+}
+
+// Css for no product component
+
+.goToYourOrders {
+  width: 150px;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 8px;
+}
+
+.goToYourOrders:focus {
+  box-shadow: none;
+  width: 150px;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 8px;
+}
+
+// Media queries for setting cancelOrder and arriving on div.
+
+@media screen and (min-width: 320px) and (max-width: 374px) {
+  .arrivingOrder {
+    padding-left: 85px;
+  }
+  .cancelOrder-div {
+    padding-left: 77px;
+    margin-top: 12px;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 423px) {
+  .arrivingOrder {
+    padding-left: 98px;
+  }
+  .cancelOrder-div {
+    padding-left: 90px;
+    margin-top: 12px;
+  }
+}
+
+@media screen and (min-width: 424px) and (max-width: 430px) {
+  .arrivingOrder {
+    padding-left: 95px;
+  }
+  .cancelOrder-div {
+    padding-left: 90px;
+    margin-top: 12px;
+  }
+}

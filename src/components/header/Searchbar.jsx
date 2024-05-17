@@ -56,6 +56,8 @@ const Searchbar = () => {
     // console.log(searchQuery, searchUrl);
     if (searchQuery) {
       navigate(searchUrl);
+      searchInputRef.current.clear();
+      searchInputRef.current.blur();
     }
   };
 
@@ -71,7 +73,7 @@ const Searchbar = () => {
         ref={searchInputRef}
         filterBy={filterBy}
         id="async-example"
-        className="w-100 "
+        className="w-100"
         isLoading={isLoading}
         labelKey="name"
         minLength={2}

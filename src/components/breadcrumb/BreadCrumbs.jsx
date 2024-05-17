@@ -43,16 +43,16 @@ const BreadCrumbs = () => {
                     routeTo = `/${pathNames.slice(0, index + 1).join("/")}`;
                   }
 
-                  if (name === "orders/" && !isLastItem) {
-                    // For "Orders" page, construct breadcrumb with order and sub-order numbers
-                    // routeTo = `/${pathNames.slice(0, index + 1).join("/")}`;
-                    return (
-                      <li key={routeTo} className="list-unstyled">
-                        <Link to={routeTo}>Orders {">"}</Link>
-                        {separator}
-                      </li>
-                    );
-                  }
+                  // if (name === "orders/" && !isLastItem) {
+                  //   // For "Orders" page, construct breadcrumb with order and sub-order numbers
+                  //   // routeTo = `/${pathNames.slice(0, index + 1).join("/")}`;
+                  //   return (
+                  //     <li key={routeTo} className="list-unstyled">
+                  //       <Link to={routeTo}>Orders {">"}</Link>
+                  //       {separator}
+                  //     </li>
+                  //   );
+                  // }
                 })}
               </ul>
             </Navbar>

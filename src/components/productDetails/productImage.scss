@@ -1,11 +1,14 @@
-.bigImageDiv {
-  width: 1200px;
-  // height: 600px;
-  position: relative;
-}
+// Media querie for react image magnify div for xl-screen
+@media screen and (min-width: 1199px) {
+  .bigImageDiv {
+    width: 1200px;
+    height: 600px;
+    position: relative;
+  }
 
-.smallImagediv {
-  width: 100px;
+  .smallImagediv {
+    width: 100px;
+  }
 }
 
 #enlargedImage-div {
@@ -15,3 +18,31 @@
   z-index: 999;
 }
 
+// Media queries for bigImage of slick slider
+
+@media screen and (max-width: 427px) {
+  .smallImagediv {
+    width: 200px;
+  }
+
+  .bigImageDiv {
+    width: 250px;
+    height: 292px;
+  }
+
+  .bigImageDiv-image {
+    height: 260px;
+    width: 255px;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .smallImagediv {
+    width: 180px;
+  }
+
+  .bigImageDiv {
+    height: 300px;
+    width: 275px;
+  }
+}
