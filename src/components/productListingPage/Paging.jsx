@@ -3,6 +3,7 @@ import { Pagination } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Paging = ({ lastpage }) => {
+  console.log(lastpage);
   const [activePage, setActivePage] = useState(1);
 
   const navigate = useNavigate();

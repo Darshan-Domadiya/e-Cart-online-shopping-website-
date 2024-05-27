@@ -663,7 +663,8 @@ const Payment = () => {
           )}
           {/* Column for order summary box */}
           <Col className="col-12 col-md-4">
-            {" "}
+            
+            
             <div className="cardBackground-payment px-3 mx-md-5 mx-lg-0 ">
               <p className="h4 mt-4">Order Summary</p>
               <hr />
